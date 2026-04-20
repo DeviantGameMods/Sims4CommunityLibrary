@@ -27,10 +27,13 @@ class CommonLogUtils:
         """
         the_sims_4_folder = CommonLogUtils.get_sims_documents_location_path()
         filename = os.path.join(the_sims_4_folder, 'GameVersion.txt')
-        import re
-        with open(filename, 'rb') as fp:
-            v = fp.read().decode(errors='ignore')  # convert b to str and ignore errors
-            v = re.sub(r'[^0-9.]', '', v)  # in case of UTF-8 characters which survived 'ignore': replace everything with '' except of '0-9' and '.'
+        try:
+            import re
+            with open(filename, 'rb') as fp:
+                v = fp.read().decode(errors='ignore')  # convert b to str and ignore errors
+                v = re.sub(r'[^0-9.]', '', v)  # in case of UTF-8 characters which survived 'ignore': replace everything with '' except of '0-9' and '.'
+        except FileNotFoundError:
+            return '1.0'
         return v
 
     @staticmethod
