@@ -30,11 +30,11 @@ for script_path in script_paths:
 # -- Project information -----------------------------------------------------
 
 project = 'sims4communitylib'
-copyright = '2020, DeviantGameMods'
+copyright = '2026, DeviantGameMods'
 author = 'DeviantGameMods'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.6'
+release = '3.21'
 
 
 # -- General configuration ---------------------------------------------------
@@ -62,7 +62,7 @@ exclude_patterns = [
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'classic'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
