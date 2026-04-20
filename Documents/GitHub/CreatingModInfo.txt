@@ -18,7 +18,7 @@ class ModInfo(CommonModInfo):
 
     @property
     def _author(self) -> str:
-        return 'DeviantGameMods'
+        return 'ModAuthorName'
 
     @property
     def _base_namespace(self) -> str:

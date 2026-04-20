@@ -64,7 +64,7 @@ import tests.example_test
 from sims4communitylib.testing.common_test_service import CommonTestService
 
 # Run The Tests.
-CommonTestService.get().run_tests()
+CommonTestService().run_tests()
 ```
 - If your Tests rely on code specific to The Sims 4 (For example SimInfo), you must:
   1. Run the game

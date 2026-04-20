@@ -1,3 +1,12 @@
+v3.21:
+- Added CommonBitwiseUtils.to_flags function to convert a collection into flags
+- Added a command to reset the bathing outfit of Sims to the original parts
+- Simplified the has_any_tags and has_all_tags functions in CommonLoadedItem, they return a bool now.
+- Added a PAUSED state to CommonRunnableStateType
+- Added an is_paused function to CommonRunnable
+- Exceptions are no longer logged inside the Messages.txt file
+- Added an is_customer_of_business and is_employee_of_business functions to CommonBusinessUtils
+
 v3.20:
 - Fixed an issue where creating an empty household would throw an error.
 - Added events for when a pregnancy has started and when it has ended.
