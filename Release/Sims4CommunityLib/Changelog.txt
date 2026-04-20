@@ -1,0 +1,858 @@
+v3.20:
+- Fixed an issue where creating an empty household would throw an error.
+- Added events for when a pregnancy has started and when it has ended.
+
+v3.19:
+- Fixed an issue when checking if two Sims are blood related. (For some reason it was counting Spouses, Engaged, and Partners as "blood related")
+
+v3.18:
+- Fixed an improper EA check with Jig Groups
+- Added new enum CommonGamePack for use with CommonGamePackUtils
+- Added a fix for missing household template values.
+- Fixed issues with Feb 3rd, 2026 patch in CommonSimGenealogyUtils and CommonRelationshipUtils
+- CommonSimUtils.get_sim_instance and CommonSimUtils.get_sim_info now return None if neither are found
+- Fixed issues with existing CommonTest classes so types of objects can be specified via the class, such as CommonSubjectSimTest
+- Added verbose logs for interactions when they are killed, reset, or performed
+
+v3.17:
+- Added a fix for broken relationship tracks in EA
+- Added new test set instance tests for checking career levels between two Sims
+- Added an option to hide tooltips for CommonTest
+- Added an event for when a Sim is Changing ages but has not changed ages yet.
+- Added a command to set fame level of a Sim
+- Fixed some issues when using CommonBodySlot with CommonCASUtils functions
+- Added a function to combine loot actions to CommonLootActionsUtils
+- When creating a household after not finding one via locate_household_by_name, if create_on_missing is true, the name of the created household will now be the one sent in.
+- Added a function to retrieve the first career of a Sim in CommonSimCareerUtils
+- Fixed the s4clib.remove_simoleons command, it now actually removes the specified simoleons, instead of adding them.
+- Added functions to determine the toilet sitting and standing traits used for a Sim's species in CommonSimGenderOptionUtils
+- Added functions to check if a Sim has a father, mother, grandmother, and grandfather in CommonSimGenealogyUtils
+- Added a function to check if a Sim has blood related children to CommonSimGenealogyUtils
+- Added a function to get all children of a Sim to CommonSimGenealogyUtils
+- Added a function to check if a Sim is instanced to CommonSimUtils
+
+v3.16:
+- Updated S4CL for the patch on 08/20/2025
+
+v3.15:
+- Updated Buffs, Traits, Careers, Death Type, Puddles, Regions, Skills, Body Slot, Bucks Types, Customer Star Rating Types, Employee Types, Sim Name Types, and Motives with new enum values.
+- Added Fairy Occult support
+
+v3.14:
+- Fixed an infinite loop in the colorize function.
+
+v3.13:
+- Fixed an issue when updating Sexual Orientation Woohoo Preferences via CommonSimGenderPreferenceUtils.set_preference_for_gender where it would update Romantic Preferences too.
+- Added a vanilla fix for Premade Sim households when premade Sim info stops existing in Tunings.
+- Fixed an issue that could occur if a tuning specified a buff that does not exist.
+
+v3.12:
+- Fixed a slight issue with test set instances.
+
+v3.11.1:
+- Fixed an error with household templates.
+
+v3.11:
+- Moved many Strings from the code into the string tables.
+- Added new utility CommonObjectStatisticUtils.
+- Moved alot of strings to the S4CL string tables
+- Added a vanilla fix for Sims spamming the bunny app, causing the game to lag immensely.
+- When checking for romance permissions, familial relationship bits are now checked in addition to the blood relations.
+- Added CommonObjectStatisticUtils
+- Added a Choose CAS Parts Dialog
+- Updated careers, death types, occult types, region ids, moods, skills, tags, and traits with new values
+- Fixed an issue with infinite looping in CommonCASUtils
+- Added commands to apply loot actions to Sims
+- Added checks to prevent setting motive values on Sims that don't have a motive
+- Added checks to prevent setting motives that are not even in the game.
+- Fixed an issue when getting the mood of Sims
+- Added a command to trigger vanilla burglars.
+- Fixed an issue when getting the display name of occults where it was giving the wrong display name.
+- Fixed an error caused by recent patch (5/27/2025)
+- Added CommonTestSetInstance for custom testing.
+- Added CommonLootActions for custom loot actions.
+- Added a function to set a statistic value to max.
+
+v3.10:
+- Fixed a vanilla issue when saving commodities.
+- Fixed an issue when switching occults using switch_to_occult
+- Changed all functions in CommonOccultUtils to class methods
+- Added properties to attach_cas_part to toggle setting setting the current outfit.
+- Added a function to check if a Sim is a Batuu alien inside CommonSimTypeUtils.
+
+v3.9:
+- Added a vanilla fix for the missing "death_object_assigned" attribute.
+
+v3.8:
+- Fixed the name of the Home body trait.
+- Added utilities to the weather utils for getting wind speed, precipitation levels, and lightning levels
+- Fixed an error in the get_total_days_to_age_up function
+- Added functions to CommonRelationshipUtils for setting friendship levels and romance levels.
+- Added functions to CommonSimLocationUtils for checking if a Sim is outside, inside, inside a building, or in the shade.
+- Added a vanilla fix for when a Household Template is missing on a Sim Filter.
+
+v3.7:
+- Updated CommonBuffId with new buffs
+- Updated CommonTraitId with new values.
+- Updated CommonBodySlot with new BodyType values.
+- Added new utility for Relationship Expectations. CommonSimRelationshipExpectationUtils
+
+v3.6:
+- Fixed issues caused by the Sims 4 update.
+- Fixed a footprint id error in vanilla.
+
+v3.5:
+- Fixed S4CL icons not showing when running Sims in DX11.
+
+v3.4:
+- Fixed an error when removing relationship bits via "s4clib.remove_relationship_bit" where it would try to add a relationship bit instead.
+- Added an event to occur whenever a Relationship Bit is added or removed from/to a Sim.
+- Fixed a conversion issue inside `CommonSpecies.convert_to_localized_string_id`
+- Added functions to `CommonAgeUtils` to retrieve the birth age of Sims by Sim Info and by Species.
+- Added functions for checking if a Species value is Large Dog or Small Dog inside `CommonSpeciesUtils`.
+- Added fit fat commands to modify fit and fat levels of Sims.
+- Added functions to `CommonSimBodyUtils` to control fit and fat levels
+- CommonConsoleCommand now automatically registers aliases without underscores.
+- Added utilities for getting all Sims that match a demographic and performing an action on all Sims that match a demographic.
+- Updated the Choose Sim Demographics dialog to enable hiding the All Sims and No Sims and also an option to not reopen the dialog when selections are made.
+- The current Sims 4 version is now logged to the S4CL log file on start up.
+
+v3.3:
+- Added load_icon_by_id to CommonIconUtils.
+- Fixed an issue with missing arguments when calling on_outfit_update within CommonOutfitUtils.update_outfits
+- Fixed an issue when retrieving the Tuning name of a buff in CommonBuffUtils, where it would not give the proper name.
+- Removed the duplicated "s4clib.add_relationship" command.
+- Added new functions to CommonQuaternion and CommonVector3
+- Deprecated the "empty" function in CommonQuaternion and added identity instead.
+- The CommonVector3 "is_empty" utilizes "empty" for value checking now.
+- Fixed an issue when retrieving the definition of objects.
+- get_object_definition and get_object_definition_id can now accept GameObject types.
+- Added functions to CommonSimInventoryUtils to retrieve objects using their definition ids.
+- Fixed a problem with the Individual Folder Persistence and Folder Persistence services where they would not load any data from the files if main.json file did not exist.
+- Added a way to override the _run_tests function within CommonLoadedItemQueryRegistry
+- Fixed an EA bug when resetting milestones for Sims without an aspiration tracker (Like NPCs)
+- Fixed an issue when getting a statistic for Sims without a statistic tracker.
+- CommonSimInventoryUtils.add_to_inventory now returns a CommonExecutionResult instead of a bool for clearer reasons for failure.
+- Fixed a bad check where we were checking if a Sim has an inventory to decide they dont have an inventory, instead of checking properly for the Sim to not have an inventory in CommonSimInventoryUtils.add_to_inventory
+
+v3.2:
+- Potentially fixed an issue when writing JSON files and failing to, resulting in empty JSON files.
+- Added a check to not load empty JSON files.
+- Fixed the same vanilla issue from v2.9, but now with the updated function name! (Thanks EA...)
+- Fixed an issue with CommonAppearanceModifier
+- Updated S4CL for the 1.105.297.1030 Sims 4 update
+
+v3.1:
+- Fixed an issue when trying to start an active career event on the current lot.
+
+v3.0:
+- Updated the injection code, this fix will fix a ton of issues with mods that inject into functions using S4CL.
+
+
+v2.9:
+- Fixed an EA issue when sending satisfaction points
+- Fixed an EA issue when checking tuning attributes.
+- Passed the correct values to CommonExcutionResult
+- Fixed some text issues in some commands.
+- Added exception handling for Alarm Handles.
+
+v2.8:
+- Added Horse support to many places. (Motives, Species, Voices, Sim Types, Sim Demographics, etc.)
+- Updated the Traits, Buffs, Skills, Careers, and Tags enums with new values.
+- Converted many CommonAgeUtils functions into class methods
+- Added has_any_age function to CommonAgeUtils
+- Fixed an issue when removing the Scarecrow occult in CommonOccultUtils, where it wouldn't fully remove the scarecrow traits
+- Converted many of the CommonRelationshipUtils functions to classmethods
+- Added a command to manually add relationship bits between Sims.
+- Fixed an issue when joining a career with a Sim.
+
+v2.7:
+- Added an input option for showing multiple text fields
+- Added a dialog for showing multiple text fields.
+- Added a way to check Sim demographics for containing ANY value.
+- Fixed an issue with the returned value of `CommonSimPregnancyUtil.has_permission_for_pregnancies_with`
+- Fixed an issue when adding custom careers to Sims using the command.
+- Added custom events for when the zone spins up, when the loading animation finishes, and when the zone manager has started.
+- Fixed an issue where the sort rows option did not pass on to subsequent pages
+- The versions of mods will now all log into the S4CL Messages log at startup
+- Fixed an issue when checking if a Sim is contained with a list of demographic flags.
+
+v2.6:
+- Fixed a few errors when cloning Sims.
+- Updated CommonSimPregnancyUtils.start_pregnancy to assume the pregnancy is by a Single Sim when the Sim and the Partner are the same Sim.
+
+v2.5:
+- Added INFANT age to CommonAge
+- Updated CommonAgeUtils, CommonSimType, and CommonSimDemographics with the new INFANT age.
+
+v2.4:
+- The purchase picker dialog now sends values zipped up
+- Updated the clone functions with better clone technology
+- When an object is spawned via the spawn_object command, it now becomes the owner of the active Sim.
+- Added some logging to the add career function.
+- Added a check to prevent an error when checking if an object has game tags.
+
+v2.3:
+- Updated many of the `convert_to_vanilla` and `convert_from_vanilla` functions to be more reliable and not dependent on the values of the enums.
+- Added `MARKETPLACE_FASHION_NAME` to CommonSimNameType
+- The `CommonOutfitUtils.get_outfit_parts` and `CommonOutfitUtils.get_outfit_data` functions will no longer generate an outfit for a Sim if they do not have it. Instead empty data will be returned.
+- Added a function to check if a trait is a ghost trait.
+- Updated the `CommonObjectUtils` functions to be class methods
+- `get_occult_sim_info` will now return the original `sim_info` as it specifies in the return type, instead of None.
+- Added new utility `CommonRecipeUtils`
+- Fixed an issue with the `CommonSimCraftingUtils` if a Recipe object was passed to it instead of an identifier.
+- Added an optional callback to `CommonSimInventoryUtils.add_to_inventory` that will be invoked when an object is added to the inventory of a Sim.
+- Added an Information Pie menu to S4CL that can be used by various mods (Comes with a phone variant as well!)
+- Fixed an error that could occur when retrieving the object definition of objects that do not have a definition.
+- Added more details to the exception that occurs when producing Whims. It now displays the id of the Whim so it can be found easier.
+- When JSON files are being read and an exception occurs, more details are made available to indicate the name of the file failing to be read.
+- Added a new event for Interaction Started
+
+v2.2:
+- Added more DLC traits to `CommonTraitId`
+- Added a fix for vanilla adding gender options when it doesn't need to.
+- Added a utility for manipulating fires. `CommonFireUtils`
+- Fixed an error that could happen when attempting to cancel Super Interactions.
+- Added a function to convert OccultType to CommonOccultType
+- The CommonSpecies.convert_to_vanilla function now returns SpeciesExtended instead of Species.
+- Added Custom Breed to CommonStringId
+- Added the ability to specify the visual type for CommonBasicNotification
+- When reading JSON files from a folder, desktop.ini files will no longer be read.
+- Added the ability to specify first_name_key, last_name_key, full_name_key, breed_name, and breed_name_key when creating SimInfo
+- Fixed an issue where the update alarm for CommonRunnables was not properly being set when the runnable is restarted.
+- Fixed an issue where Unknown_Mod_Messages.txt was mistakenly having "None Detected", as if "None" was a mod.
+- Fixed an issue when specifying integer values for body_type when attaching/detaching/printing CAS Parts for Sims via commands.
+- Added new enum CommonSide
+- Added a function to CommonCivicPolicyUtils for quickly checking if Free Love is enabled.
+- Added functions to CommonRelationshipUtils for checking if Sims are friendly or romantic with other Sims.
+- Added a function to CommonTraitUtils to check if a Sim has the Player trait.
+- CommonInteractionUtils.get_interaction_display_name will now return None if the string_id is empty.
+- Fixed an error when retrieving all satisfaction reward store items.
+- Fixed an issue when switching Sims to a different occult.
+- Fixed an issue when retrieving satisfaction reward items.
+- The Choose Sims dialogs will now always be sorted
+- Added a function to CommonRelationshipUtils to retrieve all relationship bits that signify two Sims are in a relationship
+- Updated CommonRelationshipBitId, CommonShortTermSentimentId, CommonRelationshipBitCollectionId, and CommonLongTermSentimentId with new values.
+- Updated CommonBuffId, CommonTraitId, CommonGameTag, and CommonCareerId with new values.
+- Added a function for retrieving all household members of a household.
+
+v2.1:
+- Fixed an issue when checking if a Sim is dead or not.
+- Fixed an issue when starting a weather event using an id.
+- Added a function that will hopefully print more details when installed mods have outdated Whims.
+- Fixed an error when doing a console command and an argument fails to parse properly.
+- Deleted the included mod_data folder, since it is pointless to have now.
+- Fixed a few issues when starting pregnancy, clearing pregnancy, and inducing labor in pregnant Sims.
+- The has_trait functions now handle PregnancyOffspringData too
+- Fixed an issue when checking if a Sim has traits and buffs.
+
+v2.0.1:
+# Important
+- Changed the default location of where the `mod_data` folder is created to `The Sims 4/Mods/mod_data` instead of `The Sims 4/mod_data` (This may break mods that were relying on the `mod_data` folder to be in the The Sims 4 folder specifically!)
+## What do I have to do?
+- Very Simple. You just have to move `The Sims 4/mod_data` down a folder to `The Sims 4/Mods/mod_data` and overwrite all, if it asks you to.
+
+v2.0:
+# Important
+- Changed the default location of where the `mod_data` folder is created to `The Sims 4/mod_data` instead of `The Sims 4/Mods/mod_data` (This may break mods that were relying on the `mod_data` folder to be in the Mods folder specifically!)
+## What do I have to do?
+- Very Simple. You just have to move `The Sims 4/Mods/mod_data` up a folder to `The Sims 4/mod_data` and overwrite all, if it asks you to.
+- This only applies to the `mod_data` folder! Any package or ts4script files will continue to be placed under `The Sims 4/Mods`!
+# Changes
+## New
+- New DTOs (Data Transfer Objects)
+  - `CommonOutfit`, this can be used to store information related to the outfit of a Sim.
+- New enums:
+  - `CommonBodySlot` - This can be used in place of BodyType.
+  - `CommonRegionId` - A collection of identifiers for Regions.
+- Scarecrow Support:
+  - New Sim Types available for Scarecrows
+  - New `CommonOccultType` value `SCARECROW`
+  - New functions added for checking if Sims are scarecrows as well as adding and removing the Scarecrow occult to/from Sims.
+  - Updated the `s4clib.add_occult` and `s4clib.remove_occult` commands to add/remove Scarecrow.
+- New Utilities:
+  - `CommonSimSpellUtils` - A utility for manipulating Spells and also the spell book of Sims.
+    - Commands are now available for adding and removing spells.
+  - `CommonSimBucksUtils` - A utility for manipulating various bucks types of Sims, such as perk points, credits, spell points, life points, etc.
+    - Commands are now available for modifying the number of perk points, spell points, etc. of Sims.
+  - `CommonSimUnlockUtils` - A utility used for manipulating unlocks of Sims.
+  - `CommonSimDeathUtils` - Various utilities for manipulating the death/life of Sims.
+    - Commands are now available for killing and reviving Sims.
+    - When killing Sims via the console commands (Particularly via Murphy Bed, Cow Plant, or Vending Machine), appropriate objects will now be spawned to kill them with. (Killing them with a murphy bed will spawn a murphy bed so they can kill themselves with it)
+      - These objects should despawn automatically after one Sim hour.
+- New Events:
+  - Sim Died
+  - Sim Revived
+  - Sim Despawned
+- New Commands:
+  - Advancing Time. `s4clib.advance_time`
+- New Localized Strings:
+  - Sim Cannot Reach Sim
+  - Sim Already Has This Trait
+  - Sim Does Not Have This Trait
+  - Not Implemented
+## Updates:
+- Updated how `CommonAgeUtils.get_total_days_to_age_up` functions for the High School Years patch.
+- Renamed `CommonFundType` to `CommonFundsSource`. `CommonFundType` is now obsolete, please use `CommonFundsSource`.
+- Added new keyword argument `return_type` to various functions for specifying what the expected returned type should be, this can be useful to get PyCharm Type Hinting to not complain at you so much. It serves no functional aspect in the code however, simply used for type hinting.
+- Many functions within `CommonFunctionUtils` will now accept additional types `CommonTestResult` and `CommonExecutionResult` to make the type hinting in PyCharm happy.
+- Fixed a bug with the `CommonCASUtils.detach_cas_parts_from_all_outfits_of_sim` where it was not detaching CAS Parts in some cases.
+- Fixed a bug with the `CommonCASUtils.attach_cas_parts_to_all_outfits_of_sim` where it was not attaching CAS Parts in some cases.
+- Fixed an error that could occur within `CommonItemQueryRegistry` after enabling the verbose log and trying to query for items.
+- Updated a few places to use the new `CommonBodySlot` enum.
+- Added a function to `CommonOccultUtils` for quickly determining if the Occult Type of a Sim or an Occult Type utilize a full body outfit to change their appearance, such as Skeletons (Skeleton body), Robots (Robot Body Frame), and Scarecrows (Scarecrow Body)
+- When the witch occult is removed via the `remove_witch_occult` function, witch spells, witch perks, and witch perk points are also removed
+- When werewolf occult is removed via the `remove_werewolf_occult` function, werewolf perks and werewolf perk points are removed.
+- When vampire occult is removed via the `remove_vampire_occult` function, vampire weakness and power perks and perk points are removed.
+- New functions for retrieving the Current Region, checking the Current Region, and loading Regions by GUIDs. `CommonLocationUtils`
+- New function for converting hex32 values to strings while keeping any leading or trailing zeros. `CommonTextUtils`
+- New function for truncating decimal values by a number of places for string display. `CommonTextUtils`
+- New function for converting seconds to milliseconds. `CommonTimeUtils`
+- Added functions to `CommonStopWatch` to retrieve its time in milliseconds rather than seconds.
+- Added functions to retrieve and set the Sexual Orientation of Sims (Is Exploring Sexuality, Is Interested In Romance/Woohoo With)
+- Added a few functions for checking permissions of Sims for various vanilla actions, such as changing to nude, being able to have romantic relationships, and being able to start pregnancies.
+- Added functions to remove interactions from the Terrain or from the Ocean. `CommonObjectInteractionUtils`
+- Updated `has_buff`, `has_any_buffs`, and `has_all_buffs` to better handle `SimInfoBaseWrapper`
+- Updated `has_trait`, `has_any_traits`, and `has_all_traits` to better handle `SimInfoBaseWrapper`
+- S4CL will now create or assign a bassinet to Baby Sims spawned via the `CommonSimSpawnUtils.spawn_sim` function.
+- Changed `get_romance_relationship_track` and `get_friendship_relationship_track` into class methods instead of static methods.
+- `CommonRelationshipUtils.get_romance_level` and `CommonRelationshipUtils.get_friendship_level` will now return 0.0 instead of -1.0 when romance/friendship tracks are not found between the Sims.
+- Increased the performance of the `has_trait`, `has_any_traits`, `has_all_traits`, `has_buff`, `has_any_buffs`, and `has_all_buffs` functions of `CommonTraitUtils` and `CommonBuffUtils`
+- Added a way to see times between logs for vanilla logging. This can help determine interaction performance.
+- The time taken by interactions is now logged in milliseconds instead of seconds for an easier time distinguishing how long functions take.
+- In all places where we were logging an amount of seconds, it is now logged in milliseconds instead.
+  - This applies to interactions, as well as the query system.
+- Whenever a mod registers their logs the first time, their mod versions will now be logged to their respective log files for easy reference.
+- Reordered many of the inherited Generic classes by putting the Generic inheritance at the end of the inheritance list, this will hopefully let the PyCharm Type Hinting be less confused about it.
+- Updated the S4CL phone icon to match how other phone icons look.
+
+v1.80:
+- Added an entire item query system. It can be used to quickly setup a library of objects that can be queried.
+- Added a serializable cache system. It can be used to quickly setup a caching system.
+- Added an invidual folder persistence service.
+- Added a vanilla fix for missing postures when Sims attempt to perform interactions.
+- Added a vanilla fix for missing recipes when a recipe to make an object is removed, but the object itself still exists on the lot.
+- Added classes used to store setting data as well as access Settings.
+- Added CommonRunnable and CommonRunnableContext classes. These can be used to quickly setup an instance that will run over a period of time. It handles setup, updates, and teardown of it as well.
+- Added new utility CommonSimDemographicTypeUtils
+- Added new enum CommonSimDemographicTypes
+- Added new dialog CommonChooseSimDemographicTypesDialog
+- Added new enum types CommonVersionedInt and CommonVersionedIntFlags
+- Fixed an issue when saving the CommonSerializableObjectCache when the folder paths do not exist. It will now properly create all directories that lead to the cache save location.
+- Added a new function to apply pressure to the next interaction of a Sim. (CommonSimInteractionUtils)
+- Added an assertion to catch when a None location is sent to the CommonObjectSpawnUtils.spawn_object_near_location function
+- Updated many of the CommonSimGenderPreferenceUtils for the latest High School DLC patch.
+- Added commands to apply the default gender preferences to all Sims or a single Sim. `s4clib.apply_default_gender_pref_to_all_sims` and `s4clib.apply_default_gender_pref`
+- Fixed a couple errors caused by the high school DLC patch
+
+v1.79:
+- Fixed an issue with the order of commands when a command is used with quotations.
+- Fixed an issue when setting certain Object States on objects.
+- Fixed an issue when checking if an object has a state.
+- Added more details when an interaction fails to queue or fails its tests.
+- Added CommonEnqueueResult to be used as a replacement for EnqueueResult (and add more functionality to it too)
+- Added new Game Object events
+  - Game Object Added To Inventory
+  - Game Object Added To Game Object Inventory
+  - Initialized
+  - Loaded
+  - Spawned
+  - Pre Deleted
+  - Pre Despawned
+  - Game Object Pre Removed From Inventory
+  - Game Object Pre Removed From Game Object Inventory
+- Added new Sim events
+  - Game Object Added To Sim Inventory
+  - Game Object Pre Removed From Sim Inventory
+- Added an alias to the `s4clib.add_object_to_inventory` command called `s4clib.addtosim`
+- Added exclude_values arguments to many of the enums get_all functions.
+- Added a function to create objects to CommonObjectSpawnUtils.
+- Added arguments to specify target actor id and target joint bone name to CommonVisualEffect
+- Updated the Visual Effect commands to allow specifying target joint bone names.
+- Added a function to convert occult types into localized string ids.
+- Added new enums CommonFundType, CommonPuddleLiquid, CommonPuddleSize, CommonSkillEffectiveness
+- Added new strings, one for each occult type.
+- CommonConsoleCommand can now handle float values.
+- Updated the destroy object and schedule object for destruction functions of CommonObjectSpawnUtils to better handle objects located in the inventory of the a Sim or an Object. Instead of deleting the entire stack of the same object, they will now properly delete the single instances of the object we intended to destroy.
+- The remove all occults function will now remove Ghost and Plant Sim occults.
+- The add all occults function will no longer add Robot and Skeleton occult types.
+- Moved many of the development centric code to its own script so as not to clutter the main script with it.
+- Updated the type hints in CommonSerializable so the return types of sub functions is more accurate.
+- Added a bunch of new values to CommonPostureId
+- Added a command to enable all logs registered to S4CL `s4clib.enablealllogs` DO NOT USE THIS COMMAND LIGHTLY!
+- Added a function to retrieve the block id in a specific zone.
+- Added functions to return the id of the current room a Sim is in as well as whether or not two Sims are in the same room.
+- Added a function to the pregnancy utils to determine the Sim that caused another Sim to become pregnant.
+- Added a command to check which Sim got a Sim pregnant. `s4clib.print_pregnancy_partner`
+- Added new utilities for retrieving the default and current walkstyles of a Sim.
+
+
+
+v1.78:
+- Add a command to swap the gender of a Sim. `s4clib.swap_gender`
+- Added a fix for the vanilla `Sim.can_see` function where `los_constraint` property was attempting to be used while it was None. (Thus throwing an error). This fix checks for the property to be None before continuing the rest of said function.
+- Added a new SHIFT+CLICK interaction to all objects. This interaction will let you change the various states of those objects.
+  - For example, you can change the image on a computer monitor to one of the many images the game uses.
+- Added a debug dialog for changing the state of an object.
+- Added a couple more values to `CommonObjectStateValueId`
+- The `CommonOutfitUtils` commands now logs the things it prints to the log file in addition to the console window.
+- Added new functions to `CommonObjectStateUtils` for loading object state values, setting object state, checking the current states of an object, and retrieve all state items of an object.
+- Added a function to `CommonRelationshipUtils` to retrieve all relationships of a Sim.
+- Added a function to `CommonRelationshipUtils` to remove a relationship bit of a Sim from all other Sims.
+- Added a couple commands for adding and removing relationship bits to/from Sims.
+- Added a command to delete all Sims except the Active Household Sims.
+- Added a fix for the vanilla `AwayActionTracker.remove_on_away_action_ended_callback` where it would blow up if the callback being removed did not exist in the `_on_away_action_ended` property.
+- Added a fix for the vanilla `AwayActionTracker.remove_on_away_action_started_callback` where it would blow up if the callback being removed did not exist in the `_on_away_action_started property`.
+- Added functions to check if a Sim can be picked up.
+- Added a function to retrieve all Skills available to a Sim.
+- Added a function to retrieve all Skills.
+- Added a function to check if a Sim can route to another Sim.
+- Added a command to set all Sims as having met each other other.
+- Cleaned up some doc strings in various enums
+- Added `CommonObjectQuality` and `CommonObjectStateId` enums
+- Added some functions for setting and getting object quality to `CommonObjectStateUtils`
+- Added extra arguments to `CommonSimCraftingUtils.create_from_recipe`
+- Removed the checks for `has_motive` from various `CommonSimMotiveUtils` functions.
+- Fixed an issue within `CommonSimStatisticUtils.add_statistic_modifier` where it was essentially not working properly.
+- Added support for werewolves, related classes are `CommonOccultType`, `CommonSimType`, `CommonOccultUtils`, `CommonSimOccultUtils`, `CommonSimOccultTypeUtils`, etc.
+- Updated CommonTraitId and CommonBuffId with new traits and buffs.
+- Fixed an issue with Animal Sims spawned in with the spawn commands, where they did not have a breed entered for them.
+- CommonAlarmHandles now have an `is_active` property that can be checked to determine in the alarm handle is still active.
+- Added a function to remove Game Tags from objects.
+
+v1.77:
+- Fixed an error that could occur when using commands that have an optional integer argument.
+- Added a couple fun commands to use.
+- On each interaction class, when the test function is run, the verbose log will now display the test result of each individual test part of the tuning. i.e. test_globals, _additional_tests, test_autonomous, and affordance tests.
+- Updated the command `s4clib.play_visual_effect`, some of the arguments were shifted. sim_info was moved to be the second argument. joint_bone_name was moved to be the last argument.
+- Added a new command to play visual effects on objects. `s4clib.play_visual_effect_object`.
+- Added an interaction to be able to log all of the game tags of an object. `Log All Game Tags`.
+- Added many new strings.
+- Added new CommonLocalizedStringSeparator values `OR`, `COMMA_SPACE_OR`, `AND`, `COMMA_SPACE_AND`, `NEWLINE_NEWLINE`, `STRING_PLUS_STRING`, `ARE`, `IS`
+- Fixed an error when choosing options in a Multipane dialog where it would not correctly determine values to be selected.
+- Fixed some type hint issues within CommonGameObjectDataStorage and CommonSimDataStorage.
+- Added the ability to choose to hide the tooltip for CommonTestResult and CommonExecutionResult via a new init argument `hide_tooltip`.
+- Added CommonTunedInstanceRegistry, used to modify tunings as they load into the game.
+- Added a tuned instance modification handler for adding interactions to affordance lists.
+- Added functions to CommonCombinedSpecies to convert it to a short name, enum xml, and to check if a value is an animal value.
+- The maximum size files can be when created by S4CL is now configurable via the sims4communitylib.config file. It has also been increased to about 500 MB instead of the previous 10 MB.
+- Added new utilities for Civic Policies, Bitwise operations, Businesses, Attach/Detach CAS Parts, Locations, Text, Sim Location, Sim Name, Sim Posture, and Sim Situations.
+- Added new enums for Civic Policy Status, Civic Policy Types, Street Civic Policies, Venue Civic Policies, and Postures.
+- When setting the first or last names of Sims via the S4CL commands, the first character of the entered names will now properly be capitalized.
+- Added a command to change the weather
+- Added fun commands to play with lightning strikes
+
+v1.76:
+- Fixed an error when converting a Location to a CommonLocation where the parent_ref did not have a provided_routing_surface property
+- Fixed an issue where the Cheat menu would be visible without Cheats being enabled when holding the SHIFT key.
+- Added a version number to logged files (Assuming the mod specifies a version number)
+- Fixed an issue with interactions not having proper visible names when printing them in the notification
+- Fixed an issue when cancelling all running interactions and the Sim adds something to their queue during that.
+- Added more details to Test Result verbose log messages in interactions to indicate which level of interaction is being called and where the result of the Test Result is returning from (Which class in particular).
+- Added MISSING_IMAGE_ICON to CommonIconId
+- Added a version number to appear when creating log files for mods
+- Fixed an issue when inducing labor in Male sims where they would not properly be able to give birth.
+- Added "induce_labor_in_sim" to CommonSimPregnancyUtils
+- Fixed an issue with CommonSimSpawnUtils not appearing in the docs
+- Fixed an issue with the CommonAlarmUtils module not rendering in the docs due to an error
+- Fixed an issue with CommonTraitUtils.has_all_traits where it was instead checking for ANY traits.
+- Fixed an issue within CommonSimTypeUtils.get_all_sim_types_gen where it would return a "human" form for Robot Sims, when Robot Sims do not have a "human" form!
+- Add kwargs to some CommonSimUtils functions to allow specifying allow_hidden_flags
+- When using the debug interactions, the results will now also be logged in the log file.
+- Added Yellow and Orange colors for colorizing text with.
+- Added the ability to decide whether or not to create a combined.json file in persistence.
+- Fixed an issue when retrieving the short name of an interaction for interactions without a short name
+- The "Took # Seconds to blah" debug messages are now only shown in the verbose log for interactions
+- Fixed an issue with the get_situation_id function where it was getting the guid64 value instead of the expected id.
+- Added a get_situation_guid interaction for getting the guid64 value instead.
+- Added commands to set the gender preferences of all Sims or those of a specific gender. `s4clib.set_gender_pref_of_all_sims`, `s4clib.set_gender_pref_of_all_female_sims`, and `s4clib.set_gender_pref_of_all_male_sims`
+- Added interactions to set the first name, last name, and full name of Sims. `s4clib.set_first_name`, `s4clib.set_last_name`, and `s4clib.set_name`
+- Fixed an error that could occur when retrieving the statistic value of a Sim without a Statistic Component.
+- S4CL will now catch way less errors
+- Added a custom Console Command called CommonConsoleCommand, which can be used to create commands while also providing a "help" command for your mod that will display all currently registered commands! `<mod_name>.help`
+- Added utilities for checking and retrieving available game packs
+- set_age will now return true if an exact age is used to set.
+- The Spawn commands will now spawn Sims with real names instead of simple numbering
+- Added functions to CommonSimNameUtils for creating random first and last names
+- Updated CommonConsoleCommand to print a done message after running a command.
+  - Added the ability to exclude commands from the help command display
+  - It will properly parse custom argument types such as SimInfo, GameObject, CommonInt, and CommonIntFlags, without needing to do all the extra work of parsing an id or a string.
+  - These custom commands can also handle quotation surrounded values, so you can enter as many spaces as you want in a command. For example, you can do this command `s4clib.set_first_name "Mr. Fantastic Of The Highest Order` and the first name of your Sim will then become "Mr. Fantastic Of The Highest Order".
+  - Added utilities for accessing the game client object
+  - Added custom parameter classes for specifying required or optional Sim Info or Game Object arguments for CommonConsoleCommand
+  - Added a few utility functions for retrieving SimInfo manager, Game Object manager, and other types of managers
+  - Updated the commands for Sim Spawn and Sim Name Utilties to use CommonConsoleCommands and thus show up under the S4CL help command. "sims4communitylib.help"
+- Added strings to the string tables for the following cases
+  - String Colon Space String
+  - String Comma Space String
+  - String Space String
+  - String Space Parenthesis Surrounded String
+  - String Newline String
+  - String Hyphen String
+- Fixed an error with the test Choose Outfit Dialog
+- Added a few utilities for creating time spans and DateAndTime objects in CommonTimeUtils
+- Added the ability to combine strings using separators within CommonLocalizationUtils
+- Added CommonVisualEffect which can be used to display various visual effects.
+- Added new commands to add visual effects to Sims and objects. `s4clib.play_visual_effect` and `s4clib.stop_all_visual_effects`
+- Added a few functions to set age progress.
+- Added utilities for manipulating Careers, Career Tracks, and Career Levels
+- New Enum type CommonIntFlags, this can be used to create enums that are bitwise capable!
+- CommonSimType is now a CommonIntFlags object and can be used with bitwise operations.
+- Added many new utilities and Enums for use within mods.
+  - Camera - Focus the camera on objects, positions, and Sims
+  - Some new Location utils - Some minor calculation functions with locations.
+  - Some new Age utils - Added a generic function to check if a Sim has an age
+  - Appearance Modifier Utils - Add/Remove/View appearance modifiers on Sims
+  - Plumbob Utils - Show/Hide the green thingy above Sim heads or make it fly off into the beyond (`s4clib.show_plumbob`, `s4clib.hide_plumbob`)
+  - Some new Situation utils
+  - New functions for the Career utils to modify Career work performance
+  - Object slots - Access container slots on objects.
+  - Object states - Manipulate object states.
+  - Currency Modifications - Modify various currency types (currently only Simoleons)
+  - Rabbit Holes - Put Sims into a rabbit hole while they "do something"
+  - Object filters - Filter through objects.
+  - Comparison classes - Classes that can be passed into functions that may be used to compare integers.
+  - CommonTerrainInteractionUtils, CommonTerrainLocationUtils, and CommonTerrainUtils.
+- Added a service for cloning and modifying the clone Sim in CAS, thus allowing for a Mod author to "prompt" the player to choose a CAS Part or multiple CAS Parts.
+- Added a custom appearance modifier for applying CAS Parts to Sims. This will allow for dynamically applying Appearance Modifiers to Sims via Buffs or in other ways.
+  - A custom buff for displaying bare feet has been added as an example for doing this with the `s4clib_testing.toggle_example_appearance_modifier_buff` command
+- Added a new event that triggers AFTER a Sim changes their outfit.
+- Updated CommonExecutionResult to provide the ability to decide the success/failure of the result separately from the result itself.
+- The result argument of CommonExecutionResult can now be set to a non bool value. This allows CommonExecutionResult to be used for other returned values.
+- Created CommonTestResult to be used as a bool representation of CommonExecutionResult. It should be returned when running functions that test things to allow tooltips and provide reasons for the True/False result.
+- Updated many of the statistic and motive utils to return CommonExecutionResult and CommonTestResult instead of just bool.
+- CommonAssertionUtils.is_true and is_false now accept CommonTestResult and CommonExecutionResult as values and will handle them appropriately when comparing.
+- Added functions to look at the lot traits of specific lots to CommonLocationUtils
+- Added many new trait ids to CommonTraitId
+- Added utilities for checking static commodities and retrieving pick info of interactions to CommonInteractionUtils
+- Added CommonSimRoutingUtils for doing things related to routing for Sims.
+- The CommonTerrainUtils under utils/location is now obsolete, please use CommonTerrainLocationUtils instead.
+- Added a function to CommonSimBodyUtils to retrieve the pond wading size of a Sim.
+- Obsoleted the CommonSimBodyUtils.get_wading_size function in favor of the CommonSimBodyUtils.get_ocean_wading_size function.
+- Added a class CommonCASPart that allows basic CAS part data and information to be stored and passed along to various things.
+- Fixed an issue with interactions being registered to Ocean targets twice.
+- Fixed a long standing annoyance to those using S4CL and Wicked Whims together where the Toggle Phone Silence button would not be available due to a bug that exists in Wicked Whims where it flags the Toggle Phone Silence button as a CHEAT.
+- Updated CommonConsoleCommand, now it will properly parse custom argument types such as SimInfo, GameObject, CommonInt, and CommonIntFlags, without needing to do all the extra work of parsing an id or a string.
+- Added commands to randomize the first and last names of a Sim.
+- Added utilities for accessing the game client object
+- Added custom parameter classes for specifying required or optional Sim Info or Game Object arguments for CommonConsoleCommand
+- Added a few utility functions for retrieving SimInfo manager, Game Object manager, and other types of managers
+- Added the ability to change a Sim into a plant Sim via the `s4clib.add_occult` command.
+- Added a few functions to CommonOccultUtils that allow you to check the availability of Occult types.
+- Updated all commands to use CommonConsoleCommands and thus show up under the S4CL help command.
+  - Do `sims4communitylib.help` to see descriptions, arguments, etc. about the various commands.
+    - To see more detailed info about a specific command do `sims4communitylib.help <command>`.
+    - Example sims4communitylib.help s4clib.add_buff
+- Fixed various issues with CommonSuperInteraction, CommonSocialSuperInteraction, CommonSocialMixerInteraction, CommonMixerInteraction, CommonInteraction, and CommonTerrainInteraction.
+  - This unfortunately may lead to some weirdness in mods that have interactions containing things they didn't realize were in there (Because they were not working previously)
+- Added the ability to make the current outfit selectable within CommonChooseOutfitDialog
+- Many of the CommonOutfitUtils functions now accept a SimInfoBaseWrapper type in addition to SimInfo
+- Added functions to look at the lot traits of specific lots to CommonLocationUtils
+
+v1.75:
+- Added functions to convert CommonSpecies, CommonAge, and CommonGender into localized string ids
+- Added FOX to CommonStringId
+- The CommonIntervalEventService will no longer trigger zone update events if the game is loading.
+- When decoding data from CommonGameObjectDataStorage, CommonSimDataStorage, and CommonDataStore, the data will
+  only be stored back into the data dictionary if the result of the decode call is a CommonSerializable object.
+- Added a function to retrieve the stand passive interaction for Sims.
+- The stand_or_swim_at_none property will now properly combine STAND_AT_NONE_CONSTRAINT rather than STAND_CONSTRAINT as expected
+- Fixed an issue where a log file would be in use by another program and thus S4CL would not be able to log any new messages to it.
+- Cleaned up interaction logs
+- Added a Stop Watch to each interaction type to time how long it takes for an interaction to run from start to finish.
+- Added a command to print relationships a Sim has with other Sims to the console and the log file `s4clib.print_relationship_bits`
+- Added a function to retrieve the decimal identifier of a statistic
+- Fixed an issue with the s4clib.set_statistic_level command where you would not be able to set the value of a Commodity
+- Added an `is_conflicting_trait` function to `CommonTraitUtils`
+- Added `has_any_traits` and `has_all_traits` to `CommonTraitUtils`
+- Fixed the `is_statistic_locked` function of `CommonSimStatisticUtils` not properly checking the locked status of a Statistic.
+- Added commands:
+  - `s4clib.max_world_motives` -  Max the motives of all Sims
+  - `s4clib.max_all_motives #` - Max the motives of a Sim
+  - `s4clib.set_motive_level` -  Set the motive level of a Sim
+  - `s4clib.get_motive_level` -  Get the motive level of a Sim
+
+
+v1.74:
+- Added the ability to specify where data is persisted to within `CommonFilePersistenceService` and `CommonFolderPersistenceService` instead of being forced to use `Mods/mod_data`, which is the default.
+- Added the ability to override the per_save_slot functionality within `CommonFilePersistenceService` if you yourself trust it to work properly and want to ignore the global setting.
+- Mod interactions that were not registering to some objects should now register properly (Such as to the DJ Booth, Stereo and likely a bunch of others)
+- Fixed an error that could occur when moving a Hidden Sim to another household
+- Fixed an error when creating Sim Info with trait ids instead of Trait objects
+- Fixed an error when detecting whether an object is a Cow, Chicken, or Llama, within CommonObjectTypeUtils.
+- Added str conversions for CAT Sim Types to CommonSimTypeUtils (Since they were apparently missing)
+
+v1.73:
+- Added FOX_STAND and FOX_STAND_PASSIVE to CommonInteractionId
+- Fixed an issue when soft resetting Sims
+- If a run_once function throws an exception, it will now be properly removed after running.
+- Added `CommonIntervalEventRegistry().register_dispatcher` to register dispatchers without needing to use the decorators
+- Added a vanilla fix for 5 star celebrities not properly getting currency that did not support float values
+- Added more logging within Social Super and Social Mixer interactions to print the test result of running the super _on_test
+- Added commands to set gender preference, get gender preference, and generate outfits if they don't exist on a Sim
+- Setting friendship levels between a Human Sim and Fox Sim works properly now when using CommonRelationshipUtils
+- can_impregnate and can_be_impregnated now properly work for Foxes
+- When a row is flagged as Enabled or Selected, the CommonChooseObjectOptionDialog and CommonChooseObjectsOptionDialog should now properly represent this.
+- Added the ability to make the game sort rows within a dialog for CommonChooseObjectOptionDialog and CommonChooseObjectsOptionDialog
+  - They will sort by display name and the selected rows will appear at the top.
+- CommonChooseOutfitDialog will now auto select the equipped outfit.
+- Added the ability to allow choosing no options within the CommonObjectsOptionDialog
+- Updated the delete_sim function to properly delete Sims
+- Added a few commands for purging self, a sim, everyone else, or everyone
+- Added some fixes for more vanilla errors. Particularly when the game attempts to check the Jig Group of a terrain object.
+- Added logging to provide more details when the KeyError 5 error occurs.
+- Added fox motives to CommonMotiveId, CommonStatisticId, and CommonSimMotiveUtils
+ - Setting the gender of a Sim will now also set the proper gender trait on the Sim too within CommonGenderUtils
+- CommonSimPregnancyUtils.can_impregnate and CommonSimPregnancyUtils.can_be_impregnated now properly check the gender of an animal Sim for whether they may impregnate or be impregnated.
+- Added a class log to CommonTraitUtils (Each function was updated to a classmethod from a static method to reflect this!)
+- Removed the FOX species from being allowed to perform the social super pet socials provided by S4CL
+- Added CommonSimVoiceUtils
+- Reduced the number of CommonVoiceActorTypes to make it simpler
+- Renamed voice actor types from Male to Masculine and Female to Feminine
+- Added a function to regenerate all outfits of a Sim to CommonOutfitUtils.
+- When a Sim swaps genders, there are now options to regenerate their outfits and update their voice.
+- Added a function to CommonSimVoiceUtils to determine voice actors available to a Sim.
+- Added functions to set the voice of a Sim to the default values for their gender, species, and age.
+- Added commands for changing voice pitch and voice actor of Sims
+- Added CommonVoiceActorType enum for different voice actors.
+- Added CommonAlarmUtils for scheduling alarms
+- Added more details to the assertion within CommonSimDataStorage
+- When moving a Sim to another household, they will now be unselected if they are the currently active Sim within CommonSimHouseholdUtils
+- Added commands to add and remove Sims to/from the active household.
+- When setting a Sim to the vanilla gender options, their voice will be properly changed as well.
+- Added commands to stop the pregnancy of a Sim or to stop all active pregnancies.
+- Added a check to `delete_sim` to ensure the Sim is selectable before trying to remove the selectability of them.
+- Added a command that will retrieve and print all available voice actors
+- Prevent purging the active Sim when using s4clib.purge_sim
+- Added social super interactions for Sim To Fox
+- Added extra gender option traits for Animals, Can Impregnate, Can Not Impregnate, Can Be Impregnated, Can Not Be Impregnated, Toilet Standing, and Toilet Sitting
+
+v1.72:
+- Added commands for display Buffs, Traits, Situations, and Interactions for Sims
+- Added `get_all` and `get_all_names` functions to `CommonAge`, `CommonBodyFrame`, `CommonGender`, `CommonOccultType`, and `CommonSpecies`
+- Added `is_age_available_for_sim` to `CommonAgeUtils`
+- Updated the `s4clib.print_sim_age` command to allow specifying a Sim id.
+- Added a `_version` property to CommonModInfo
+- Added a `version` property to CommonModIdentity
+- Created the `CommonModInfoUtils`
+- Foxes may now do the Sim_To_Pet Social Super interaction provided by S4CL
+- When a log becomes too big, it gets put into an Old file, up to 20 old files may now be created instead of just 1.
+- Updated `CommonExceptionHandler` to use `CommonModIdentityUtils`
+- Remove duplicate calls to get mod name within `HasClassLog` and `HasLog`
+- Created a Tag Reader to make updating tags simpler and take an extremely less amount of time to update the CommonGameTag enum
+- Added the `Adventurous` and `Proper` traits
+- When checking if an object is a swimming pool, the check for gametag has been removed, since many of the pool Objects are tagged as swimming pool, which is incorrect.
+- Added the `s4clib.show_game_tags` command to display the tags of an object in a notification.
+- Removed unused imports from `CommonSimOutfitIO`
+- Added an `is_rabbit` function to `CommonObjectTypeUtils`
+
+v1.71:
+- Added CommonSimType for Foxes
+- Added FOX to CommonSpecies
+- Added utilities for checking if a Sim is an Animal (Pet or Fox) to CommonSpeciesUtils and CommonAgeSpeciesUtils
+- Added utilities for checking if a Sim is a Fox to CommonSpeciesUtils
+- Added a command to spawn foxes `s4clib.spawn_fox_sims`
+- Added is_dolphin to `CommonObjectTypeUtils`
+
+v1.70:
+- Fixed the Ringer icon not appearing properly in the phone menu.
+- Renamed the `s4clib_testing.spawn_object_on_lot` command to `s4clib.spawn_object`
+- Added commands `s4clib.silence_phone` and `s4clib.unsilence_phone`
+- Fleshed out the `CommonResourceKey` as a wrapper for `Key` from the `_resourceman` module
+- `CommonResourceUtils.get_resource_key` is more likely to give a Key object now.
+- Added the ability to store objects within the CommonDataStore that also have custom serialize/deserialize functions for the data.
+- When grabbing the default key, it will not be encoded when returned from `CommonDataStore`
+- Log All Interactions should log interactions properly when using the interaction on a Sim in the Relationship Panel.
+- Fences are now considered to be doors when checking if an Object is a door within `CommonObjectTypeUtils.is_door`
+- `CommonObjectInteractionUtils.get_all_interactions_registered_to_object_gen` will now return all interactions from the phone or relationship panel when the object is a Sim.
+- Removed spaces in a few places where it was weird to have them in the code.
+- Added commands `s4clib.change_ownership` and `s4clib.destroy_object`
+- Added command `s4clib.move_object_to_sim`
+- Fixed an issue where interactions would not properly register to some objects, especially proxied objects such as pool squares and ocean locations.
+- CommonSimOutfitIO will now always properly have BodyType values set within itself (If a value has an associated BodyType)
+- CommonCASUtils.get_body_type_of_cas_part will now always properly return BodyType (If a value has an associated BodyType)
+- Changed how CommonOutfitUtils.set_current_outfit sets the outfit of a Sim.
+- Added a few functions to CommonObjectTypeUtils
+  - is_pet_sim_bed
+  - is_fence
+  - is_swimming_pool
+  - is_swimming_pool_seat
+- Added a few functions to CommonLootActionUtils and CommonSimLootActionUtils to apply loot actions by their identifiers
+  - Fixed issues with the age value being None within CommonAgeUtils
+- Added a few functions to CommonOccultUtils
+  - has_any_occult
+  - has_occult_sim_info
+  - get_occult_sim_info
+  - add_*_occult (alien, vampire, witch, servo, skeleton, mermaid)
+  - remove_*_occult (alien, vampire, witch, servo, skeleton, mermaid)
+  - add_all_occults
+  - remove_all_occults
+  - switch_to_occult_form
+  - get_current_occult_type
+- Created CommonSimOccultTypeUtils that should be used in place of the functions on CommonOccultType
+- Improved the performance when registering interactions
+- Added get_current_occult_sim_info to CommonOccultUtils
+- Added a gitattributes file
+- Updated the gitignore
+- Updated the compile and decompile scripts
+- Mark Utilities as a Sources root
+- Added a way to retrieve all Occult Types for a Sim as well as all Common Occult Types of a Sim to `CommonOccultUtils` and `CommonSimOccultTypeUtils`
+- Added a function to check if a Sim has a name to `CommonSimNameUtils`
+- Updated `CommonLog` to handle SimInfoBaseWrapper objects when logging them. It will convert them to a name and sim id instead of the usual Object base class.
+- Updated `CommonSimUtils` to be able to handle `SimInfoBaseWrapper` objects
+- Added a function to CommonSimTypeUtils to specify a specific species, age, and occult type.
+- Added functions to CommonCASUtils to set or retrieve the skin tone of a Sim.
+- Added functions to add or remove occult types.
+- Added a way to log additional details about a Sim. (Optional and disabled for every log by default)
+- Fixed a potential error within CommonSpecies if the player does not have the Cats & Dogs DLC (Thus not having the SmallDog, LargeDog, or Cat Species values)
+- The S4CLSimChangedOccultTypeEvent will now occur before the Sim actually switches to the occult.
+- s4clib.print_*_outfit will now print integer body types that are not within the BodyType enum
+- Added functions to set the toilet standing/sitting traits of a Sim separately.
+- Added convert_custom_type_to_vanilla, is_occult_type, and is_currently_occult_type to CommonSimOccultTypeUtils
+- set_age of CommonAgeUtils will now properly advance/reverse the age of a Sim while applying all of the things that entails. (Homerwork, vampirism manifestation)
+- Added a function to retrieve all of the Sim Types a Sim has (One for each of their occult types) to CommonSimTypeUtils
+- Added functions to CommonOccultUtils for checking if a Sim is currently a Skeleton, Robot, and Plant Sim (Even though they would always be those, it is more for completeness sake)
+- Added a function to CommonOccultUtils to check if a Sim has an occult type.
+- Added a few commands to print occult types, sim types, and sim info for the occult types of Sims
+- Added an event that triggers when set_current_outfit on a SimInfo is set.
+- Updated the `set_age` function of CommonAgeUtils to properly transition Sims to the new age with the correct career, aspirations, etc.
+- Add the survival instincts trait id.
+- Added S4CLSimChangingOccultTypeEvent. It triggers before a Sim changes to a new occult type.
+- The S4CLSimChangedOccultTypeEvent now triggers after a Sim changes to a new occult type instead of before.
+- Added the ability to specify keyword arguments to attach_cas_part_to_sim and detach_cas_part_from_sim
+- Fixed an error when setting a Sim to age Child from Teen or above using set_age
+- If an occult Sim Info is not found when retrieving it via get_occult_sim_info, the original sim_info will be returned instead.
+- Added new events for when a trait is added and when a trait is removed
+- Fixed an error when changing progress toward the next level where it was setting the progress toward max level instead.
+- Removed many new lines at the end formatted messages being logged
+- Fix a few issues when checking whether a Sim is currently a mermaid or not.
+- Fixed an error when determining if a Sim has an occult type
+- Changed the default value for persist_mod_data_per_save_slot to False, since save slots are way too buggy.
+  - This will not solve the issue for those that have the value set to True, but it should solve issues with it for any new users.
+- Updated create_unique_identifier to not use an eval call.
+- Added assertions to prevent adding negative or None CAS Parts to CommonSimOutfitIO
+- The Sim and Object Data Storage classes use a different method of storing Sim and Object data, which should lead to potentially solving the issue of some people getting the wrong instance for a class returned when a Mod has two types of Sim Data or Game Object Data classes
+  - Added a check to ensure the returned object is of the correct class as what is expected.
+  - Added a function to clear cached data from these data storages
+- Added a function to convert a value to an OutfitCategory
+- Added a function to convert a value to a BodyType
+- Added a function to retrieve a BodyType by name
+- Minor clean up of CommonSimOutfitIO
+- Added a new line after every test log
+- Added a function to retrieve the Skin Tone Value Shift of a Sim.
+- The Print Skin Tone command now prints the Skin Tone Value Shift as well
+- Fixed an error when clicking on Sims in the relationship panel.
+- Fixed an error that would occur when opening a CommonPurchasePickerDialog
+- Sims 4 Community Library now requires Sims 4 to be at least version 1.77.131.1030 (The Cottage Living Patch (Not DLC) of July 20th, 2021)
+
+v1.69:
+- Added functions to lock or unlock a door for Sims.
+- Added an is_active_sim function to CommonSimUtils
+- Added two new events S4CLSaveSavedEvent and S4CLSaveLoadedEvent
+- Each will only occur when the Player either manually saves the game or manually loads a new save file.
+- Fixed an issue where persisted data from one save file would transfer and conflict with the persisted data of another save file if the player decides to change save files without restarting the entire game.
+- Fixed a couple errors within CommonSocialSuperInteraction.
+- Provided an override for get_name within CommonInteraction
+- Fix potential issue with CommonKey crashing the game on startup if an error were to occur.
+- Added a few functions to CommonInjectionUtils for more flexibility when injecting into functions as well as when debugging functions
+- Fix a few issues with CommonBuffUtils not properly loading buff instances
+- Fixed a few issues with CommonTraitUtils not properly loading Traits
+- Fixed issues when getting and setting Statistic values, this includes Skills, Motives, Static Commodities, and Statistics
+- CommonStatisticUtils.load_statistic_by_id will now properly handle Static Commodity statistics
+- Updated the `s4clib.attach_cas_part` and `s4clib.detach_cas_part` commands.
+- Renamed command `s4clib_testing.attach_cas_part` to `s4clib.attach_cas_part`
+- Renamed command `s4clib_testing.detach_cas_part` to `s4clib.detach_cas_part`
+- Added commands for printing outfit details `s4clib.print_previous_outfit`, `s4clib.print_current_outfit`, and `s4clib.print_outfits`
+- Added a configuration setting `enable_extra_shift_click_menus` to toggle the functionality that enables the SHIFT+CLICK menu when clicking on the Phone, Sims in the Relationship Panel, and in the Inventory. It is set to true (Enabled) by default. Set it to false to disable it.
+  - Fixed the error associated with S4CL not properly detecting when the SHIFT key is being held down.
+- Fixed an error when registering interactions where Interactions meant for the relationship panel are also being registered to the Phone.
+- Added a dialog for prompting for text to be entered by the player.
+- Added some functions to CommonTimeUtils
+- mod_data json files can now be toggled to save with or without a save slot id, if the save slot id is causing persistence problems (Problems where saved Mod data is not loading/saving when it should), toggle it off in the configuration file.
+- Changed how the configuration file works.
+  - If you have a configuration file already in your Mods folder, S4CL will add any new properties to it, without modifying old properties.
+  - If you do not have a configuration file in your Mods folder, S4CL will create one with default properties.
+
+v1.68:
+- Fixed an error that could occur when running the game in Chinese.
+
+v1.67:
+- Fixed a small issue when creating an interaction context within CommonSimInteractionUtils
+- Updated the test queue functions to work the same as the queue ones (Only they test instead) in CommonSimInteractionUtils
+- Added logging in the test queue functions in CommonSimInteractionUtils
+- Add Plant Sim to CommonSimType
+- Added a SocialSuperInteraction for Sim To Pet interactions that may be used as an alternative to the vanilla ones
+- Changed how S4CL registers its own debug interactions by using traits instead of via Python
+- Added a Break Object interaction
+- Added a Fix Object interaction
+- Added a Make Dirty interaction
+- Added a Make Clean interaction
+- Added functions to CommonObjectStateUtils to modify broken and dirty states of objects as well as check for them.
+- If the S4CL configuration file does not exist where it is expected to be, it will be created instead of S4CL simply throwing an error.
+
+v1.66:
+- Fixed an error that would occur when a Sim levels up in a Skill
+
+v1.65:
+- Added Skeletons to the CommonSimType Enum as well as handle them in the CommonSimTypeUtils
+- Fixed an error with dialogs when using Object Categories
+
+v1.64:
+---New---
+- Added function `CommonSimSkillUtils.set_current_skill_level_to_max` to allow setting a skill to its maximum without needing to know what the maximum level is.
+- Added `CommonSimTypeUtils.is_occult` and `CommonSimTypeUtils.is_occult_type` functions
+- Added commands `s4clib.set_skill_level`, `s4clib.get_skill_level`, and `s4clib.remove_skill`
+- Added commands `s4clib.add_trait`, `s4clib.add_buff`, and `s4clib.remove_buff`
+- Added commands `s4clib.set_statistic_value`, `s4clib.set_statistic_user_value`, and `s4clib.remove_statistic`
+- Added the ability to specify a picked_object when queuing an interaction.
+- Added the ability to enable specific logs before the game is launched by enabling them within the `sims4communitylib.config` file.
+- Added the ability to enable specific message types individually like DEBUG, INFO, and WARN without enabling other message types
+- Added the ability to enable a log even when it does not exist yet by including the mod name in the enable log command.
+- Added the ability to register interactions to the Phone and Relationship Panel
+- Added code to allow SHIFT+CLICKing on the relationship panel as well as the phone to access the "cheat" menus.
+- Added the ability to customize data before it is persisted within CommonGameObjectDataStore and CommonSimDataStore.
+- Added a class and various functions for manipulating the inventory of an Object.
+- Added many new classes and utilities
+  - CommonSerializableLocation
+  - CommonSimToSimTestBasedScore
+  - CommonSingleSimTestBasedScore
+  - CommonTestBasedScore
+  - CommonObjectStateUtils
+  - CommonClubUtils
+  - CommonSkillUtils
+  - CommonObjectOwnershipUtils
+  - CommonKeyboardUtils
+  - CommonObjectInventoryUtils
+- Made a couple functions of CommonObjectHouseholdUtils obsolete and created the CommonObjectOwnershipUtils instead.
+- Add new functions for manipulating the inventory of Sims
+
+---Fixes---
+- Added the missing TEEN_HUMAN values to the signature conversion function in the CommonSimTypeUtils class
+- Fixed a few issues when checking the inventory of a Sim.
+- Fixed an issue where the configuration file was not being loaded on a Mac because the file path did not have a leading slash
+- Fixed an error where hitting the Next/Previous buttons in a CommonButtonOptionDialog would not keep the Target Sim Info around
+- Fixed an issue where the verbose log would only be available if you had already called for it, it will now be available after grabbing the log property initially
+- Fixed Social Mixer Interactions not properly queuing in CommonSimInteractionUtils.
+- Fixed a few issues with various functions in CommonSimSkillUtils
+  - Skill levels are now properly set on Sims in most scenarios.
+
+---Updates/Changes---
+- Added an `INVALID` value for many Enums that may be used as a Default value.
+- Added a few motives that were missing from the motive utils and motive enum, such as Servo Charge, Servo Durability, Witch Magic, and Mermaid Hydration (Which is really just Hygiene)
+- Update `CommonSkillId` to include skills that were missing
+- CommonInt instances are now convertable to and comparible with Integers naturally. Such as Greater Than/Less Than, Equal To, etc.
+- Updated the Common Persisted Sim Data so you can opt in to writing empty values
+- Log All Interactions now logs interactions with their name as well as their decimal identifier
+- `CommonJsonIOUtils.load_from_folder` will now handle exceptions per file and allow those who call its function to decide if the rest of the files should be loaded or not.
+- The `CommonFolderPersistenceService` will now include a list of file names it found with the data from CommonFolderPersistenceService.load
+- The debug interactions now display the Sim Id as well as the identifiers for each of whatever they are showing (i.e. Show Traits will now show the trait ids next to each trait)
+- When using the debug interactions to print Sim data, the data is now sorted alphabetically.
+- If an object is not a Sim within the init of SimDataStore, an exception will now be thrown.
+- If an object is not a GameObject within the init of GameObjectDataStore, an exception will now be thrown.
+- If no data is available to persist, the data will instead of removed from the data storage. This will reduce memory usage as well as json file bloat.
+- When reading JSON from a folder, `.DS_Store` files will now be ignored from being read as JSON.
+- Rename the ctypes_module package so its name does not conflict with any other mods
+- In all code that uses the InteractionContext, the shift_held value will now be properly calculated (For Windows Users only for now. I can't test whether it works for Mac users without having a Mac)
+- Updated the documentation to include many of the classes and utilities that were missing.
+- **Renamed the S4CL Configuration file extension to config from json to reduce confusion**
+  - Make sure you remove the previous file `sims4communitylib.json`!

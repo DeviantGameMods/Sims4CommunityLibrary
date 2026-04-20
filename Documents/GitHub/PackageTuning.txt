@@ -1,0 +1,18 @@
+How Does A Package Tuning Connect To Python
+
+To find how a Tuning from a Package file connects to a class in Python, you first need to locate the backing class for that Tuning
+To do this look at the Tuning using Sims 4 Studio and locate the `c=""` portion at the top of the XML. This value is the name of the class you need to find within Python.
+
+If you have trouble locating the correct classes, in the cases where two classes have the same name, look for the Module Path `m=""` portion at the top of the XML. This value will tell you the file path to the correct class. For example, a Buff Tuning will have a `c=""` value of `Buff` and an `m=""` value of `buffs.buff`, this means that the `Buff` class is located at the folder `EA/simulation/buffs/buff.py` and inside that file it has the class name `class Buff`
+
+Once you have found the correct Tuning Class within Python, the next thing you will want to locate are the tunable values of it.
+
+You want to look for the `INSTANCE_TUNABLES` or `FACTORY_TUNABLSE` class properties.
+These properties tell you the names of the Tunables (`n=""`) and the type of values those Tunables should be.
+
+You can make it look nicer by formatting it a bit.
+An easy way to do this is by using the `Find And Replace In File` feature of PyCharm:
+1. Open the `Find And Replace In File` box (For me it is `CTRL+R, CTRL+F`, but I don't think that is the default for it)
+2. On the right side, make the `Match Case` and `Regex` boxes checked and the `Words` box unchecked.
+3. Put into the top box `\), '` and into the bottom box `\),\n'`.
+4. Hit the `Replace All` button

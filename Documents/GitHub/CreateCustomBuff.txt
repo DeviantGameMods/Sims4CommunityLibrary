@@ -1,0 +1,164 @@
+How To Create A Custom Buff
+
+In this guide, we will be cloning and creating a custom Buff tuning. This includes the main Buff tuning, its Sim Data, as well as a String Table to give it a custom display name.
+
+The cloning process works the same for a ton of other types of tunings as well, including Loots, Traits, Object Tunings, Statistics, and more.
+
+**Please note that for the following tuning types, you MUST use the FNV32 Hexadecimal/Decimal values instead of the FNV64 Hexadecimal/Decimal values!**
+- **Trait Tunings** - that have a `"trait_type"` value of `PERSONALITY`, `LIFESTYLE`, `LIKE`, `DISLIKE` i.e. `<E n="trait_type">PERSONALITY</E>`
+  - Pretty much anything that would appear in the UI in one form or another. Such as in the Sim Profile. Buff Tunings are an exception to this
+- **Relationship Bits** - these must always have an FNV32 identifier, no exceptions.
+- **String Table Values** - these must always have an FNV32 KEY, no exceptions.
+- If anymore tuning types are discovered to require an FNV32 value instead of an FNV64 value, they will be appended to this list.
+
+This guide assumes you have properly installed Sims 4 Studio and are working from an Empty Tuning Package file.
+If you do not have an empty tuning file, you can find one [here](https://github.com/DeviantGameMods/Sims4CommunityLibrary/raw/master/Tunings/Empty-Package-File.package)
+
+1. Open the Empty Package File (Either drag and drop it onto the Sims 4 Studio executable or double click it to open it in S4S)
+
+![Step 01](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/01EmptyPackageFile.PNG)
+
+2. Open the Extract Tuning dialog from the Tools dropdown at the top of Sims 4 Studio
+
+![Step 02](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/02ToolsExtractTuning.PNG)
+
+3. Find the buff you wish to clone by typing its name into the input box, highlight it, then hit Add To Current Package at the bottom of the window. Finally, close the Extract Tuning dialog, it is no longer needed.
+
+![Step 03](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/03ExtractTuningsFindBuff.PNG)
+
+4. Your package file should now look like the following.
+
+![Step 04](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/04BuffAddedToEmptyPackageFile.PNG)
+
+5. Open the Hash Generator from the Tools menu at the top of Sims 4 Studio
+
+![Step 05](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/05ToolsHashGenerator.PNG)
+
+6. The hash generator should now be open.
+
+![Step 06](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/06HashGeneratorOpen.PNG)
+
+7. Uncheck the High Bit checkbox
+- Ensure the Mode is set to Hexadecimal by clicking on the circle to the left of Hexadecimal
+- Enter a unique name into the Text field, it can be anything you want, but try to make it as unique as you can so as not to conflict with other mods. A good way to do this is by including your Mod name in the text.
+- Keep this window open! We will need it later! Do not close it!
+- Copy the value from the FNV64 text box, we will need this in the next steps.
+
+![Step 07](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/07EnterTuningNameIntoHashGenerator.PNG)
+
+8. Highlight the Buff Tuning tuning file (The value under the Type column is "Buff Tuning") and then Right click on it.
+- Click Add. DO NOT CLICK DUPLICATE THIS FUNCTION DOES NOT FULLY WORK IN MANY CASES AND CAN CAUSE STRANGE BUGS TO OCCUR! YOU HAVE BEEN WARNED!!
+
+![Step 08](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/08RightClickAddTuningOnly.PNG)
+
+9. Open the Type dropdown and select "Buff Tuning" from the values.
+- Paste the copied value copied from the FNV64 field from the Hash Generator (from Step 7) into the Instance field.
+- Click Ok to add the new Buff Tuning.
+
+![Step 09](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/09AddTuningResource.PNG)
+
+10. Verify the value in the Instance Key column for your created tuning is the same instance key from the Hash Generator!
+- Highlight the original Buff Tuning on the left side and copy ALL of the text on the right hand side
+- Highlight your created tuning and paste ALL of the text into the empty box on the right hand side.
+
+![Step 10](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/10CopyTuningContentsToNewClone.PNG)
+
+11. Go back to the Hash Generator, I REALLY hope you didn't close it!
+- Copy the name you entered for the Text field and paste it into the `n=""` value, as shown in the image below. Make sure you keep the quotations around your value like in the image! `n="MyBuffTuningName"`
+- Switch the Mode at the bottom of the Hash Generator to Decimal and copy the FNV64 decimal value
+- Paste the value into the `s=""` value, as shown in the image below. Make sure you keep the quotations around your value like in the image! `s="1234"`
+
+![Step 11](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/11CopyFromHashGeneratorToNewTuningClone.PNG)
+
+12. Now we perform the same steps, but for the Sim Data tuning.
+- Highlight the Sim Data tuning file (The value under the Type column is "Sim Data" and its instance key matches the instance key of the "Buff Tuning") and then Right click on it.
+- Click Add. DO NOT CLICK DUPLICATE THIS FUNCTION DOES NOT FULLY WORK IN MANY CASES AND CAN CAUSE STRANGE BUGS TO OCCUR! YOU HAVE BEEN WARNED!!
+
+![Step 12](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/12RightClickAddOnlySimData.PNG)
+
+13. Open the Type dropdown and select "Sim Data" from the values.
+- Paste the copied value copied from the FNV64 field from the Hash Generator (from Step 7) into the Instance field. Go back and copy it again just to be sure. Also make sure you have the Mode in the Hash Generator window set to Hexadecimal and not Decimal when you copy it!
+- Click Ok to add the new Sim Data tuning.
+
+![Step 13](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/13AddSimDataTuningResource.PNG)
+
+14. Verify the value in the Instance Key column for your created tuning is the same instance key from the Hash Generator!
+- Highlight the original Sim Data on the left side and copy ALL of the text on the right hand side
+- Highlight your created Sim Data tuning and paste ALL of the text into the empty box on the right hand side.
+
+![Step 14](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/14CopySimDataTuningContentsToNewClone.PNG)
+
+15. Go back to the Hash Generator, I REALLY hope you didn't close it!
+- Copy the name you entered for the Text field and paste it into the `name=""` value, as shown in the image below. Make sure you keep the quotations around your value like in the image! `name="MyBuffTuningName"`
+
+![Step 15](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/15CopyFromHashGeneratorToNewSimDataClone.PNG)
+
+16. Remove all of the original Vanilla Resources by highlighting them and hitting the Delete key on your keyboard, because they are no longer needed.
+- Congratulations, you now have your very own custom Buff Tuning. Next I will show you how to give it a custom name from a String Table!
+
+![Step 16](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/16DeleteVanillaResources.PNG)
+
+17. Open the Hash Generator once again (Keep it open!)
+- Uncheck the High Bit checkbox, if it is checked.
+- Ensure the Mode is set to Hexadecimal by clicking on the circle to the left of Hexadecimal
+- Enter a unique name into the Text field, but this time it is for your String Table, it can be anything you want, but try to make it as unique as you can so as not to conflict with other mods. A good way to do this is by including your Mod name in the text. For String Tables, I usually put "StringTable" at the end of whatever unique name I make.
+- Keep this window open! We will need it later! Do not close it!
+- Copy the value from the FNV64 text box, we will need this in the next steps.
+
+![Step 17](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/17StringTableNameInHashGenerator.PNG)
+
+18. Now comes a tricky part. Pay careful attention to all of these sub steps!
+- Click Add in the bottom left of the Sims 4 Studio window.
+- Change the Type dropdown value to String Table
+- Paste your copied FNV64 value (from Step 17) into the Instance Key, but do not press OK yet!
+- TRICKY PART: Change the first two values of the instance key you pasted to `00`, by doing this, it tells the program that it should be an English string table. Always start with an English string table!
+- Now hit Ok.
+- If you did things correctly, then the value in the Instance Key for your String Table should be the same instance key you copied, but with 00 in front instead. It should also have the US flag on the left side of the tuning entry. If it does not have a US flag, then remove that tuning entry and try the steps again.
+- Alternatively, highlight the String Table and choose ENG_US in the Locale dropdown on the right side of Sims 4 Studio.
+
+![Step 18](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/18AddStringTableResource.PNG)
+
+19. To add a string to the string table, highlight the String Table entry, then click `Edit Items...` on the right side to the right of `Entries`.
+
+![Step 19](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/19AddingStringsToStringTable.PNG)
+
+20. You may or may not need to close the String Table window when you copy/paste values. If you cannot copy a value, try closing the String Tables window, then copy the value.
+- Go back to your Hash Generator and enter the text you want your text to have into the Text field. In our example, we enter "My Custom Buff", this will be what is shown in the bottom left on your Sim portrait.
+- Make sure you have the Mode set to Hexadecimal before you copy!
+- Once you have this, copy the FNV32 value and paste it in for the Key field in the String Table.
+- Copy your text into the Value field in the String Table.
+- Click Save in the String Table window.
+
+![Step 20](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/20PutStringIntoTable.PNG)
+
+21. Now that we have the string table setup, we want to use this new string in our Custom Buff.
+- Highlight the Buff Tuning
+- Make sure you have the Mode set to Hexadecimal before you copy!
+- Go to the Hash Generator and copy the Text value.
+- Paste this Text value into the green area, between the `<!--` and `-->` bits. We do this so that we can reference what the value points to in the string table if we were ever wondering later on. This is called a Comment.
+- Go to the Hash Generator and copy the FNV32 value.
+- Paste this value with a `0x` in front of it in for the `0x-----` value that is there already. This is usually to the left of the `<!--`. Don't forget to put `0x` in front of your value or it won't work!
+
+![Step 21](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/21PutCustomStringIntoTuningName.PNG)
+
+22. Now highlight the Sim Data tuning
+- Make sure you have the Mode set to Hexadecimal before you copy!
+- Go to the Hash Generator and copy the FNV32 value.
+- Paste this value with a `0x` in front of it in for the `0x-----` value that is there already. Don't forget to put `0x` in front of your value or it won't work!
+- Comments do not work in Sim Data files, so do not put them!
+
+![Step 22](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/22PutCustomStringIntoSimDataName.PNG)
+
+23. To add the ability for other mod authors to translate your mod, you will need to have a string table for each language. Lucky for you, this is simple to do with Sims 4 Studio.
+- At the top of Sims 4 Studio choose Tools -> Modding -> Copy string tables to all languages
+- It is as easy as that. Now you should see a copy of your string table, but in each of the other languages!
+
+![Step 23](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/23CopyToAllLanguages.PNG)
+
+![Step 23](https://github.com/DeviantGameMods/Sims4CommunityLibrary/blob/master/Documents/TutorialImages/HowToCreateCustomBuff/24AllLanguagesCopied.PNG)
+
+Now you're done, if you want to make a custom description, simply do the same steps you did for the Display Name, copy the FNV32 value into both the Buff Tuning and the Sim Data for that Buff!
+
+You can also try adding the buff to a Sim ingame by doing the command `s4clib.add_buff YourBuffTuningNameHere` or `s4clib.add_buff YourBuffTuningIdHere`, replacing the `YourBuffTuningNameHere` with the `n=""` value or replacing the `YourBuffTuningIdHere` with the `s=""` value.
+
+If the Buff does not properly get added using the above commands, ensure your Sim does not have any conflicting buffs.

@@ -1,0 +1,285 @@
+Creating a Custom Data Store
+
+
+The following will be a tutorial on setting up a Data Store to persist data between Save files. This tutorial assumes you have a project that works and compiled correctly.
+
+# Data Manager
+Before creating a data store, you will want to create a data manager. It will house all of the data stores for your project.
+
+## Data Manager Creation
+- We will create a data manager for this example that'll store all future data stores for our mod.
+
+```python
+from typing import Tuple
+
+from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
+from sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
+from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+
+
+@CommonDataManagerRegistry.common_data_manager()
+class ExampleDataManager(CommonDataManager):
+    """ Manage a storage of data. """
+
+    @property
+    def mod_identity(self) -> CommonModIdentity:
+        # This Mod identity is what distinguishes your data manager from other mods. Use the ModInfo from your own project!
+        return ModInfo.get_identity()
+
+    @property
+    def log_identifier(self) -> str:
+        return 'example_data_manager'
+
+    @property
+    def persistence_services(self) -> Tuple[CommonPersistenceService]:
+        from sims4communitylib.persistence.persistence_services.common_file_persistence_service import \
+            CommonFilePersistenceService
+        result: Tuple[CommonPersistenceService] = (
+            CommonFilePersistenceService(),
+        )
+        return result
+```
+
+- As you can see, you must specify a `mod_identity` as well as the various ways you plan to store your data. In the above case, we are keeping it simple by storing the data in a JSON file on the file system by using `CommonFilePersistenceService`.
+- The `@CommonDataManagerRegistry.common_data_manager()` attribute is what we use to register the data manager with the data manager registry.
+
+## Data Manager Utils
+- Next we will need a way to access the data stores within the Data Manager we created. To do this, we will create a simple utility.
+
+```python
+from typing import Type, Union, Dict, Any
+
+from example_project.example_data_manager import ExampleDataManager
+from sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
+from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
+from sims4communitylib.services.common_service import CommonService
+
+class ExampleDataManagerUtils(CommonService):
+    """ Utilities for accessing data stores """
+    def __init__(self) -> None:
+        self._data_manager: ExampleDataManager = None
+
+    @property
+    def data_manager(self) -> ExampleDataManager:
+        """ The data manager containing data. """
+        if self._data_manager is None:
+            # We locate the data manager by using the Mod Identity of our Mod. This should match the Mod Identity we specified in the "mod_identity" property of the Data Manager.
+            self._data_manager: ExampleDataManager = CommonDataManagerRegistry().locate_data_manager(ModInfo.get_identity())
+        return self._data_manager
+
+    # We will discuss this function a bit later in the tutorial!
+    def _get_data_store(self, data_store_type: Type[CommonDataStore]) -> Union[CommonDataStore, None]:
+        return self.data_manager.get_data_store_by_type(data_store_type)
+
+    def get_all_data(self) -> Dict[str, Dict[str, Any]]:
+        """ Get all data. """
+        return self.data_manager._data_store_data
+
+    def save(self) -> bool:
+        """ Save data. """
+        return self.data_manager.save()
+
+    def reset(self, prevent_save: bool=False) -> bool:
+        """ Reset data. """
+        return self.data_manager.remove_all_data(prevent_save=prevent_save)
+```
+
+- In order to access our data manager, we can load it from the Data Manager registry by using the Mod Identity of our Mod. This Mod Identity should be the same Mod Identity you used within the `mod_identity` property on the Data Manager itself.
+
+# Data Stores
+- Now that we have the data manager setup and a way to access the data stores within the data manager, we can start setting up our custom data stores.
+
+## Generic Data Store
+- We will create a data store that is used to persist generic data, this can be used to store things such as Settings!
+
+```python
+from typing import Any, Dict
+from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
+
+class ExampleGenericSetting:
+    VERSION = 'version'
+    TEST_SETTING_ONE = 'example_test_setting_one'
+
+class ExampleGenericSettingsDataStore(CommonDataStore):
+    """ Manager of generic stuff. """
+
+    # noinspection PyMissingOrEmptyDocstring
+    @classmethod
+    def get_identifier(cls) -> str:
+        return 'example_generic_settings'
+
+    # noinspection PyMissingOrEmptyDocstring
+    @property
+    def _version(self) -> int:
+        # We specify a version so that when the data set changes we can force an update of the data set within the game of players.
+        return 1
+
+    # noinspection PyMissingOrEmptyDocstring
+    @property
+    def _default_data(self) -> Dict[str, Any]:
+        # We specify the default values for our data within here.
+        return {
+            ExampleGenericSetting.VERSION: self._version,
+            ExampleGenericSetting.TEST_SETTING_ONE: 200,
+        }.copy()
+```
+
+- We have setup a data store to store generic settings. We have also specified a couple of default values for the data set. For the `ExampleGenericSetting.TEST_SETTING_ONE` setting we have specified a default value of `200` which will be provided if an existing value in the data store was not found for that setting.
+- In order to easily access this data store, there are a few changes we need to make to our previously create Data Manager Utils (The parts that are `...` are simply to hide the existing code for easier readability)
+
+```python
+class ExampleDataManagerUtils(CommonService):
+    ...
+    @property
+    def data_manager(self) -> ExampleDataManager:
+       ...
+
+    def get_generic_settings_data(self) -> ExampleGenericSettingsDataStore:
+        """ Retrieve the Generic Settings Data Store. """
+        # We can utilize the existing "_get_data_store" function to retrieve an instance of our Generic Settings Data Store.
+        data_store: ExampleGenericSettingsDataStore = self._get_data_store(ExampleGenericSettingsDataStore)
+        return data_store
+
+    # This function comes into play now
+    def _get_data_store(self, data_store_type: Type[CommonDataStore]) -> Union[CommonDataStore, None]:
+        return self.data_manager.get_data_store_by_type(data_store_type)
+
+    ...
+```
+
+- We have added the `get_generic_settings_data` function to our utility and make use of the `_get_data_store` function. Since we are utilizing our Data Manager, the Generic Settings Data will be tied to our Data Manager and the data of the Generic Settings Data will be stored alongside any other data stores we create using this method.
+
+### Data Store access
+- Now that we have setup a generic settings data store, let's setup a way we can retrieve and modify the data within it.
+
+```python
+from typing import Any
+from example_mod.example_data_manager_utils import ExampleDataManagerUtils
+from example_mod.example_generic_settings_data_store import ExampleGenericSettingsDataStore, ExampleGenericSetting
+from sims.sim_info import SimInfo
+
+class ExampleGenericSettingUtils:
+    """ Setting Utilities. """
+    def __init__(self) -> None:
+        self._data_manager = ExampleDataManagerUtils()
+
+    def get_test_setting_one(self) -> int:
+        """ Retrieve test setting one. """
+        return self._get_value(ExampleGenericSetting.TEST_SETTING_ONE)
+
+    def set_test_setting_one(self, value: int):
+        """ Set the value of test setting one. """
+        return self._set_value(ExampleGenericSetting.TEST_SETTING_ONE, value)
+
+    def _get_value(self, key: str) -> Any:
+        generic_settings_data_store: ExampleGenericSettingsDataStore = self._data_manager.get_generic_settings_data()
+        return generic_settings_data_store.get_value_by_key(key)
+
+    def _set_value(self, key: str, value: Any):
+        generic_settings_data_store: ExampleGenericSettingsDataStore = self._data_manager.get_generic_settings_data()
+        return generic_settings_data_store.set_value_by_key(key, value)
+```
+
+- Above we access the Generic Settings Data Store by using the Example Data Manager Utils we created in the previous step.
+
+## Sim Data Store
+- We will create a data store that is used to store data on Sims.
+
+```python
+from pprint import pformat
+
+from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from sims4communitylib.persistence.common_persisted_sim_data_storage import CommonPersistedSimDataStorage
+
+
+class ExampleSimData(CommonPersistedSimDataStorage):
+    """ Sim data storage """
+    # noinspection PyMissingOrEmptyDocstring,PyMethodParameters
+    @classmethod
+    def get_mod_identity(cls) -> CommonModIdentity:
+        # Ensure this mod identity matches the mod identity you used within your Data Manager!
+        return ModInfo.get_identity()
+
+    # noinspection PyMissingOrEmptyDocstring
+    @classmethod
+    def get_log_identifier(cls) -> str:
+        return 'example_sim_data'
+
+    # noinspection PyMissingOrEmptyDocstring
+    @property
+    def test_value(self) -> int:
+        return self.get_data(default=None)
+
+    @test_value.setter
+    def test_value(self, value: int):
+        self.set_data(value)
+```
+
+- Above you can see that the Sim Data contains the `test_value` property. Since this data set is per Sim we will need a Sim object. For the purposes of this example, we will use the Active Sim.
+
+```python
+active_sim_info = CommonSimUtils.get_active_sim_info()
+
+ExampleSimData(active_sim_info).test_value = 1
+print(ExampleSimData(active_sim_info).test_value) # This will print "1"
+
+ExampleSimData(active_sim_info).test_value = 24
+print(ExampleSimData(active_sim_info).test_value) # This will print "24"
+
+ExampleSimData(active_sim_info).test_value -= 1
+print(ExampleSimData(active_sim_info).test_value) # This will print "23"
+```
+
+- You can add many other types of properties to the Sim Data, just remember the properties values must be serializable to JSON in order to be persisted!
+
+## Game Object Data Store
+- The Game Object Data Store is done in a similar way as Sim Data Store, but it is used with Game Objects instead.
+
+```python
+from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from sims4communitylib.persistence.common_persisted_game_object_data_storage import CommonPersistedGameObjectDataStorage
+
+
+class ExampleObjectData(CommonPersistedGameObjectDataStorage):
+    """ Game Object data storage """
+    # noinspection PyMissingOrEmptyDocstring,PyMethodParameters
+    @classmethod
+    def get_mod_identity(cls) -> CommonModIdentity:
+        # Ensure this mod identity matches the mod identity you used within your Data Manager!
+        return ModInfo.get_identity()
+
+    # noinspection PyMissingOrEmptyDocstring
+    @classmethod
+    def get_log_identifier(cls) -> str:
+        return 'example_object_data'
+
+    # noinspection PyMissingOrEmptyDocstring
+    @property
+    def other_test_value(self) -> float:
+        return self.get_data(default=False)
+
+    @other_test_value.setter
+    def other_test_value(self, value: float):
+        self.set_data(value)
+```
+
+- Above you can see that the Game Object Data contains the `other_test_value` property. Since this data set is per Game Object we will need a Game object. For the purposes of this example, we will pretend to have a Game Object available by way of `some_obj`.
+
+```python
+game_object = CommonObjectUtils.get_game_object(some_obj)
+
+ExampleObjectData(game_object).other_test_value = 1
+print(ExampleSimData(game_object).other_test_value) # This will print "1"
+
+ExampleObjectData(game_object).other_test_value = 24
+obj_data = ExampleObjectData(game_object)
+
+print(obj_data .other_test_value) # This will print "24"
+
+obj_data.other_test_value -= 1
+print(obj_data.other_test_value) # This will print "23"
+
+```
+
+- You can add many other types of properties to the Game Object Data, just remember the properties values must be serializable to JSON in order to be persisted!

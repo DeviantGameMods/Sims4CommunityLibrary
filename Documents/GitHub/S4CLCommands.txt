@@ -1,0 +1,120 @@
+Commands
+
+# Commands
+Below you will find a list of commands, what they do, and how to use them. Most of them are for debugging purposes. Not all commands may be listed here, to find a full list, simply use the `sims4communitylib.help` command.
+*Keep in mind that all arguments, will become lowercase upon reaching the command code. `ValUe` will become `value`*
+
+- `<>` - Required argument
+- `[]` - Optional argument
+- `[v=True]` - True is the default value if a value is not specified for the argument `v` when calling the command in the console.
+- `[...]` - Optional argument containing any number of values separated by a space. `one two three`
+
+- You can retrieve the decimal identifier of a Sim by doing a debug interaction on a Sim, such as Show Active Buffs.
+- You can retrieve the decimal identifier of an Object by doing a the Log All Interactions interaction on the Object and viewing the Id within the created `The Sims 4/mod_logs/Sims4CommunityLib_Messages.txt` file.
+
+## Spawn
+| Command | What it does | Example Usage | Args |
+|---------|--------------|---------------|------|
+| s4clib.spawn_sims <species> [count] [gender] [age] | Spawns a number of randomly generated Sims at the location of your Active Sim or the Lot default location. | `s4clib.spawn_sims 20 FEMALE ELDER` - This will spawn 20 randomly generated Female Elder Sims on your lot. They will not fully appear until you hit play. | - `species`: [HUMAN, LARGE_DOG, SMALL_DOG, CAT, FOX] - `count`: [1 to infinite] (Default: 100) - `gender`: [MALE, FEMALE] (Default: MALE) - `age`: [TODDLER, CHILD, TEEN, YOUNGADULT, ADULT, ELDER] (Default: ADULT), Fox Sims can only spawn as ADULT and ELDER, Pet Sims can only spawn as CHILD, ADULT, or ELDER |
+| s4clib.spawn_human_sims [count] [gender] [age] | Spawns a number of randomly generated Human Sims at the location of your Active Sim or the Lot default location. | `s4clib.spawn_human_sims 20 FEMALE ELDER` - This will spawn 20 randomly generated Female Elder Sims on your lot. They will not fully appear until you hit play. | - `count`: [1 to infinite] (Default: 100) - `gender`: [MALE, FEMALE] (Default: MALE) - `age`: [BABY, TODDLER, CHILD, TEEN, YOUNGADULT, ADULT, ELDER] (Default: ADULT) |
+| s4clib.spawn_large_dog_sims [count] [gender] [age] | Same as `s4clib.spawn_human_sims` except for Large Dog Sims |
+| s4clib.spawn_small_dog_sims [count] [gender] [age] | Same as `s4clib.spawn_human_sims` except for Small Dog Sims |
+| s4clib.spawn_cat_sims [count] [gender] [age] | Same as `s4clib.spawn_human_sims` except for Cat Sims |
+| s4clib.spawn_fox_sims [count] [gender] [age] | Same as `s4clib.spawn_human_sims` except for Fox Sims |
+| s4clib.spawn_object <object_definition_id> | Spawns an Object by its Object Definition identifier at the feet of the Active Sim. | `s4clib.spawn_object 20359` | `object_definition_id`: This is the decimal identifier of an Object Definition for the Object to spawn. |
+| s4clib.purge_self | Delete the active Sim. The UI may look messed up if they are the only Sim in your household. | `s4clib.purge_self` |
+| s4clib.purge_sim <sim_id> | Delete the target Sim. This command will not work on the active Sim | `s4clib.purge_sim 1234` | `sim_id`: The decimal identifier of the Sim to be purged, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. |
+| s4clib.be_alone | Delete every Sim except the active Sim. | `s4clib.be_alone` |
+| s4clib.purge_neighborhood | Delete every Sim. | `s4clib.purge_neighborhood` | This command is dangerous, be careful! |
+
+## Objects
+| Command | What it does | Example Usage | Args |
+|---------|--------------|---------------|------|
+| s4clib.move_object_to_sim <object_id> [sim_id=None] | Move an object to the feet of a Sim. | `s4clib.move_object_to_sim 1234` - This will move the object with id `1234` to the active Sim. `s4clib.move_object_to_sim 1234 5655` - This will move the object with id `1234` to the Sim with id `5655` | - `object_id` - The decimal identifier of the object to move. - `sim_id`: The decimal identifier of a Sim. (Default: Active Sim) |
+| s4clib.change_ownership <object_id> [sim_id=None] | Change the ownership of an object to a Sim. | `s4clib.change_ownership 1234` - This will change the ownership of the object with id `1234` to the Active Sim. (And their household will own the object too) `s4clib.change_ownership 1234 5655` - This will change the ownership of the object with id `1234` to the Sim with id `5655` (And their household will own the object too) | - `object_id` - The decimal identifier of the object to change the ownership of. - `sim_id`: The decimal identifier of the Sim to become the new owner. (Default: Active Sim) |
+
+## CAS
+| Command | What it does | Example Usage | Args |
+|---------|--------------|---------------|------|
+| s4clib.attach_cas_part <cas_part_id> [body_type='any'] [sim_id=None] | Attach a CAS Part to the Active Sim or a Target Sim. | `s4clib.attach_cas_part 4530` or `s4clib.attach_cas_part 4530 shoes` or `s4clib.attach_cas_part 4530 any 1234` or `s4clib.attach_cas_part 4530 shoes 1234` | - `cas_part_id`: The decimal identifier of a CAS Part. - `body_type`: The location on the body to attach the CAS Part to. (Default: Any) - `sim_id`: The decimal identifier of a Sim. |
+| s4clib.detach_cas_part <cas_part_id> [body_type='all'] [sim_id=None] | Detach a CAS Part from the Active Sim or a Target Sims current outfit. | `s4clib.detach_cas_part 4530` or `s4clib.detach_cas_part 4530 shoes` or `s4clib.detach_cas_part 4530 all 1234` or `s4clib.detach_cas_part 4530 shoes 1234` | - `cas_part_id`: The decimal identifier of a CAS Part. - `body_type`: The location on the body to detach the cas part from. (Default: Any) - `sim_id`: The decimal identifier of a Sim, you can get this identifier by doing a debug interaction on a Sim, such as Show Active Buffs. (Default: Active Sim) |
+| s4clib.print_previous_outfit [sim_id=None] | Print the CAS Parts and the Body Types they are attached to for the outfit the Active Sim or a Target Sim were previously wearing. | `s4clib.print_previous_outfit` or `s4clib.print_previous_outfit 1234` | - `sim_id`: The decimal identifier of a Sim, you can get this identifier by doing a debug interaction on a Sim, such as Show Active Buffs. (Default: Active Sim) |
+| s4clib.print_current_outfit [sim_id=None] | Print the CAS Parts and the Body Types they are attached to for the outfit the Active Sim or a Target Sim are currently wearing. | `s4clib.print_current_outfit ` or `s4clib.print_current_outfit 1234` | - `sim_id`: The decimal identifier of a Sim, you can get this identifier by doing a debug interaction on a Sim, such as Show Active Buffs. (Default: Active Sim) |
+| s4clib.print_outfits [show_missing_outfit_info=False] [sim_id=None] | Print the CAS Parts and the Body Types they are attached to for all outfits of the Active Sim or a Target Sim. If `show_missing_outfit_info` is `True`, the outfit categories and outfit indices for outfits a Sim does not have will be shown as well. | `s4clib.print_current_outfit True` or `s4clib.print_current_outfit False 1234` | - `show_missing_outfit_info`: If True, any Body Parts that do not have a CAS Part attached to them will be shown. (Default: False) - `sim_id`: The decimal identifier of a Sim, you can get this identifier by doing a debug interaction on a Sim, such as Show Active Buffs. (Default: Active Sim) |
+
+## Debug
+
+| Command | What it does | Example Usage |
+|---------|--------------|---------------|
+| s4clib.enablelog <log_name> [mod_name] | Enable the logs matching `<log_name>` for `mod_name` or for all logs matching `<log_name>` if `mod_name` is not specified. Output will be printed to `The Sims 4/<mod_name>_Messages.txt` | `s4clib.enablelog test_log` or `s4clib.enablelog test_log test_mod` |
+| s4clib.disablelog <log_name> [mod_name] | Disable the log matching `<log_name>` for `mod_name` or for all logs matching `<log_name>` if `mod_name is not specified. | `s4clib.disablelog test_log` or `s4clib.disablelog test_log test_mod` |
+| s4clib.disable_all_logs [mod_name] | Disable all logs or all logs registered by `mod_name`. | `s4clib.disablealllogs` or `s4clib.disableallogs test_mod`
+| s4clib.logs [mod_name] | Lists all available logs for the specified mod or for all mods if no mod_name is specified. | `s4clib.logs` or `s4clib.enablelog test_mod` |
+| s4clib.enable_vanilla_logs | Will enable vanilla logging. Logged text will appear within `The Sims 4/vanilla_logs/..` | s4clib.enable_vanilla_logs |
+| s4clib.disable_vanilla_logs | Will disable vanilla logging. | s4clib.disable_vanilla_logs |
+
+## Buffs
+
+| Command | What it does | Notes | Example Usage | Args |
+|---------|--------------|-------|---------------|------|
+| s4clib.add_buff <buff_name_or_id> [sim_id=None] [buff_reason='(FromCommand)'] | Add a buff to the Active Sim or a Target Sim. | Specifying a Sim Id will add the buff to that Sim instead of the Active Sim. The `buff_reason` **cannot** have spaces in it. | `s4clib.add_buff buff_Discipline_BrokeCurfew` or `s4clib.add_buff buff_Discipline_BrokeCurfew 1234` or `s4clib.add_buff buff_Discipline_BrokeCurfew 1234 (FromCommand)` | - `buff_name_or_id`: The decimal identifier or the partial name of the buff to add to the Sim. If using a partial name and more than one buff is found, no buff will be added! - `sim_id`: The decimal identifier of a Sim to add the buff to. (Default: Active Sim) |
+| s4clib.remove_buff <buff_name_or_id> [sim_id=None] | Remove a buff from the Active Sim or a Target Sim. | Specifying a Sim Id will remove the buff from that Sim instead of the Active Sim. | `s4clib.remove_buff Insane` or `s4clib.remove_buff Insane 1234` | - `buff_name_or_id`: The decimal identifier or the partial name of the buff to remove from the Sim. If using a partial name and more than one buff is found, no buff will be removed! - `sim_id`: The decimal identifier of a Sim to remove the buff from. (Default: Active Sim) |
+
+## Traits
+
+| Command | What it does | Notes | Example Usage | Args |
+|---------|--------------|-------|---------------|------|
+| s4clib.add_trait <trait_name_or_id> [sim_id=None] | Add a trait to the Active Sim or a Target Sim. | It is recommended **not** to add Occult, Species, or Age traits! Specifying a Sim Id will add the trait to that Sim instead of the Active Sim. | `s4clib.add_trait Insane` or `s4clib.add_trait Insane 1234` | - `trait_name_or_id`: The decimal identifier or the partial name of the trait to add to the Sim. If using a partial name and more than one trait is found, no trait will be added! - `sim_id`: The decimal identifier of a Sim to add the trait to. (Default: Active Sim) |
+| s4clib.remove_trait <trait_name_or_id> [sim_id=None] | Remove a trait from the Active Sim or a Target Sim. | Specifying a Sim Id will remove the trait from that Sim instead of the Active Sim. | `s4clib.remove_trait Insane` or `s4clib.remove_trait Insane 1234` | - `trait_name_or_id`: The decimal identifier or the partial name of the trait to remove from the Sim. If using a partial name and more than one trait is found, no trait will be removed! - `sim_id`: The decimal identifier of a Sim to remove the trait from. (Default: Active Sim) |
+
+## Skills
+
+| Command | What it does | Notes | Example Usage | Args |
+|---------|--------------|-------|---------------|------|
+| s4clib.get_skill_level <skill_name_or_id> [use_effective_skill_level=True] [sim_id=None] | Retrieve the current skill level of the Active Sim or a Target Sim. | Setting `use_effective_skill_level` to True will take into account skill modifiers (Add or Subtract level) from buffs, traits, etc. Specifying a Sim id will get the skill level of that Sim instead of the Active Sim. | `s4clib.get_skill_level HomeStyleCooking` or `s4clib.get_skill_level HomeStyleCooking False` or `s4clib.get_skill_level HomeStyleCooking False 1234` | - `skill_name_or_id`: The decimal identifier or the partial name of the skill to retrieve from the Sim. If using a partial name and more than one skill is found, no skill will be retrieved! - `sim_id`: The decimal identifier of a Sim to retrieve the skill level from. (Default: Active Sim) |
+| s4clib.set_skill_level <skill_name_or_id> <skill_level> [sim_id=None] | Set the current skill level of the Active Sim or a Target Sim. | Specifying a Sim Id will set the skill level of that Sim instead of the Active Sim. | `s4clib.set_skill_level HomeStyleCooking 5` or `s4clib.set_skill_level HomeStyleCooking 5 1234` | - `skill_name_or_id`: The decimal identifier or the partial name of the skill to set the level of for the Sim. If using a partial name and more than one skill is found, no skill will be modified! - `skill_level`: The level to set the skill to. - `sim_id`: The decimal identifier of a Sim to set the skill level of. (Default: Active Sim) |
+| s4clib.remove_skill <skill_name_or_id> [sim_id=None] | Remove a skill from the Active Sim or a Target Sim. | Specifying a Sim Id will remove the skill from that Sim instead of the Active Sim. | `s4clib.remove_skill HomeStyleCooking` or `s4clib.remove_skill HomeStyleCooking 1234` | - `skill_name_or_id`: The decimal identifier or the partial name of the skill to remove from the Sim. If using a partial name and more than one skill is found, no skill will be removed! - `sim_id`: The decimal identifier of a Sim to remove the skill from. (Default: Active Sim) |
+
+## Statistics
+
+| Command | What it does | Notes | Example Usage | Args |
+|---------|--------------|-------|---------------|------|
+| s4clib.set_statistic_user_level <statistic_name_or_id> <statistic_user_level> [sim_id=None] | Set the current statistic user level of the Active Sim or a Target Sim. | Specifying a Sim Id will set the statistic user level of that Sim instead of the Active Sim. | `s4clib.set_statistic_user_level motive_Fun 5` or `s4clib.set_statistic_user_level motive_Fun 5 1234` | - `statistic_name_or_id`: The decimal identifier or the partial name of the statistic to set on the Sim. If using a partial name and more than one statistic is found, no statistic will be modified! - `statistic_user_level`: The user level to set the statistic to. - `sim_id`: The decimal identifier of a Sim to set the statistic user level of. (Default: Active Sim) |
+| s4clib.set_statistic_level <statistic_name_or_id> <statistic_level> [sim_id=None] | Set the current statistic level of the Active Sim or a Target Sim. | Specifying a Sim Id will set the statistic level of that Sim instead of the Active Sim. | `s4clib.set_statistic_level motive_Fun 5` or `s4clib.set_statistic_level motive_Fun 5 1234` | - `statistic_name_or_id`: The decimal identifier or the partial name of the statistic to set on the Sim. If using a partial name and more than one statistic is found, no statistic will be modified! - `statistic_level`: The level to set the statistic to. - `sim_id`: The decimal identifier of a Sim to set the statistic level of. (Default: Active Sim) |
+| s4clib.remove_statistic <statistic_name_or_id> [sim_id=None] | Remove a statistic from the Active Sim or a Target Sim. | Specifying a Sim Id will remove the statistic from that Sim instead of the Active Sim. | `s4clib.remove_statistic motive_Fun` or `s4clib.remove_statistic motive_Fun 1234` | - `statistic_name_or_id`: The decimal identifier or the partial name of the statistic to remove from the Sim. If using a partial name and more than one statistic is found, no statistic will be removed! - `sim_id`: The decimal identifier of a Sim to remove the statistic from. (Default: Active Sim) |
+
+## Voice
+| Command | What it does | Example Usage | Args |
+|---------|--------------|---------------|------|
+| s4clib.get_voice_actor [sim_id] | Print the voice actor of the target Sim. | `s4clib.get_voice_actor` - This will print the voice actor of the Active Sim.`s4clib.get_voice_actor 1234` - This will print the voice actor of Sim with id `1234` | `sim_id`: The decimal identifier of a Sim, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. If not specified, the Active Sim will be used instead. |
+| s4clib.set_voice_actor [voice_actor_name='MUTE'] [sim_id] | Set the voice actor of the target Sim. | `s4clib.set_voice_actor` - This will set the voice actor of the Active Sim to MUTE. `s4clib.set_voice_actor ADULT_HUMAN_MALE_1` - This will set the voice actor of the Active Sim to `ADULT_HUMAN_MALE_1`. `s4clib.set_voice_actor ADULT_HUMAN_MALE_1 1234` - This will set the voice actor of Sim with id `1234` to `ADULT_HUMAN_MALE_1`. | `voice_actor_name`: The name of the voice actor to assign to a Sim. Check out `CommonVoiceActorType` for a list of voice actors. `sim_id`: The decimal identifier of a Sim, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. If not specified, the Active Sim will be used instead. |
+| s4clib.set_voice_actor_custom <voice_actor_id> [sim_id] | Set the voice actor of the target Sim to a custom voice actor. | `s4clib.set_voice_actor_custom 5678` - This will set the voice actor of the Active Sim to `5678`. `s4clib.set_voice_actor_custom 5678 1234` - This will set the voice actor of Sim with id `1234` to `5678`. | `voice_actor_id` (integer): The id of the voice actor to assign to a Sim. `sim_id`: The decimal identifier of a Sim, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. If not specified, the Active Sim will be used instead. |
+| s4clib.get_voice_pitch [sim_id] | Print the voice pitch of the target Sim. | `s4clib.get_voice_pitch` - This will print the voice pitch of the Active Sim.`s4clib.get_voice_pitch 1234` - This will print the voice pitch of Sim with id `1234` | `sim_id`: The decimal identifier of a Sim, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. If not specified, the Active Sim will be used instead. |
+| s4clib.set_voice_pitch <voice_pitch> [sim_id] | Set the voice pitch of the target Sim. | `s4clib.set_voice_pitch 1.0` - This will set the voice pitch of the Active Sim to 1.0. `s4clib.set_voice_pitch 0.6 1234` - This will set the voice pitch of Sim with id `1234` to `0.6`. | `voice_pitch`: The new pitch level to assign to a Sim, values must be between `-1.0` and `1.0`, with `1.0` being high pitched (Like when you inhale Helium). `sim_id`: The decimal identifier of a Sim, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. If not specified, the Active Sim will be used instead. |
+
+## Pregnancy
+
+| Command | What it does | Example Usage | Args |
+|---------|--------------|---------------|------|
+| s4clib.stop_pregnancy [sim_id] | Stop the pregnancy of a Target Sim | `s4clib.stop_pregnancy` - This will stop the pregnancy of the Active Sim. `s4clib.stop_pregnancy 1234` - This will stop the pregnancy of Sim with id `1234`. | `sim_id`: The decimal identifier of a Sim, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. If not specified, the Active Sim will be used instead. |
+| s4clib.stop_all_pregnancies | All Sims that were pregnant, will no longer be pregnant. | `s4clib.stop_all_pregnancies` - This will stop the pregnancy of all currently pregnant Sims. |
+
+## Household
+
+| Command | What it does | Example Usage | Args |
+|---------|--------------|---------------|------|
+| s4clib.add_to_my_household <sim_id> | Add the target Sim to the active household. Has no effect on Sims that are already a part of the active household. | `s4clib.add_to_my_household 1234` - This will add Sim with id `1234` to the active household. | `sim_id`: The decimal identifier of a Sim, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. |
+| s4clib.remove_from_my_household [sim_id] | Remove the target Sim from the active household. | `s4clib.remove_from_my_household` - This will remove the Active Sim from the active household. `s4clib.remove_from_my_household 1234` - This will remove Sim with id `1234` from the active household. | `sim_id`: The decimal identifier of a Sim, you may find this by using any of the Show * interactions provided by S4CL. It appears in the notification. If not specified, the Active Sim will be used instead. |
+
+## Testing
+
+| Command | What it does | Example Usage |
+|---------|--------------|---------------|
+| s4clib.run_tests [class_names...] | Run all registered tests for all mods or if `class_names` are specified, run all tests for those classes. Output will be printed to `The Sims 4/<mod_name>_Messages.txt` for the mod the tests were registered by. | `s4clib.run_tests` or `s4clib.run_tests ClassOne ClassTwo` |
+
+## Other
+| Command | What it does | Example Usage |
+|---------|--------------|---------------|
+| s4clib_testing.print_outfit_tags_of_active_sim | Print all outfit tags (without duplicates) for the outfit the Active Sim is wearing | s4clib_testing.print_outfit_tags_of_active_sim |
+| s4clib_testing.print_outfit_tags_by_cas_part_of_active_sim | Same as `s4clib_testing.print_outfit_tags_of_active_sim` except the tags will be grouped by CAS Part Id | s4clib_testing.print_outfit_tags_by_cas_part_of_active_sim |
+| s4clib_testing.spawn_object_on_lot [object_id] | Spawn an object by it's Decimal Identifier at the feet of the Active Sim. If no `object_id` is specified, a violin will be spawned. | s4clib_testing.spawn_object_on_lot 20359 |

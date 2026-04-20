@@ -1,0 +1,22 @@
+When To Use FNV32 And When To Use FNV64
+
+You have probably looked in the Hash Generator and wondered, "When should I use FNV32 and when should I use FNV64 when specifying identifiers". The following will be a list of when to use each of them.
+
+In most cases you should use FNV64, but there are a few cases where you should use FNV32 instead.
+
+# Use FNV32 as Instance Key when
+You should use FNV32 as the Instance Key (`The value under the Instance Key column on the left side in S4S`) and Decimal Identifier (`s=""`) when:
+- The tuning is a Trait Tuning with a `trait_type` value of `PERSONALITY`, `LIKE`, or `DISLIKE`. i.e. `<E n="trait_type">PERSONALITY</E>`, `<E n="trait_type">LIKE</E>`, or `<E n="trait_type">DISLIKE</E>`
+- The value is for a key for a String within a String Table tuning.
+- Generally, anything that appears in the UI, such as skills, milestones, personality traits, etc. should be 32 bit
+- The tuning is one of the following
+  - Relationship Bit
+  - Bucks Perk
+  - Sentiment Tracks
+  - Relationship Tracks
+  - Developmental Milestones (Milestones in general)
+
+# Use the High Bit checkbox when
+You should make sure the High Bit checkbox is enabled when you are attempting to clone the following objects. This will ensure they will continue to work after being cloned.
+- Game Objects (Object Definition)
+- CAS Parts (CAS Tuning)

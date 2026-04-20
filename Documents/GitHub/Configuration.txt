@@ -1,0 +1,10 @@
+Configuration
+
+S4CL comes with a "sims4communitylib.json" configuration file that when modified can do various things.
+
+| Property | What It Do? | Valid Values |
+| -------- | ----------- | ------------ |
+| `enable_vanilla_logging` | When set to `true` vanilla logging will be enabled upon startup, similar to the `s4clib.enable_vanilla_logging` command. Logs will appear within `The Sims 4/vanilla_logs` folder upon launching the game. | (`true`, `false`) |
+| `enable_extra_shift_click_menus` | When set to `true` the SHIFT+CLICK menu will become available when performed on Sims in the relationship panel, on the Phone icon, as well as on Objects in the inventory. | (`true`, `false`) |
+| `persist_mod_data_per_save_slot` | When set to `true` the json files within the `mod_data/<mod_name>` folders will have the save slot id included in the name. This can allow persistent data per save slot, but is also quite buggy, the save slot id is not always available at the time of loading a household. For example, if the player loads into build mode for a lot before ever loading a household, the save slot id will be 0 upon the household being loaded. Setting this to `false` will exclude the save slot id from the json files within the `mod_data/<mod_name>` folders. | (`true`, `false`) |
+| `enable_logs` | A dictionary of string to message types (array) that allows logs to be enabled at runtime, rather than having to manually enable them from the console in-game. The format is the following `{ "example_log_that_is_enabled": ["DEBUG", "WARN"], "other_example_log_that_is_enabled": ["INFO", "DEBUG"] }` | Message Types (`"DEBUG"`, `"INFO"`, `"WARN"`) |

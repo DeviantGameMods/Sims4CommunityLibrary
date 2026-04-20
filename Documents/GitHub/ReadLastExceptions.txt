@@ -1,0 +1,11 @@
+How To Read Last Exception Files
+
+**How to read Exception files (Or make a guess at what it is from)**
+
+To get a best estimate on the problem mod for lastexception.txt files (Skip step 1 for mods that use S4CL to catch exceptions. i.e.  `<mod>_exceptions.txt`):
+1. Replace `<desyncdata>` and `&#13;&#10;` with a new line, so the lines on either side of these are put on their own line.
+2. Locate the bottom of the stacktrace (The semi ugly lines that have `line #` in the middle of each of them)
+3. Look at the error message itself, which is usually at the bottom of the stacktrace.
+4. If the above did not give an indication as to the cause, locate the last 3-4 lines of the exception stacktrace
+5. Look within each of those 3-4 lines for something that isn't just generic. (Locate a mod that matches those non-generic pieces of info)
+6. If you still don't know what the cause is, Pull mods out until the error stops occurring, because it is probably a random mod doing it.

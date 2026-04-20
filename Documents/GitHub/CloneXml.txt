@@ -1,0 +1,27 @@
+Clone Vanilla Xml
+
+Add the original tunings to your package
+1. Open Sims 4 Studio.
+2. Open Tools -> Extract Tuning...
+3. Type the name or part of the name of the tuning you want to clone into the top box.
+4. Find the tuning to clone in the center window.
+5. Click Add to current package at the bottom.
+
+How to clone a vanilla or custom xml tuning In Sims 4 Studio:
+1. Open Tools -> Hash Generator
+2. Enter the name of your new tuning in the Text box. If I am cloning from an existing xml, usually go with `<my_mod_identifier>_<the_cloned_from_tuning_name>` (Do not enter any spaces!)
+3. Copy the FNV64 Hexadecimal value
+3.1. Keep the Hash Generator window OPEN, we will need it later!
+4. Right click the xml that I am cloning -> Duplicate
+5. Close the duplicate/create window (We only did this so the dropdown has the right type)
+6. Right click the xml that I am cloning -> Add
+7. Paste the Hexadecimal FNV64 value I copied in step 3. into the identifier box
+8. Copy the xml from the xml that I cloned from and paste it into the newly created tuning.
+9. Go back to the Hash Generator window, copy what you entered in the Text field
+10. In the xml at the top of it is this `n="<the_cloned_from_tuning_name>"`, paste your copied text and replace it, so it is like `n="<my_mod_identifier>_<the_cloned_from_tuning_name>"`
+11. Go back to the Has Generator window, switch the Mode to Decimal
+12. Copy the FNV64 value, we will call this copied value `<my_xml_decimal_identifier>`
+13. In the xml at the top of it is this `s="<the_cloned_from_tuning_id>"`, paste the copied value into there, so it is like `s="<my_xml_decimal_identifier>"` instead.
+14. That is all you do to clone an xml in Sims 4 Studio.
+
+Notes: Stay away from the Right click -> Duplicate operation at all costs! Sims 4 Studio does some terrible TERRIBLE things, seemingly randomly that causes stupid breakages that you will never be able to track down.

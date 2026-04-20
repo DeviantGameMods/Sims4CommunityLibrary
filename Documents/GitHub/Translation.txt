@@ -1,0 +1,8 @@
+How To Make A Translation For A Mod
+
+To create a translation file for a mod of your choosing, you just need to
+1. Make your own package file
+2. Have the package file contain the StringTable for your language
+3. Make the name of the package file load alphabetically before the mod files you are translating (or reverse alphabetically for Mac)
+4. Upload the translation to a place of your choosing
+5. Send the author a link to the place you uploaded it so they may add a link to your translation for those who want it.

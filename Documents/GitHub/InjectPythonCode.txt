@@ -1,0 +1,19 @@
+How To Inject Into Sims 4 Python Code
+
+I will show you how to inject into a function that is a part of the vanilla code. By doing this, you can add your own functionality, or replace the existing functionality with your own code.
+
+```python
+from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from services.persistence_service import PersistenceService
+
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), PersistenceService, PersistenceService.save_game_gen.__name__)
+def _common_save_game_gen(original, self: PersistenceService, *args, **kwargs):
+    return original(self, *args, **kwargs)
+```
+
+In this example, we are injecting into the `save_game_gen` function of the `PersistenceService` class.
+This function is responsible for performing operations when the Game is saved.
+
+We are not doing anything different from the original function however.
+To call the original functionality, we invoke the `original` function and pass it all of the arguments that were passed to us. `return original(self, *args, **kwargs)`
+

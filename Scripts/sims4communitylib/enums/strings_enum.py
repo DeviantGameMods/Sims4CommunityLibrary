@@ -1,0 +1,696 @@
+"""
+The Sims 4 Community Library is licensed under the Creative Commons Attribution 4.0 International public license (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+Copyright (c) DEVIANTGAMEMODS
+"""
+from sims4communitylib.enums.enumtypes.common_int import CommonInt
+
+
+class CommonStringId(CommonInt):
+    """Identifiers for localization strings.
+
+    .. note:: These identifiers point to strings within String Tables within package files.
+
+    """
+    INVALID: 'CommonStringId' = 0
+    # Notifications
+    EXCEPTION_OCCURRED_TITLE: 'CommonStringId' = 3506527463
+    EXCEPTION_OCCURRED_TITLE_FOR_MOD: 'CommonStringId' = 1541569535
+    # 0.String
+    EXCEPTION_OCCURRED_TEXT: 'CommonStringId' = 1656389837
+
+    # Dialog
+    OK: 'CommonStringId' = 3648501874
+    OK_ALL_CAPS: 'CommonStringId' = 1102906806
+    CANCEL: 'CommonStringId' = 3497542682
+    CANCEL_ALL_CAPS: 'CommonStringId' = 1249800636
+
+    # Navigation
+    NEXT: 'CommonStringId' = 982796106
+    PREVIOUS: 'CommonStringId' = 4210670582
+    # Tokens: {0.String}
+    GO_TO_STRING: 'CommonStringId' = 3934117375
+
+    # Text
+    # Tokens: {0.String}
+    TEXT_WITH_GREEN_COLOR: 'CommonStringId' = 3458194999
+    # Tokens: {0.String}
+    TEXT_WITH_RED_COLOR: 'CommonStringId' = 835489330
+    # Tokens: {0.String}
+    TEXT_WITH_BLUE_COLOR: 'CommonStringId' = 1505840180
+    # Tokens: {0.String}
+    TEXT_WITH_YELLOW_COLOR: 'CommonStringId' = 3457894271
+    # Tokens: {0.String}
+    TEXT_WITH_ORANGE_COLOR: 'CommonStringId' = 2567694686
+
+    # Ages
+    BABY: 'CommonStringId' = 4016862175
+    INFANT: 'CommonStringId' = 0xD0D04D65
+    TODDLER: 'CommonStringId' = 3252370736
+    CHILD: 'CommonStringId' = 2993678259
+    TEEN: 'CommonStringId' = 1166433319
+    YOUNG_ADULT: 'CommonStringId' = 2053658442
+    ADULT: 'CommonStringId' = 1747466136
+    ELDER: 'CommonStringId' = 685867388
+
+    # Gender
+    MALE: 'CommonStringId' = 434606820
+    FEMALE: 'CommonStringId' = 2933657479
+
+    # Species
+    HUMAN: 'CommonStringId' = 3519680994
+    SMALL_DOG: 'CommonStringId' = 698804483
+    LARGE_DOG: 'CommonStringId' = 1545624565
+    CAT: 'CommonStringId' = 1720023562
+    FOX: 'CommonStringId' = 0xCE739947
+    HORSE: 'CommonStringId' = 0x773BB19E
+
+    S4CL_ALIEN: 'CommonStringId' = 0x340EA312
+    S4CL_GHOST: 'CommonStringId' = 0xEFCD14BE
+    S4CL_MERMAID: 'CommonStringId' = 0x9E3A9746
+    S4CL_NON_OCCULT: 'CommonStringId' = 0x2763B1A0
+    S4CL_PLANT_SIM: 'CommonStringId' = 0x64E66FA1
+    S4CL_ROBOT: 'CommonStringId' = 0x730D2277
+    S4CL_SCARECROW: 'CommonStringId' = 0x3AFF1B32
+    S4CL_SKELETON: 'CommonStringId' = 0xCF5256A8
+    S4CL_VAMPIRE: 'CommonStringId' = 0x760EC7C9
+    S4CL_WEREWOLF: 'CommonStringId' = 0xA3E400E6
+    S4CL_WITCH: 'CommonStringId' = 0x2D55956A
+    S4CL_FAIRY: 'CommonStringId' = 0x93367FAC
+    S4CL_HOUSEHOLD: 'CommonStringId' = 0x846D3A8C
+    S4CL_HOUSEHOLD_DESCRIPTION: 'CommonStringId' = 0xC04E5A9E
+    S4CL_NON_HOUSEHOLD: 'CommonStringId' = 0xC3AAF6A2
+    S4CL_NON_HOUSEHOLD_DESCRIPTION: 'CommonStringId' = 0xC07E9015
+    S4CL_CURRENTLY_CONTROLLED: 'CommonStringId' = 0x0EF5C39D
+    S4CL_CURRENTLY_CONTROLLED_DESCRIPTION: 'CommonStringId' = 0xBF7B9D74
+
+    # Pregnancy
+    GET_PREGNANT: 'CommonStringId' = 3694037554
+    GET_OTHER_PREGNANT: 'CommonStringId' = 3780444441
+    CANNOT_EDIT_PREGNANT_SIMS: 'CommonStringId' = 1715308569
+    PREGNANT_OUTCOME: 'CommonStringId' = 3717297329
+
+    # Gender Options
+    TOILET_USE_STANDING: 'CommonStringId' = 3730566822
+    TOILET_USE_SITTING: 'CommonStringId' = 4265081704
+    SEXUAL_ORIENTATION: 'CommonStringId' = 0xB4F0EDC8
+    THIS_SIM_IS_ROMANTICALLY_ATTRACTED_TO: 'CommonStringId' = 0xF808D0AB
+    THIS_SIM_IS_EXPLORING_ROMANTICALLY: 'CommonStringId' = 0x52609912
+    THIS_SIM_IS_INTERESTED_IN_WOOHOO_WITH: 'CommonStringId' = 0x4790F2DC
+
+    # Misc Text
+    CUSTOM_GENDER_SETTINGS: 'CommonStringId' = 2156245727
+    CLOTHING_PREFERENCE: 'CommonStringId' = 611620004
+    MASCULINE: 'CommonStringId' = 585998164
+    FEMININE: 'CommonStringId' = 667254132
+    PHYSICAL_FRAME: 'CommonStringId' = 2574825855
+    ZERO_THROUGH_NINE = 0x8FE40C44
+
+    # Store
+    THIS_REWARD_IS_NOT_AVAILABLE_FOR_YOUR_SIM_OR_IT_IS_ALREADY_OWNED_BY_YOUR_SIM = 0x0709B9CC
+    INSUFFICIENT_POINTS = 0x67D91493
+
+    # Text
+    # Tokens: {0.String}
+    STRING_NOT_FOUND_WITH_IDENTIFIER: 'CommonStringId' = 3037244137
+
+    # Test
+    TESTING_TEST_BUTTON_ONE: 'CommonStringId' = 367590350
+    TESTING_TEST_BUTTON_TWO: 'CommonStringId' = 367590349
+    TESTING_SOME_TEXT_FOR_TESTING: 'CommonStringId' = 1352970207
+    TESTING_TEST_TEXT_NO_TOKENS: 'CommonStringId' = 3987872118
+    # Tokens: {0.SimFirstName} {0.SimLastName}
+    TESTING_TEST_TEXT_WITH_SIM_FIRST_AND_LAST_NAME: 'CommonStringId' = 4280406738
+    # Tokens: {0.String}
+    TESTING_TEST_TEXT_WITH_STRING_TOKEN: 'CommonStringId' = 2977195159
+    # Tokens: {0.Number}
+    TESTING_TEST_TEXT_WITH_NUMBER_TOKEN: 'CommonStringId' = 4138001347
+
+    # S4CL
+    S4CL_SIMS_4_COMMUNITY_LIBRARY: 'CommonStringId' = 1638558923
+    S4CL_LOG_ALL_INTERACTIONS: 'CommonStringId' = 3133049591
+    # Tokens: {0.String}
+    S4CL_DONE_LOGGING_ALL_INTERACTIONS: 'CommonStringId' = 207690817
+
+    # Sim Actions.
+    S4CL_OBJECT_IS_IN_USE = 0x7EC77EF6
+    # Tokens: {0.SimFirstName}
+    S4CL_SIM_NOT_ALLOWED_THERE = 0x48245F2A
+    # Tokens: {0.SimFirstName}
+    S4CL_SIM_CAN_REACH_THAT_SPOT = 0xC6EE8491
+    # Tokens: {0.SimFirstName}
+    S4CL_SIM_CANNOT_REACH_THAT_SPOT = 0x6B324A52
+    # Tokens: {0.SimFirstName} {1.SimFirstName}
+    S4CL_SIM_CANNOT_REACH_SIM = 0x6B324A52
+    # Tokens: {0.SimFirstName}
+    S4CL_NOT_ENOUGH_ROOM_FOR_SIM_HERE = 0x36EB7A72
+    # Tokens: {0.SimFirstName}
+    S4CL_SIM_IS_NOT_PREGNANT: 'CommonStringId' = 0x4992E851
+    # Tokens: {0.SimFirstName} {0.SimLastName} (Sim)
+    S4CL_SIM_CANNOT_BE_PICKED_UP = 0xAB3DD412
+
+    # Tokens: {0.SimFirstName}
+    S4CL_SIM_ALREADY_HAS_THIS_TRAIT = 0x854F2F29
+    # Tokens: {0.SimFirstName}
+    S4CL_SIM_DOES_NOT_HAVE_THIS_TRAIT = 0x663E6FD7
+
+    S4CL_YES: 'CommonStringId' = 0x3A6189A6
+    S4CL_NO: 'CommonStringId' = 0x6377188C
+    S4CL_RANDOM: 'CommonStringId' = 0xB5ADADF0
+    S4CL_CONFIRMATION: 'CommonStringId' = 0x963ACF86
+    S4CL_GO_BACK = 0xD74B6B28
+    S4CL_NONE = 0x2CA33BDB
+    S4CL_NO_SIMS = 0x90F0B600
+    S4CL_NO_OPTIONS_WILL_BE_INCLUDED = 0xF3E7F3A3
+    S4CL_ALL = 0x419C2C6E
+    S4CL_ALL_SIMS = 0x6B670346
+    S4CL_ALL_OPTIONS_WILL_BE_INCLUDED = 0x36CAAB74
+    S4CL_ANY = 0x3F9C28A5
+    S4CL_DECLINED = 0x5FD633CB
+    S4CL_ACCEPTED = 0xB667ABF6
+    S4CL_ACCEPT = 0xD0F420D1
+    S4CL_DECLINE = 0xA60FC6F5
+    S4CL_DEFAULT = 0x2EA8FB98
+    S4CL_REMOVE_ALL = 0x5C6C2580
+    S4CL_REMOVE = 0x8B3681B1
+    S4CL_NOT_IMPLEMENTED = 0x54860E10
+    S4CL_CUSTOM_BREED = 0x599432EA
+
+    # Species
+    S4CL_DOG: 'CommonStringId' = 0x20953C2D
+
+    # Separators
+    # {0.String}{1.String}
+    S4CL_COMBINE_TWO_STRINGS: 'CommonStringId' = 4217460952
+    # Tokens: {0.String}: {1.String}
+    STRING_COLON_SPACE_STRING = 0x6284ACBA
+    # Tokens: {0.String}, {1.String}
+    STRING_COMMA_SPACE_STRING = 0x1429B07C
+    # Tokens: {0.String} {1.String}
+    STRING_SPACE_STRING = 0x0699D5F4
+    # Tokens: {0.String} ({1.String})
+    STRING_SPACE_PARENTHESIS_SURROUNDED_STRING = 0x1A406429
+    # Tokens: {0.String}\n{1.String}
+    STRING_NEWLINE_STRING = 0xCE1E042E
+    # Tokens: {0.String}\n\n{1.String}
+    STRING_NEWLINE_NEWLINE_STRING = 0xBA331D00
+    # Tokens: {0.String}-{1.String}
+    STRING_HYPHEN_STRING = 0x032A81F9
+    # Tokens: {0.String} are {1.String}
+    S4CL_STRING_ARE_STRING = 0x92AF2862
+    # Tokens: {0.String} is {1.String}
+    S4CL_STRING_IS_STRING = 0xC1166AC4
+    # Tokens: {0.String}+{1.String}
+    S4CL_STRING_PLUS_STRING = 0x82ED46EB
+    # Tokens: {0.String} or {1.String}
+    S4CL_STRING_OR_STRING = 0x1DC61DF5
+    # Tokens: {0.String}, or {1.String}
+    S4CL_STRING_COMMA_SPACE_OR_STRING = 0x34E0269D
+    # Tokens: {0.String} and {1.String}
+    S4CL_STRING_AND_STRING = 0xCFB35A51
+    # Tokens: {0.String}, and {1.String}
+    S4CL_STRING_COMMA_SPACE_AND_STRING = 0x419E6969
+
+    # String Modifiers
+    # Tokens: ({0.String})
+    S4CL_PARENTHESIS_SURROUNDED_STRING = 0xD7FDCAF5
+
+    S4CL_PLEASE_WAIT = 0xF2237D1E
+    S4CL_RANDOMIZATION_COMPLETE = 0x8ABA94C5
+
+    S4CL_PREGNANCY = 0x3F70BCAA
+
+    S4CL_RESTART_REQUIRED = 0x955D0179
+    S4CL_CHANGES_MADE_RESTART_REQUIRED_DESCRIPTION = 0x6B5119FB
+    # (From Debug)
+    S4CL_BUFF_REASON_FROM_DEBUG = 0x38C2E6F7
+
+    # Purchase
+    S4CL_PURCHASE_SUCCESSFUL = 0xF3C59252
+    S4CL_YOUR_PURCHASED_ITEMS_ARE_ON_THE_WAY = 0x5A8D580D
+    S4CL_YOUR_PURCHASED_ITEMS_ARE_IN_YOUR_INVENTORY = 0xF33F9A95
+    S4CL_TOO_EXPENSIVE = 0x59F9C698
+
+    S4CL_THIS_FEATURE_IS_NOT_YET_IMPLEMENTED = 0x556801EE
+
+    # Sim Name
+    # Tokens: {0.SimFirstName} {0.SimLastName} (Sim One)
+    S4CL_SIM_NAME = 0xAC8F626F
+    # Tokens: {0.SimFirstName} {0.SimLastName} (Sim One) {1.SimFirstName} {1.SimLastName} (Sim Two)
+    S4CL_SIM_NAME_AND_SIM_NAME = 0xD8740FE4
+    # Tokens: {0.String} (A String) {1.SimFirstName} {1.SimLastName} (The Last Sim)
+    S4CL_STRING_COMMA_SPACE_AND_SIM_NAME = 0x2EACE203
+    # Tokens: {0.SimFirstName} {0.SimLastName} (The First Sim) {1.String} (A String)
+    S4CL_SIM_NAME_COMMA_SPACE_AND_STRING = 0x2A8148D8
+
+    # Tokens: {0.String}
+    S4CL_UID_STRING = 0x0313D2A0
+    # Tokens: {0.String} (Current)
+    S4CL_CURRENT_STRING = 0x860F13B5
+    # Tokens: {0.String} (Count)
+    S4CL_COUNT_STRING = 0x423122EB
+    # Tokens: {0.String} (Error Message)
+    S4CL_ERROR_STRING = 0xA1C925BC
+    # Tokens: {0.String} (Failed Message)
+    S4CL_FAILED_STRING = 0x0F818D6F
+    # Tokens: {0.String} (Failure Message)
+    S4CL_FAILURE_STRING = 0x33A94544
+    # Tokens: {0.String} (Success Message)
+    S4CL_SUCCESS_STRING = 0xC6D15497
+    # Tokens: {0.String} (String Message)
+    S4CL_EXCLAMATION_EXCLAMATION_STRING = 0xA07FA6C6
+
+    S4CL_LEFT = 0x003EB432
+    S4CL_RIGHT = 0xE816F049
+    S4CL_FRONT = 0x4B21A032
+    S4CL_BACK = 0x5CF9CF48
+    S4CL_TOP = 0x406CCC4A
+    S4CL_BOTTOM = 0xE864BA60
+    S4CL_UP = 0x5C770DAE
+    S4CL_DOWN = 0x87EDD469
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_FOR_ROMANTIC_RELATIONSHIP_WITH_SIM_SIM_IS_NOT_A_TEEN_ADULT_ELDER = 0xA28C151B
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_FOR_ROMANTIC_RELATIONSHIP_WITH_SIM_SIM_IS_A_BLOOD_RELATIVE_OF_SIM = 0xEEC2FB51
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_FOR_ROMANTIC_RELATIONSHIP_WITH_SIM_SIM_IS_A_FAMILIAL_RELATIVE_OF_SIM = 0xA4A79F3E
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_FOR_ROMANTIC_RELATIONSHIP_WITH_SIM_SIM_IS_A_DIFFERENT_SPECIES_FROM_SIM = 0x4398C8E8
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_FOR_ROMANTIC_RELATIONSHIP_WITH_SIM_SIM_IS_A_TEEN_AND_SIM_IS_AN_ADULT_OR_ELDER = 0xFDF2F137
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_FOR_ROMANTIC_RELATIONSHIP_WITH_SIM_SIM_IS_AN_ADULT_OR_ELDER_AND_SIM_IS_A_TEEN = 0x8DB7167D
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_TO_BE_A_BLOOD_RELATIVE_OF_SIM_SIM_IS_A_DIFFERENT_SPECIES_FROM_SIM = 0x4398C8E8
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_HAS_PERMISSION_FOR_ROMANTIC_RELATIONSHIP_WITH_SIM = 0x204CF565
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_HAS_PERMISSION_TO_BE_BLOOD_RELATIVE_OF_SIM = 0x469A237E
+
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_TO_CHANGE_INTO_NUDE_SIM_IS_NOT_A_TEEN_ADULT_ELDER = 0x723A05F4
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_HAS_PERMISSION_TO_CHANGE_INTO_NUDE = 0xB17E67F7
+
+    # Tokens: {0.SimFullName} {1.String} (Buff)
+    S4CL_SIM_HAS_BUFF = 0x5D7BF2C6
+    # Tokens: {0.SimFullName} {1.String} (Buff)
+    S4CL_SIM_DOES_NOT_HAVE_BUFF = 0x4CEB95A0
+    # Tokens: {0.SimFullName} {1.String} (Buffs)
+    S4CL_SIM_DOES_NOT_HAVE_BUFFS = 0xA08410B0
+    # Tokens: {0.SimFullName} {1.String} (Buffs)
+    S4CL_SIM_HAS_ALL_BUFFS = 0x4487BB37
+    # Tokens: {0.SimFullName} {1.String} (Buffs)
+    S4CL_FAILED_TO_ADD_BUFFS_TO_SIM = 0xC44E7ECD
+    # Tokens: {0.SimFullName}
+    S4CL_BUFFS_WERE_ADDED_TO_SIM_BUT_NONE_WERE_LOADED = 0xC35E55B6
+    # Tokens: {0.SimFullName}
+    S4CL_SUCCESSFULLY_ADDED_BUFFS_TO_SIM = 0x261E39AD
+    # Tokens: {0.SimFullName} {1.String} (Buffs)
+    S4CL_FAILED_TO_REMOVE_BUFFS_FROM_SIM = 0xFFA5A7C7
+    # Tokens: {0.SimFullName}
+    S4CL_BUFFS_WERE_REMOVED_FROM_SIM_BUT_NONE_WERE_LOADED = 0xE95FC64D
+    # Tokens: {0.SimFullName}
+    S4CL_SUCCESSFULLY_REMOVED_BUFFS_FROM_SIM = 0x8533940C
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_AN_OCCULT_SIM = 0x1B0B6794
+
+    # Tokens: {0.SimFullName} {1.String}
+    S4CL_SIM_HAS_OCCULT_TYPE = 0xCA9E7F93
+    # Tokens: {0.SimFullName} {1.String}
+    S4CL_SIM_DOES_NOT_HAVE_OCCULT_TYPE = 0x9D0A0FAA
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_AN_ALIEN = 0xDF7CD5A3
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_AN_ALIEN = 0x9D211BB8
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_FAIRY = 0x6701E693
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_FAIRY = 0xDEC991AE
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_PLANT_SIM = 0x6DC19D40
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_PLANT_SIM = 0x989B8049
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_GHOST = 0x10C62C61
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_GHOST = 0xDCFE1538
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_SCARECROW = 0x4C242391
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_SCARECROW = 0x306F942C
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_ROBOT = 0x77B94976
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_ROBOT = 0x75835A4F
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_SKELETON = 0x58627F39
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_SKELETON = 0x3F338F8A
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_WEREWOLF = 0x41B77213
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_WEREWOLF = 0xBC624F38
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_WITCH = 0xC790130D
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_WITCH = 0xE6319B4C
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_VAMPIRE = 0xBB89ED40
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_VAMPIRE = 0x041076D9
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_A_MERMAID = 0xEC481745
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_A_MERMAID = 0xC7EB6798
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_IN_FAIRY_FORM = 0x6A0E60AF
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_NOT_IN_FAIRY_FORM = 0xB81934B2
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_IN_MERMAID_FORM = 0x20F77E19
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_NOT_IN_MERMAID_FORM = 0x38DB65D8
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_IN_VAMPIRE_FORM = 0x4606D69E
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_NOT_IN_VAMPIRE_FORM = 0x732EDA83
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_IN_ALIEN_FORM = 0xE284D54D
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_NOT_IN_ALIEN_FORM = 0xDB74095C
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_IN_WEREWOLF_FORM = 0x9048FA97
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_NOT_IN_WEREWOLF_FORM = 0x5B73320C
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_IN_WITCH_FORM = 0x2373A821
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_NOT_IN_WITCH_FORM = 0x1C54F318
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_IN_NON_OCCULT_FORM = 0x043D763C
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_CURRENTLY_IN_OCCULT_FORM = 0xEA64AE7A
+
+    S4CL_HUMAN_OCCULT_DOES_NOT_EXIST = 0xE6CB34DB
+    S4CL_ALIEN_OCCULT_DOES_NOT_EXIST = 0xDFF2C763
+    S4CL_ALIEN_TRAIT_DOES_NOT_EXIST = 0xC201A91F
+    S4CL_FAIRY_OCCULT_DOES_NOT_EXIST = 0x94E53DF0
+    S4CL_FAIRY_TRAIT_DOES_NOT_EXIST = 0x0F041339
+    S4CL_MERMAID_OCCULT_DOES_NOT_EXIST = 0xD333E4D7
+    S4CL_MERMAID_TRAIT_DOES_NOT_EXIST = 0x023D1993
+    S4CL_ROBOT_OCCULT_DOES_NOT_EXIST = 0x61A4C0DE
+    S4CL_ROBOT_TRAIT_DOES_NOT_EXIST = 0xAEBB938A
+    S4CL_SCARECROW_OCCULT_DOES_NOT_EXIST = 0xA13B3703
+    S4CL_SKELETON_OCCULT_DOES_NOT_EXIST = 0xD4D09751
+    S4CL_VAMPIRE_OCCULT_DOES_NOT_EXIST = 0x4C4F1FF8
+    S4CL_VAMPIRE_TRAIT_DOES_NOT_EXIST = 0xD7A1E2F0
+    S4CL_WITCH_OCCULT_DOES_NOT_EXIST = 0xC8A10752
+    S4CL_WITCH_TRAIT_DOES_NOT_EXIST = 0xEF4C4B67
+    S4CL_PLANT_OCCULT_DOES_NOT_EXIST = 0x93745AA0
+    S4CL_WEREWOLF_OCCULT_DOES_NOT_EXIST = 0x7C74182E
+    S4CL_WEREWOLF_TRAIT_DOES_NOT_EXIST = 0x731DCEB9
+    S4CL_GHOST_OCCULT_DOES_NOT_EXIST = 0xB0EA9D5F
+    S4CL_NO_GHOST_TRAITS_EXISTED = 0x1E677A08
+    # Tokens: {0.SimFullName} {1.String} (Occult Type)
+    S4CL_SIM_HAS_OCCULT_SIM_INFO_FOR_OCCULT_TYPE = 0x7908FFF1
+    # Tokens: {0.SimFullName} {1.String} (Occult Type)
+    S4CL_SIM_DOES_NOT_HAVE_OCCULT_SIM_INFO_FOR_OCCULT_TYPE = 0x2AD86BF8
+    # Tokens: {0.SimFullName} {1.String} (Occult Type)
+    S4CL_SIM_FAILED_TO_SWITCH_TO_OCCULT_TYPE_VANILLA_OCCULT_TYPE_DOES_NOT_EXIST = 0x24D8A261
+
+    # Tokens: {0.String} (Occult Type)
+    S4CL_OCCULT_TYPE_IS_NOT_AVAILABLE_OR_SUPPORT_FOR_IT_HAS_NOT_BEEN_IMPLEMENTED = 0x03C295E4
+
+    # Tokens: {0.String} (Occult Type)
+    S4CL_OCCULT_TYPE_DID_NOT_HAVE_AN_ADD_FUNCTION = 0xD1BC5565
+
+    # Tokens: {0.String} (Occult Type)
+    S4CL_OCCULT_TYPE_DID_NOT_HAVE_A_REMOVE_FUNCTION = 0x93B6A80C
+
+    # Tokens: {0.SimFullName} {1.String} (Perk)
+    S4CL_SIM_HAS_PERK_UNLOCKED = 0x24C8760A
+    # Tokens: {0.SimFullName} {1.String} (Perk)
+    S4CL_SIM_DOES_NOT_HAVE_PERK_UNLOCKED = 0x82020A6C
+
+    # Tokens: {0.SimFullName} {1.String} (Perk)
+    S4CL_SIM_HAS_PERK_LOCKED = 0x2929A565
+    # Tokens: {0.SimFullName} {1.String} (Perk)
+    S4CL_SIM_DOES_NOT_HAVE_PERK_LOCKED = 0x8750F52B
+
+    # Tokens: {0.SimFullName} {1.String} (Perk)
+    S4CL_SIM_CAN_AFFORD_PERK = 0xBC7C7097
+    # Tokens: {0.SimFullName} {1.String} (Perk)
+    S4CL_SIM_CANNOT_AFFORD_PERK = 0xE8EFB1F2
+
+    S4CL_CURRENTLY_SAVE_LOCKED = 0x8DB647B0
+    S4CL_CAREER_IS_NOT_AN_ACTIVE_CAREER = 0x324FAE9F
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_AN_NPC_AND_CANNOT_START_ACTIVE_CAREERS = 0x8193C72E
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_ALREADY_AT_ACTIVE_EVENT = 0x5A23DDD1
+    S4CL_NO_EVENTS_WERE_AVAILABLE = 0x8C8F23B7
+    # Tokens: {0.SimFullName}
+    S4CL_NO_CAREERS_FOUND_AVAILABLE_FOR_SIM = 0x7CB8643F
+    # Tokens: {0.String} (Career) {1.SimFullName}
+    S4CL_ADDED_CAREER_TO_SIM = 0x7B461579
+
+    # Tokens: {0.String} (Career) {1.SimFullName}
+    S4CL_CAREER_IS_NPC_ONLY_CAREER_AND_SIM_IS_NOT_NPC = 0xBE6D983C
+    # Tokens: {0.String} (Career)
+    S4CL_CAREER_IS_MARKED_AS_NON_PLAYABLE = 0x45F02FAB
+    # Tokens: {0.String} (Career)
+    S4CL_CAREER_IS_NOT_JOINABLE_THROUGH_NORMAL_MEANS = 0xD1997283
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_RETIRED = 0x5C586084
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_EXISTING_JOBS_NEED_TO_QUIT_THEM_BEFORE_ADDING_NEW_ONES = 0xC270ECE9
+    # Tokens: {0.SimFullName} {1.String} (Career)
+    S4CL_SIM_ALREADY_HAS_CAREER = 0x54918F8F
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_PART_OF_A_HOUSEHOLD_THAT_HAS_FUNDS = 0x40593958
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_DEAD = 0xCBB58F55
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_DEAD = 0x0738C3D6
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_HUMAN = 0x4BD94F18
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_HUMAN = 0xFF50ABCD
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_AN_ANIMAL = 0xF6B42994
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_AN_ANIMAL = 0x8D9EEBE5
+    # Tokens: {0.SimFullName}
+    S4CL_NO_TOILET_STANDING_TRAIT_FOUND_FOR_SIM = 0x011A23AC
+    # Tokens: {0.SimFullName}
+    S4CL_NO_TOILET_SITTING_TRAIT_FOUND_FOR_SIM = 0xAFE8644A
+    # Tokens: {0.SimFullName}
+    S4CL_NO_CAN_BE_IMPREGNATED_TRAIT_FOUND_FOR_SIM = 0xF2F99156
+    # Tokens: {0.SimFullName}
+    S4CL_NO_CANNOT_BE_IMPREGNATED_TRAIT_FOUND_FOR_SIM = 0x7238C9B9
+    # Tokens: {0.SimFullName}
+    S4CL_NO_CAN_IMPREGNATE_TRAIT_FOUND_FOR_SIM = 0x2605CF07
+    # Tokens: {0.SimFullName}
+    S4CL_NO_CANNOT_IMPREGNATE_TRAIT_FOUND_FOR_SIM = 0xAC946484
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_THE_CANNOT_REPRODUCE_TRAIT = 0x82A94320
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_THE_CAN_REPRODUCE_TRAIT = 0x0DE712D1
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_THE_CANNOT_BE_IMPREGNATED_TRAIT = 0x0F8FC156
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_THE_CAN_BE_IMPREGNATED_TRAIT = 0x8A1D73ED
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_THE_CANNOT_IMPREGNATE_TRAIT = 0x32723A41
+    S4CL_SIM_DOES_NOT_HAVE_THE_CAN_IMPREGNATE_TRAIT = 0x93BF83A2
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_CAN_BE_IMPREGNATED_BY_OTHER_SIMS = 0xDCD93FDD
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_CAN_IMPREGNATE_OTHER_SIMS = 0xFD3836E5
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_CAN_NEITHER_IMPREGNATE_NOR_BE_IMPREGNATED = 0xCCE0EC3E
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_THE_CAN_REPRODUCE_TRAIT = 0x2DF2F4B7
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_BREASTS_SIM_IS_FEMALE_AND_HAS_THE_BREASTS_FORCE_OFF_TRAIT = 0xA56CE1B1
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_BREASTS_SIM_IS_FEMALE_AND_DOES_NOT_HAVE_THE_BREASTS_FORCE_OFF_TRAIT = 0xAC7D3181
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_BREASTS_SIM_IS_MALE_AND_HAS_THE_BREASTS_FORCE_ON_TRAIT = 0xA8C8C154
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_BREASTS_SIM_IS_MALE_AND_DOES_NOT_HAVE_THE_BREASTS_FORCE_ON_TRAIT = 0x13D008B8
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_BREASTS_SIM_IS_NEITHER_MALE_NOR_FEMALE = 0x90C6DE14
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_OPEN_TO_EXPLORING_THEIR_SEXUALITY = 0x4A28950F
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_IS_NOT_OPEN_TO_EXPLORING_THEIR_SEXUALITY = 0x94013E46
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_NO_INVENTORY = 0x5A77A816
+
+    # Tokens: {0.String} (Object Definition Id)
+    S4CL_FAILED_TO_CREATE_OBJECT_BY_DEFINITION_ID = 0xB85D7B0D
+
+    # Tokens: {0.SimFullName} {1.String} (Motive Id)
+    S4CL_SIM_DID_NOT_HAVE_A_MAPPED_MOTIVE = 0x6BF43E3B
+    # Tokens: {0.SimFullName} {1.String} (Motive Id)
+    S4CL_SIM_DID_NOT_HAVE_MOTIVE = 0xEA70492F
+
+    # Tokens: {0.String} (Motive Id)
+    S4CL_NO_MOTIVE_FOUND_FOR_ID = 0xCE9163D9
+    # Tokens: {0.String} (Motive Id) {1.SimFullName}
+    S4CL_MOTIVE_IS_LOCKED_FOR_SIM = 0x23893DAB
+    # Tokens: {0.String} (Motive Id) {1.SimFullName}
+    S4CL_MOTIVE_IS_NOT_LOCKED_FOR_SIM = 0x018BE02A
+    # Tokens: {0.SimFullName}
+    S4CL_SUCCESSFULLY_SET_ALL_MOTIVES_TO_MAX_FOR_SIM = 0x35F41501
+
+    # Tokens: {0.SimFullName} {1.String} (Posture)
+    S4CL_SIM_DOES_NOT_HAVE_POSTURE = 0x48B28A2D
+    # Tokens: {0.String} (Container) {1.String} (Posture)
+    S4CL_POSTURE_CONTAINER_DOES_NOT_SUPPORT_POSTURE = 0xAFDF4C82
+
+    # Tokens: {0.String} (Container) {1.SimFullName} {2.String} (Posture)
+    S4CL_POSTURE_CONTAINER_REQUIRES_AN_ADJACENT_PART_FOR_SIM_SINCE_POSTURE_IS_MULTI_SIM = 0x80631480
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_HAS_PERMISSION_FOR_PREGNANCIES_NOT_ADULT_OR_ELDER = 0x65D858CE
+
+    # Tokens: {0.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_FOR_PREGNANCIES_NOT_ADULT_OR_ELDER = 0xAB695A78
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_DOES_NOT_HAVE_PERMISSION_FOR_PREGNANCIES_WITH_SIM = 0xF7EA566A
+    # Tokens: {0.SimFullName} {1.SimFullName}
+    S4CL_SIM_IS_NOT_THE_SAME_SPECIES_AS_SIM = 0xDD957DBA
+    S4CL_SIM_HAS_PERMISSION_FOR_PREGNANCIES_WITH_SIM = 0x1A77C1C4
+
+    # Tokens: {0.Sim}
+    S4CL_SIM_IS_ALREADY_IN_A_RABBIT_HOLE = 0x4FB68D79
+    # Tokens: {0.Sim}
+    S4CL_FAILED_TO_PUT_SIM_INTO_A_RABBIT_HOLE = 0x7E8DA035
+
+    # Tokens: {0.Sim}
+    S4CL_SIM_IS_OPEN_TO_RELATIONSHIP_EXPECTATION_CHANGES = 0xFA50B3B1
+    # Tokens: {0.Sim}
+    S4CL_SIM_IS_NOT_OPEN_TO_RELATIONSHIP_EXPECTATION_CHANGES = 0xA9E22A16
+
+    # Tokens: {0.Sim}
+    S4CL_SIM_HAS_EMOTIONAL_EXCLUSIVITY = 0x8C835D60
+    # Tokens: {0.Sim}
+    S4CL_SIM_DOES_NOT_HAVE_EMOTIONAL_EXCLUSIVITY = 0x1C1022C6
+
+    # Tokens: {0.Sim}
+    S4CL_SIM_HAS_PHYSICAL_EXCLUSIVITY = 0xACC861AF
+    # Tokens: {0.Sim}
+    S4CL_SIM_DOES_NOT_HAVE_PHYSICAL_EXCLUSIVITY = 0x057242A5
+
+    # Tokens: {0.Sim}
+    S4CL_SIM_HAS_WOOHOO_EXCLUSIVITY = 0x5AEE56D5
+    # Tokens: {0.Sim}
+    S4CL_SIM_DOES_NOT_HAVE_WOOHOO_EXCLUSIVITY = 0xE3B58C1F
+
+    # Tokens: {0.Sim} {1.String} (Spell)
+    S4CL_SIM_DOES_NOT_KNOW_SPELL = 0x8467BCE8
+
+    # Tokens: {0.Sim} {1.String} (Statistic)
+    S4CL_SIM_HAS_STATISTIC = 0x77DC60A9
+    # Tokens: {0.Sim} {1.String} (Statistic)
+    S4CL_SIM_DOES_NOT_HAVE_STATISTIC = 0x9A3DBC97
+    # Tokens: {0.Sim} {1.String} (Statistic)
+    S4CL_SIM_DOES_NOT_HAVE_STATISTICS = 0x9F72F1F6
+    # Tokens: {0.String} (Statistic) {1.Sim}
+    S4CL_STATISTIC_IS_LOCKED_FOR_SIM = 0xCB2FE60F
+    # Tokens: {0.String} (Statistic) {1.Sim}
+    S4CL_STATISTIC_IS_NOT_LOCKED_FOR_SIM = 0xA53A6CF6
+    # Tokens: {0.String} (Statistic) {1.Sim}
+    S4CL_STATISTIC_LEVEL_SET_ON_SIM = 0x8D6AEE8C
+
+    # Tokens: {0.Sim} {1.String} (Voice Actor)
+    S4CL_SIM_HAS_VOICE_ACTOR = 0x5CFEB452
+    # Tokens: {0.Sim} {1.String} (Voice Actor) {2.String} (Current Voice Actor)
+    S4CL_SIM_DOES_NOT_HAVE_VOICE_ACTOR_IT_WAS_ACTOR = 0x044915B5
+
+    # Tokens: {0.Sim} {1.String} (Voice Pitch)
+    S4CL_SIM_HAS_VOICE_PITCH = 0x5AEDEEA7
+    # Tokens: {0.Sim} {1.String} (Voice Pitch) {2.String} (Current Voice Pitch)
+    S4CL_SIM_DOES_NOT_HAVE_VOICE_PITCH_IT_WAS_PITCH = 0x17E07B92
+
+    # Tokens: {0.Sim}
+    S4CL_FAILED_TO_LOCATE_DEFAULT_MALE_VOICE_ACTOR_FOR_SIM = 0x209ABD10
+    # Tokens: {0.Sim}
+    S4CL_FAILED_TO_LOCATE_DEFAULT_FEMALE_VOICE_ACTOR_FOR_SIM = 0xC8267911
+
+    # Tokens: {0.Sim} {1.String} (Trait)
+    S4CL_SIM_HAS_TRAIT = 0x5BC74107
+    # Tokens: {0.Sim} {1.String} (Trait)
+    S4CL_SIM_DOES_NOT_HAVE_TRAIT = 0x56A94DED
+    # Tokens: {0.Sim} {1.String} (Traits)
+    S4CL_SIM_DOES_NOT_HAVE_TRAITS = 0x1313CABF
+    # Tokens: {0.Sim} {1.String} (Traits)
+    S4CL_SIM_HAS_ALL_TRAITS = 0x6EB0E76E
+    # Tokens: {0.Sim}
+    S4CL_SIM_DOES_NOT_HAVE_ANY_TRAITS = 0x256614CC
+
+    # Tokens: {0.Sim} {1.String} (Traits)
+    S4CL_FAILED_TO_ADD_TRAITS_TO_SIM = 0x84992834
+    # Tokens: {0.Sim} {1.String} (Traits)
+    S4CL_FAILED_TO_REMOVE_TRAITS_FROM_SIM = 0x068E3488
+    # Tokens: {0.Sim}
+    S4CL_TRAITS_WERE_ADDED_TO_SIM_BUT_NONE_WERE_LOADED = 0x030A040A
+    # Tokens: {0.Sim}
+    S4CL_TRAITS_WERE_REMOVED_FROM_SIM_BUT_NONE_WERE_LOADED = 0xC036AD6C
+    # Tokens: {0.Sim}
+    S4CL_SUCCESSFULLY_ADDED_TRAITS_TO_SIM = 0x9485A562
+    # Tokens: {0.Sim}
+    S4CL_SUCCESSFULLY_REMOVED_TRAITS_FROM_SIM = 0x92138E93
+    # Tokens: {0.String} (Trait) {1.String} (Trait) {2.Sim}
+    S4CL_SUCCESSFULLY_SWAP_TRAIT_AND_TRAIT_ON_SIM = 0x73EDC3F2
+    # Tokens: {0.Sim} {1.String} (Trait) {2.String} (Trait)
+    S4CL_SIM_HAD_NEITHER_TRAIT_NOR_TRAIT_TO_SWAP = 0x21B4FF57
+
+    # Tokens: {0.String} (Object) {1.String} (Statistic)
+    S4CL_OBJECT_HAS_STATISTIC = 0x522611E5
+    # Tokens: {0.String} (Object) {1.String} (Statistic)
+    S4CL_OBJECT_DOES_NOT_HAVE_STATISTIC = 0x25E75833
+    # Tokens: {0.String} (Object) {1.String} (Statistics)
+    S4CL_OBJECT_DOES_NOT_HAVE_ANY_STATISTICS = 0x5B6F6BFA
+    # Tokens: {0.String} (Object) {1.String} (Statistic)
+    S4CL_OBJECT_HAS_STATISTIC_LOCKED = 0xF5038611
+    # Tokens: {0.String} (Object) {1.String} (Statistic)
+    S4CL_OBJECT_HAS_STATISTIC_UNLOCKED = 0xE4CF1826
+
+    # Tokens: {0.String} (ParticipantType Subject)
+    S4CL_NO_SUBJECTS_FOUND_FOR_TYPE = 0x0FAF1E80
+    # Tokens: {0.String} (ParticipantType Target)
+    S4CL_NO_TARGETS_FOUND_FOR_TYPE = 0x83301807

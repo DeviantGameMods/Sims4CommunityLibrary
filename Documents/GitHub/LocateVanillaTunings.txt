@@ -1,0 +1,15 @@
+Locate Things In Vanilla Tunings Easier Using PyCharm
+
+To make it simpler to find what you need in the vanilla Sims 4 tunings without having to manually navigate the Extract Tuning window every time, you should extract the EA Tunings into your project:
+1. Create an `EA_Tunings` folder within your PyCharm project. If you are using the S4CL template, you can make it right next to the existing `EA` folder.
+2. Open Sims 4 Studio.
+3. Open the **Extract Tuning** window in Sims 4 Studio (Locate Tools at the top and click on Extract Tuning)
+4. Select the `Use Subfolders` checkbox at the bottom (Make it checked)
+5. Select the `Extract All` checkbox at the bottom (Make it checked)
+6. Hit the `Export` button in the bottom right of the Extract Tuning window.
+7. Find the `EA_Tunings` folder you made in Step 1, highlight it.
+8. Click OK
+9. Wait for a really long time for it to finish. **DO NOT CLOSE THE EXTRACT TUNING WINDOW UNTIL IT IS DONE!**
+10. Once it is done, open your project in PyCharm
+11. Wait for PyCharm to finish indexing (You can see it doing this in the bottom right, it may take a little bit)
+12. Once PyCharm finishes indexing, you can now use the Find In Project window (CTRL+SHIFT+F) to locate whatever your desires within the EA Tuning files!
