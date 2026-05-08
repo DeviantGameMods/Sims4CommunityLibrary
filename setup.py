@@ -69,7 +69,7 @@ setup(
           'docs': [
               'sphinx',
               'sphinx-autopackagesummary',
-              'sphinx_rtd_theme'
+              'sphinx-rtd-theme'
           ]
       },
 )
