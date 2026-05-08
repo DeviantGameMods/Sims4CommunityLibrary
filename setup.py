@@ -68,6 +68,7 @@ setup(
     extras_require={
           'docs': [
               'sphinx',
+              'sphinx-autodoc-typehints',
               'sphinx-autopackagesummary',
               'sphinx-rtd-theme'
           ]

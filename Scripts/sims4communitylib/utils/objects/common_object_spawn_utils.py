@@ -132,7 +132,7 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
             radius=1,\
             on_object_initialize_callback=None,\
             post_object_spawned_callback=None,\
-            **kwargs
+            **kwargs\
         )
 
         Spawn an Object near a location.
