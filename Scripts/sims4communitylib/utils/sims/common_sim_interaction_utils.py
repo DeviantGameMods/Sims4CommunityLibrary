@@ -341,7 +341,7 @@ class CommonSimInteractionUtils(HasClassLog):
             finishing_type=FinishingType.USER_CANCEL,\
             include_interaction_callback=None,\
             source=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Cancel all interactions that a Sim currently has queued or is currently running.
@@ -392,7 +392,7 @@ class CommonSimInteractionUtils(HasClassLog):
             finishing_type=FinishingType.USER_CANCEL,\
             include_interaction_callback=None,\
             source=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Cancel all interactions that a Sim is currently running.
@@ -426,7 +426,7 @@ class CommonSimInteractionUtils(HasClassLog):
             cancel_reason,\
             finishing_type=FinishingType.USER_CANCEL,\
             include_interaction_callback=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Cancel all interactions that a Sim currently has queued.
@@ -458,7 +458,7 @@ class CommonSimInteractionUtils(HasClassLog):
             interaction,\
             cancel_reason,\
             finishing_type=FinishingType.USER_CANCEL,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Cancel an interaction.
@@ -567,7 +567,7 @@ class CommonSimInteractionUtils(HasClassLog):
             picked_object=None,\
             interaction_context=None,\
             skip_if_running=False,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Push an Interaction into the queue of a Sim.
@@ -668,7 +668,7 @@ class CommonSimInteractionUtils(HasClassLog):
             target=None,\
             picked_object=None,\
             interaction_context=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Push a Super Interaction into the queue of a Sim.
@@ -731,7 +731,7 @@ class CommonSimInteractionUtils(HasClassLog):
             target=None,\
             picked_object=None,\
             interaction_context=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Push a Social Mixer Interaction into the queue of a Sim.
@@ -853,7 +853,7 @@ class CommonSimInteractionUtils(HasClassLog):
             mixer_interaction_id,\
             target=None,\
             interaction_context=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Push a Mixer Interaction into the Queue of a Sim.
@@ -962,7 +962,7 @@ class CommonSimInteractionUtils(HasClassLog):
             picked_object=None,\
             interaction_context,\
             skip_if_running=False,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Test to see if an Interaction can be pushed into the queue of a Sim.
@@ -1058,7 +1058,7 @@ class CommonSimInteractionUtils(HasClassLog):
             target=None,\
             picked_object=None,\
             interaction_context=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Test to see if a Super Interaction can be pushed into the queue of a Sim.
@@ -1119,7 +1119,7 @@ class CommonSimInteractionUtils(HasClassLog):
             target=None,\
             picked_object=None,\
             interaction_context=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Test to see if a Social Mixer Interaction can be pushed into the queue of a Sim.
@@ -1234,7 +1234,7 @@ class CommonSimInteractionUtils(HasClassLog):
             mixer_interaction_id,\
             target=None,\
             interaction_context=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Test to see if a Mixer Interaction can be pushed into the Queue of a Sim.
@@ -1332,7 +1332,7 @@ class CommonSimInteractionUtils(HasClassLog):
             run_priority=Priority.High,\
             insert_strategy=QueueInsertStrategy.NEXT,\
             must_run_next=False,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Create an InteractionContext.

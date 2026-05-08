@@ -15,7 +15,7 @@ from ui.ui_dialog_multi_picker import UiMultiPicker
 class CommonUiMultiPicker(UiMultiPicker):
     """CommonUiMultiPicker(\
         *args,\
-        \\*\\*kwargs\
+        **kwargs\
     )
 
     A custom multi picker dialog that enables programmatic creation.

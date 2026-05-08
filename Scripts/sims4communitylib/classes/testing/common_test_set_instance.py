@@ -5,6 +5,8 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 
 Copyright (c) DEVIANTGAMEMODS
 """
+import os
+
 # noinspection PyUnresolvedReferences
 from _sims4_collections import frozendict
 from typing import Any, Dict, Type
@@ -12,6 +14,8 @@ from typing import Any, Dict, Type
 from event_testing.tests import TestSetInstance, CompoundTestList, \
     CompoundTestListLoadingMixin, _get_debug_loaded_tuning_callbak, _verify_tooltip_tuning, TunableTestVariant
 from sims4.tuning.tunable import TunableList
+
+ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 
 
 class CommonTunableTestVariant(TunableTestVariant):
@@ -48,7 +52,8 @@ class CommonTunableTestSetBase(CompoundTestListLoadingMixin):
             ),
             **kwargs
         )
-        self.cache_key = '{}_{}'.format(self.__class__.__name__, self._template.cache_key)
+        if not ON_RTD:
+            self.cache_key = '{}_{}'.format(self.__class__.__name__, self._template.cache_key)
 
     def _get_tunable_test_variant_class(self) -> Type[CommonTunableTestVariant]:
         return self._tunable_test_variant_class

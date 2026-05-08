@@ -48,7 +48,7 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
             on_object_initialize_callback=None,\
             post_object_spawned_callback=None,\
             location_type=ItemLocation.ON_LOT,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Create an Object.
@@ -87,7 +87,7 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
             location,\
             on_object_initialize_callback=None,\
             post_object_spawned_callback=None,\
-            \\*\\*kwargs\
+            **kwargs\
         )
 
         Spawn an Object on the current lot.
