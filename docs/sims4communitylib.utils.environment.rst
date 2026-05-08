@@ -5,7 +5,7 @@ Environment Utilities
 `Business`
 *******************
 
-.. autoclass:: sims4communitylib.utils.neighborhood.common_business_utils.CommonBusinessUtils
+.. autoclass:: sims4communitylib.utils.environment.common_business_utils.CommonBusinessUtils
    :members:
    :undoc-members:
    :show-inheritance:
@@ -14,7 +14,7 @@ Environment Utilities
 `Civic Policies`
 *******************
 
-.. autoclass:: sims4communitylib.utils.neighborhood.common_civic_policy_utils.CommonCivicPolicyUtils
+.. autoclass:: sims4communitylib.utils.environment.common_civic_policy_utils.CommonCivicPolicyUtils
    :members:
    :undoc-members:
    :show-inheritance:

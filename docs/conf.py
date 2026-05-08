@@ -86,7 +86,8 @@ autodoc_mock_imports = [
     'protocolbuffers', '_resourceman', 'enum', 'singletons', 'zone', 'clock', 'date_and_time', 'time_service',
     'scheduling', 'interactions', 'sims', 'paths', 'alarms', 'interactions.base.super_interaction',
     'interactions.base.immediate_interaction', 'interactions.base.interaction', 'interactions.base.mixer_interaction',
-    'interactions.social.social_mixer_interaction', 'interactions.social.social_super_interaction', 'zone_manager'
+    'interactions.social.social_mixer_interaction', 'interactions.social.social_super_interaction', 'zone_manager',
+    'civic_policies', 'family_tree', '_sims4_collections'
 ]
 
 add_module_names = False

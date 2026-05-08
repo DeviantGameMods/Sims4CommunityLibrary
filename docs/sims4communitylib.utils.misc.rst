@@ -199,7 +199,7 @@ Misc Utilities
 `Text`
 *******************
 
-.. autoclass:: sims4communitylib.utils.common_text_utils.CommonTextUtils
+.. autoclass:: sims4communitylib.utils.misc.common_text_utils.CommonTextUtils
    :members:
    :undoc-members:
    :show-inheritance:
