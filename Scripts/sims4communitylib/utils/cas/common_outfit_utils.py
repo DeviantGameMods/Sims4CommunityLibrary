@@ -784,7 +784,7 @@ class CommonOutfitUtils(HasClassLog):
             outfit_filter_flag=DEFAULT,\
             body_type_flags=DEFAULT,\
             ignore_if_exists=False,\
-            **kwargs\
+            \\*\\*kwargs\
         )
 
         Generate an outfit for a Sim for the specified OutfitCategory and Index.

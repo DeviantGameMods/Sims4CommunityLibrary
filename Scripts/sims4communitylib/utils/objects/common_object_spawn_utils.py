@@ -48,7 +48,7 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
             on_object_initialize_callback=None,\
             post_object_spawned_callback=None,\
             location_type=ItemLocation.ON_LOT,\
-            **kwargs\
+            \\*\\*kwargs\
         )
 
         Create an Object.
@@ -87,7 +87,7 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
             location,\
             on_object_initialize_callback=None,\
             post_object_spawned_callback=None,\
-            **kwargs\
+            \\*\\*kwargs\
         )
 
         Spawn an Object on the current lot.
@@ -348,7 +348,7 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
         :type fade_duration: float, optional
         :param immediate: If set to True, fade in will occur immediately. Default is False.
         :type immediate: bool, optional
-        :param additional_channels: A collection of additional channels. The order of the inner tuple is Manager Id, Object Id, and Mask. Default is None.
+        :param additional_channels: A collection of additional channels. The order of the inner tuple is Manager ID, Object ID, and Mask. Default is None.
         :type additional_channels: Iterator[Tuple[int, int, int]], optional
         """
         if game_object is None:
@@ -367,7 +367,7 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
         :type fade_duration: float, optional
         :param immediate: If set to True, fade out will occur immediately. Default is False.
         :type immediate: bool, optional
-        :param additional_channels: A collection of additional channels. The order of the inner tuple is Manager Id, Object Id, and Mask. Default is None.
+        :param additional_channels: A collection of additional channels. The order of the inner tuple is Manager ID, Object ID, and Mask. Default is None.
         :type additional_channels: Iterator[Tuple[int, int, int]], optional
         """
         if game_object is None:
@@ -460,4 +460,3 @@ def _common_destroy_object(output: CommonConsoleCommandOutput, game_object: Game
     else:
         output(f'FAILED: Failed to schedule object {game_object} for destruction.')
     output(f'Done destroying or scheduling the destruction of object {game_object}.')
-

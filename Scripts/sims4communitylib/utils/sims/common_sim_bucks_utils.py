@@ -26,7 +26,7 @@ from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimBucksUtils:
-    """Utilities for bucks. """
+    """Utilities for bucks."""
     @classmethod
     def add_all_perks(cls, sim_info: SimInfo, bucks_type: Union[CommonBucksType, BucksType], no_cost: bool = True, **__) -> CommonExecutionResult:
         """remove_all_perks(sim_info, bucks_type, refund_cost=True, **__)

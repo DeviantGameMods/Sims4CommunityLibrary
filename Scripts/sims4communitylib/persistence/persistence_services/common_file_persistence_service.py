@@ -27,12 +27,12 @@ class CommonFilePersistenceService(CommonPersistenceService):
     :param folder_name: Use to specify a custom file path after the normal file path, example: "The Sims 4/Mods/mod_data/<mod_name>/<folder_name>". Default is None.
     :type folder_name: str, optional
     :param custom_file_name: Use to specify a custom name for the loaded and saved file. example: "The Sims 4/Mods/mod_data/<mod_name>/<custom_file_name>" and if "folder_name" is specified: "The Sims 4/Mods/mod_data/<mod_name>/<folder_name>/<custom_file_name>". Default is None.
-    :type custom_file_name; str, optional
+    :type custom_file_name: str, optional
     :param data_folder_path: Use to specify a custom folder path at the top level for which to save/load data to/from. Default is "Mods/mod_data".
     :type data_folder_path: str, optional
     """
 
-    def __init__(self, per_save: bool=True, per_save_slot: bool=False, folder_name: str=None, custom_file_name: str=None, data_folder_path: str=None) -> None:
+    def __init__(self, per_save: bool = True, per_save_slot: bool = False, folder_name: str = None, custom_file_name: str = None, data_folder_path: str = None) -> None:
         super().__init__()
         self._per_save = per_save
         self._per_save_slot = per_save_slot
@@ -42,7 +42,7 @@ class CommonFilePersistenceService(CommonPersistenceService):
         self._data_folder_path = data_folder_path or CommonLogUtils.get_mod_data_location_path()
 
     # noinspection PyMissingOrEmptyDocstring
-    def load(self, mod_identity: CommonModIdentity, identifier: str=None) -> Dict[str, Any]:
+    def load(self, mod_identity: CommonModIdentity, identifier: str = None) -> Dict[str, Any]:
         file_path = self._file_path(mod_identity, identifier=identifier)
         if not file_path:
             return dict()
@@ -60,7 +60,7 @@ class CommonFilePersistenceService(CommonPersistenceService):
         return loaded_data
 
     # noinspection PyMissingOrEmptyDocstring
-    def save(self, mod_identity: CommonModIdentity, data: Dict[str, Any], identifier: str=None) -> bool:
+    def save(self, mod_identity: CommonModIdentity, data: Dict[str, Any], identifier: str = None) -> bool:
         if not data:
             return False
         file_path = self._file_path(mod_identity, identifier=identifier)
@@ -87,7 +87,7 @@ class CommonFilePersistenceService(CommonPersistenceService):
         return result
 
     # noinspection PyMissingOrEmptyDocstring
-    def remove(self, mod_identity: CommonModIdentity, identifier: str=None) -> bool:
+    def remove(self, mod_identity: CommonModIdentity, identifier: str = None) -> bool:
         file_path = self._file_path(mod_identity, identifier=identifier)
 
         self.log.format_with_message('Loading data.', mod=mod_identity, file_path=file_path)
@@ -99,7 +99,7 @@ class CommonFilePersistenceService(CommonPersistenceService):
         self.log.format_with_message('Data deleted successfully.', file_path=file_path)
         return not os.path.exists(file_path)
 
-    def _file_path(self, mod_identity: CommonModIdentity, identifier: str=None) -> str:
+    def _file_path(self, mod_identity: CommonModIdentity, identifier: str = None) -> str:
         data_name = self._format_data_name(mod_identity, identifier=identifier)
         folder_path = os.path.join(self._data_folder_path, mod_identity.base_namespace.lower())
         if self._folder_name is not None:

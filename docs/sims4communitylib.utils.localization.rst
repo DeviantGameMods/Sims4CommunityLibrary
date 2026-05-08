@@ -17,6 +17,7 @@ LocalizedStrings are created from text inside StringTables within package files.
    :members:
    :undoc-members:
    :show-inheritance:
+   :no-index:
 
 `Colors`
 -----------------------------------------------------------------------------

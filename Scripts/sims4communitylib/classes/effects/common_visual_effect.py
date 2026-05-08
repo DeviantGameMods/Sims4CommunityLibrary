@@ -24,7 +24,7 @@ class CommonVisualEffect(HasLog):
         joint_bone_name='b__Root__',\
         target_actor_id=0,\
         target_joint_bone_name=None,\
-        **kwargs\
+        \\*\\*kwargs\
     )
 
     A visual effect that will play while attached to an object or Sim.

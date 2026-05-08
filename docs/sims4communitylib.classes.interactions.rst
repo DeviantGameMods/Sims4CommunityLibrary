@@ -125,7 +125,4 @@ The main use for this class is to create interactions that occur when clicking o
    :show-inheritance:
 
 
-.. target-notes::
-   :hidden:
-
 .. _`Custom Interaction Tutorial`: https://github.com/DeviantGameMods/Sims4CommunityLibrary/wiki/Custom-Interaction-Tutorial

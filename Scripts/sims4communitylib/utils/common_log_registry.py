@@ -296,7 +296,7 @@ class CommonLog:
             throw=True,\
             update_tokens=True,\
             stack_trace=None,\
-            **kwargs\
+            \\*\\*kwargs\
         )
 
         Log an error message containing pformatted arguments and keyword arguments.

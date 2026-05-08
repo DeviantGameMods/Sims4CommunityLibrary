@@ -58,7 +58,7 @@ class CommonTunableTestSetBase(CompoundTestListLoadingMixin):
             _verify_tooltip_tuning(instance_class, tunable_name, source, test_set)
 
 
-class CommonTunableTestSet(CommonTunableTestSetBase, is_fragment=True):
+class CommonTunableTestSet(CommonTunableTestSetBase):
     """A tunable set of tests."""
     def __init__(self, tunable_test_variant_class: Type[CommonTunableTestVariant] = CommonTunableTestVariant, test_locked_args=None, **kwargs) -> None:
         super().__init__(tunable_test_variant_class=tunable_test_variant_class, test_locked_args=test_locked_args, **kwargs)

@@ -44,7 +44,4 @@ To see the readme and the actual code, take a look at the repository on `Github`
    sims4communitylib.utils
 
 
-.. target-notes::
-   :hidden:
-
 .. _`Github`: https://github.com/DeviantGameMods/Sims4CommunityLibrary
