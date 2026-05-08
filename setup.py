@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='sims4communitylib',
-    version='v1.2.6',
+    version='v3.21',
     packages=['lib.xml', 'lib.xml.dom', 'lib.xml.sax', 'lib.xml.etree', 'lib.xml.parsers', 'lib.html', 'lib.http',
               'lib.json', 'lib.email', 'lib.email.mime', 'lib.urllib', 'lib.xmlrpc', 'lib.logging', 'lib.unittest',
               'lib.unittest.test', 'lib.unittest.test.testmock', 'lib.encodings', 'lib.importlib', 'lib.collections',

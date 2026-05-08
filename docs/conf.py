@@ -62,7 +62,7 @@ exclude_patterns = [
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'classic'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -86,7 +86,7 @@ autodoc_mock_imports = [
     'protocolbuffers', '_resourceman', 'enum', 'singletons', 'zone', 'clock', 'date_and_time', 'time_service',
     'scheduling', 'interactions', 'sims', 'paths', 'alarms', 'interactions.base.super_interaction',
     'interactions.base.immediate_interaction', 'interactions.base.interaction', 'interactions.base.mixer_interaction',
-    'interactions.social.social_mixer_interaction', 'interactions.social.social_super_interaction'
+    'interactions.social.social_mixer_interaction', 'interactions.social.social_super_interaction', 'zone_manager'
 ]
 
 add_module_names = False
