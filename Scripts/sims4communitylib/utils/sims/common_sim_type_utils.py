@@ -20,7 +20,7 @@ from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
 
 
 class CommonSimTypeUtils:
-    """Utilities for determining the type of a Sim. i.e. Player, NPC, Service, etc.
+    """Utilities for determining the type of Sim. i.e. Player, NPC, Service, etc.
 
     """
     _CHILD_DOG_SIM_TYPE_MAPPING: Dict[CommonSimType, CommonSimType] = {
@@ -735,6 +735,7 @@ class CommonSimTypeUtils:
             }
         }
     }
+    # noinspection SpellCheckingInspection
     _SIM_TYPE_TO_SIGNATURE_MAPPING: Dict[CommonSimType, str] = {
         # Human
         # Elder
@@ -2646,7 +2647,7 @@ class CommonSimTypeUtils:
         :type combine_teen_young_adult_and_elder_age: bool, optional
         :param combine_child_dog_types: If set to True, the Child Dog Sim Types will be combined into a single Sim Type, i.e. CHILD_DOG. If set to False, the Child Dog Sim Types will be returned as their more specific values. i.e. CHILD_LARGE_DOG, CHILD_SMALL_DOG, etc. Default is True.
         :type combine_child_dog_types: bool, optional
-        :return: The type of Sim the Sim is or CommonSimType.NONE if no type was found for the Sim.
+        :return: The type of Sim the Sim is or NONE if no type was found for the Sim.
         :rtype: CommonSimType
         """
         if age is None or species is None or occult_type is None:

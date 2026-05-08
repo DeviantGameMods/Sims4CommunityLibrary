@@ -87,7 +87,7 @@ autodoc_mock_imports = [
     'scheduling', 'interactions', 'sims', 'paths', 'alarms', 'interactions.base.super_interaction',
     'interactions.base.immediate_interaction', 'interactions.base.interaction', 'interactions.base.mixer_interaction',
     'interactions.social.social_mixer_interaction', 'interactions.social.social_super_interaction', 'zone_manager',
-    'civic_policies', 'family_tree', '_sims4_collections'
+    'civic_policies', 'family_tree', '_sims4_collections', 'indexed_manager', 'tag'
 ]
 
 add_module_names = False

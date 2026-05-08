@@ -39,7 +39,7 @@ class CommonSimBucksUtils:
         :type sim_info: SimInfo
         :param bucks_type: The Bucks associated with the perks being added.
         :type bucks_type: Union[CommonBucksType, BucksType]
-        :param no_cost: Set True to unlock the perk without spending perk points. Set False to spend perk points to unlock the perk.. Default is False
+        :param no_cost: Set True to unlock the perk without spending perk points. Set False to spend perk points to unlock the perk. Default is False
         :type no_cost: bool, optional
         :return: The result of executing the function. True, if successful. False, if not.
         :rtype: CommonExecutionResult
@@ -244,7 +244,7 @@ class CommonSimBucksUtils:
         :type sim_info: SimInfo
         :param perk: The perk to lock.
         :type perk: Union[BucksPerk, int]
-        :param no_cost: Set True to unlock the perk without spending perk points. Set False to spend perk points to unlock the perk.. Default is False
+        :param no_cost: Set True to unlock the perk without spending perk points. Set False to spend perk points to unlock the perk. Default is False
         :type no_cost: bool, optional
         :return: The result of executing the function. True, if successful. False, if not.
         :rtype: CommonExecutionResult

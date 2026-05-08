@@ -427,9 +427,9 @@ Sim Utilities
    :undoc-members:
    :show-inheritance:
 
-*********************
+*******************************
 `Relationship Expectations`
-*********************
+*******************************
 
 .. autoclass:: sims4communitylib.utils.sims.common_sim_relationship_expectation_utils.CommonSimRelationshipExpectationUtils
    :members:
