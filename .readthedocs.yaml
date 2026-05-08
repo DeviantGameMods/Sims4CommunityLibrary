@@ -22,7 +22,7 @@ sphinx:
 # Optionally, but recommended,
 # declare the Python requirements required to build your documentation
 # See httpsdocs.readthedocs.ioenstableguidesreproducible-builds.html
-# python
-#    install
-#    - requirements docsrequirements.txt
+python:
+   install:
+   - requirements: requirements.txt
         
