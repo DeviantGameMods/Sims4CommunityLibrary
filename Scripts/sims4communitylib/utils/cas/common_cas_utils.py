@@ -28,6 +28,21 @@ ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 if ON_RTD:
     # noinspection PyMissingOrEmptyDocstring
     class OutfitCategory:
+        CURRENT_OUTFIT = -1
+        EVERYDAY = 0
+        FORMAL = 1
+        ATHLETIC = 2
+        SLEEP = 3
+        PARTY = 4
+        BATHING = 5
+        CAREER = 6
+        SITUATION = 7
+        SPECIAL = 8
+        SWIMWEAR = 9
+        HOTWEATHER = 10
+        COLDWEATHER = 11
+        BATUU = 12
+        SMALL_BUSINESS = 13
 
         @classproperty
         def value_to_name(self) -> Dict['OutfitCategory', str]:

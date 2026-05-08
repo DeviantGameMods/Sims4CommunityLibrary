@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="S4CLTestSetInstance" i="snippet" m="sims4communitylib.classes.testing.common_test_set_instance" n="S4CL_TestSetInstance_IsFemale_Actor" s="3655809378604087270">
+  <L n="test">
+    <L>
+      <V t="sim_info">
+        <U n="sim_info">
+          <V n="gender" t="specified">
+            <E n="specified">FEMALE</E>
+          </V>
+          <E n="who">Actor</E>
+        </U>
+      </V>
+    </L>
+  </L>
+</I>

@@ -416,7 +416,7 @@ def _common_set_gender_pref_of_all_male_sims(output: CommonConsoleCommandOutput,
         's4clib.printgenderpreference',
     )
 )
-def _common_get_gender_pref(output: CommonConsoleCommandOutput, gender: CommonGender, preference_type: CommonGenderPreferenceType = CommonGenderPreferenceType.ROMANTIC, sim_info: SimInfo = None):
+def _common_print_gender_pref(output: CommonConsoleCommandOutput, gender: CommonGender, preference_type: CommonGenderPreferenceType = CommonGenderPreferenceType.ROMANTIC, sim_info: SimInfo = None):
     if gender is None:
         return
     if sim_info is None:

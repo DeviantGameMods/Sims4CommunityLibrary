@@ -23,13 +23,13 @@ SettingEnumValueCollectionType = TypeVar('SettingEnumValueCollectionType', bound
 class CommonSettingUtils(Generic[SettingDataStoreType]):
     """ Utilities for settings. """
     @classmethod
-    def get_enum_tuple_setting(cls, key: str, enum_type: Type[SettingEnumType], invalid_enum_value: SettingEnumType) -> Tuple[SettingEnumType]:
+    def get_enum_tuple_setting(cls, key: str, enum_type: Type[SettingEnumType], invalid_enum_value: SettingEnumType) -> Tuple[SettingEnumType, ...]:
         """ Retrieve a setting that is a collection of enum values. """
-        result: Tuple[SettingEnumType] = cls._get_tuple_enum_value(key, enum_type, invalid_enum_value)
+        result: Tuple[SettingEnumType, ...] = cls._get_tuple_enum_value(key, enum_type, invalid_enum_value)
         return result
 
     @classmethod
-    def set_enum_tuple_setting(cls, key: str, value: Tuple[SettingEnumType]):
+    def set_enum_tuple_setting(cls, key: str, value: Tuple[SettingEnumType, ...]):
         """ Set a setting that is a collection of enum values. """
         cls._set_tuple_enum_value(key, value)
 
@@ -80,7 +80,7 @@ class CommonSettingUtils(Generic[SettingDataStoreType]):
         )
 
     @classmethod
-    def _get_tuple_enum_value(cls, key: str, enum_type: Type[SettingEnumType], invalid_enum_value: SettingEnumType) -> Tuple[SettingEnumType]:
+    def _get_tuple_enum_value(cls, key: str, enum_type: Type[SettingEnumType], invalid_enum_value: SettingEnumType) -> Tuple[SettingEnumType, ...]:
         enum_val_list = cls.get_value(
             key,
             encode=lambda _enum_val_list: [_enum_val.name if hasattr(_enum_val, 'name') else _enum_val for _enum_val in _enum_val_list],
@@ -90,7 +90,7 @@ class CommonSettingUtils(Generic[SettingDataStoreType]):
         return result
 
     @classmethod
-    def _set_tuple_enum_value(cls, key: str, value: Tuple[SettingEnumType]) -> None:
+    def _set_tuple_enum_value(cls, key: str, value: Tuple[SettingEnumType, ...]) -> None:
         cls.set_value(
             key,
             value,

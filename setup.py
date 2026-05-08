@@ -40,7 +40,7 @@ setup(
               'tunable_utils', 'visualization', 'zone_modifier', 'call_to_action', 'celebrity_fans', 'lot_decoration',
               'drama_scheduler', 'global_policies', 'server_commands', 'story_progression', 'conditional_layers',
               'household_calendar', 'game_effect_modifier', 'household_milestones', 'open_street_director',
-              'protocolbuffers', 'tests', 'tests.enums', 'tests.enums.enumtypes', 'tests.utils', 'compile',
+              'protocolbuffers', 'tests', 'tests.enums', 'tests.enums.enumtypes', 'tests.utils', 'compile', 'zone_manager',
               'sims4communitylib', 'sims4communitylib.enums', 'sims4communitylib.enums.types',
               'sims4communitylib.enums.enumtypes', 'sims4communitylib.utils', 'sims4communitylib.utils.cas',
               'sims4communitylib.utils.sims', 'sims4communitylib.utils.location', 'sims4communitylib.utils.resources',
@@ -63,7 +63,7 @@ setup(
     license='https://creativecommons.org/licenses/by/4.0/ https://creativecommons.org/licenses/by/4.0/legalcode',
     author='DeviantGameMods',
     author_email='',
-    description='An open source library with a focus on providing utilities and services to the larger Sims 4 modding community. Let\'s not reinvent the wheel! ',
+    description='An open source library with a focus on providing utilities and services to the Sims 4 modding community.',
     long_description=(open('README.md').read() if exists('README.md') else ''),
     extras_require={
           'docs': [

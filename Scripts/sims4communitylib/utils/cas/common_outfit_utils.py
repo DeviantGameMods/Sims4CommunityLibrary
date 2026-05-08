@@ -18,9 +18,6 @@ from sims.sim_info_base_wrapper import SimInfoBaseWrapper
 from sims4.utils import classproperty
 from sims4communitylib.classes.testing.common_test_result import CommonTestResult
 from sims4communitylib.enums.buffs_enum import CommonBuffId
-from sims4communitylib.enums.common_body_slot import CommonBodySlot
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.enums.common_species import CommonSpecies
 from sims4communitylib.enums.strings_enum import CommonStringId
 from sims4communitylib.enums.tags_enum import CommonGameTag
 from sims4communitylib.logging.has_class_log import HasClassLog
@@ -41,6 +38,21 @@ ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 if ON_RTD:
     # noinspection PyMissingOrEmptyDocstring
     class OutfitCategory:
+        CURRENT_OUTFIT = -1
+        EVERYDAY = 0
+        FORMAL = 1
+        ATHLETIC = 2
+        SLEEP = 3
+        PARTY = 4
+        BATHING = 5
+        CAREER = 6
+        SITUATION = 7
+        SPECIAL = 8
+        SWIMWEAR = 9
+        HOTWEATHER = 10
+        COLDWEATHER = 11
+        BATUU = 12
+        SMALL_BUSINESS = 13
 
         @classproperty
         def value_to_name(self) -> Dict['OutfitCategory', str]:
@@ -715,7 +727,7 @@ class CommonOutfitUtils(HasClassLog):
 
     @classmethod
     def set_current_outfit(cls, sim_info: Union[SimInfo, SimInfoBaseWrapper], outfit_category_and_index: Tuple[OutfitCategory, int]):
-        """set_current_outfit(sim_info, outfit_category_and_index)
+        """set_current_outfit(sim_info, outfit_category_and_index, do_spin=False, interaction=None)
 
         Set the current outfit of a Sim to the specified OutfitCategory and Index.
 

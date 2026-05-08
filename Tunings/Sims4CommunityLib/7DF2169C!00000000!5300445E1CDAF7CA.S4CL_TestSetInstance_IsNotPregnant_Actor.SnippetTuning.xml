@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="S4CLTestSetInstance" i="snippet" m="sims4communitylib.classes.testing.common_test_set_instance" n="S4CL_TestSetInstance_IsNotPregnant_Actor" s="5980855476149745610">
+  <L n="test">
+    <L>
+	  <V t="buff">
+	    <U n="buff">
+	      <L n="blacklist">
+            <T>12560<!--buff_Pregnancy_NotShowing--></T>
+            <T>75271<!--buff_Pregnancy_InLabor--></T>
+            <T>12561<!--buff_Pregnancy_Trimester1--></T>
+            <T>97309<!--buff_Pregnancy_Trimester1_HatesChildren--></T>
+            <T>12562<!--buff_Pregnancy_Trimester2--></T>
+            <T>97310<!--buff_Pregnancy_Trimester2_HatesChildren--></T>
+            <T>12563<!--buff_Pregnancy_Trimester3--></T>
+            <T>97311<!--buff_Pregnancy_Trimester3_HatesChildren--></T>
+            <T>113493<!--buff_Pregnancy_NotShowing_Male--></T>
+            <T>102463<!--buff_Pregnancy_InLabor_Male--></T>
+            <T>102464<!--buff_Pregnancy_Trimester1_Male--></T>
+            <T>102465<!--buff_Pregnancy_Trimester2_Male--></T>
+            <T>102466<!--buff_Pregnancy_Trimester3_Male--></T>
+            <T>169230<!--buff_Pregnancy_NotShowing_PetCat--></T>
+            <T>169229<!--buff_Pregnancy_InLabor_PetCat--></T>
+            <T>169232<!--buff_Pregnancy_Trimester1_PetCat--></T>
+            <T>169233<!--buff_Pregnancy_Trimester2_PetCat--></T>
+            <T>169234<!--buff_Pregnancy_Trimester3_PetCat--></T>
+            <T>169250<!--buff_Pregnancy_NotShowing_PetDog--></T>
+            <T>169251<!--buff_Pregnancy_InLabor_PetDog--></T>
+            <T>169249<!--buff_Pregnancy_Trimester1_PetDog--></T>
+            <T>169248<!--buff_Pregnancy_Trimester 2_PetDog--></T>
+            <T>169247<!--buff_Pregnancy_Trimester3_PetDog--></T>
+            <T>323051<!--buff_Pregnancy_HorseBreeding_NotShowing--></T>
+            <T>323055<!--buff_Pregnancy_HorseBreeding_InLabor--></T>
+            <T>323052<!--buff_Pregnancy_HorseBreeding_Trimester1--></T>
+            <T>323053<!--buff_Pregnancy_HorseBreeding_Trimester2--></T>
+            <T>323054<!--buff_Pregnancy_HorseBreeding_Trimester3--></T>
+	      </L>
+	    </U>
+        <E n="subject">Actor</E>
+	  </V>
+    </L>
+  </L>
+</I>
