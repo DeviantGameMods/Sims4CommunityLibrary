@@ -31,7 +31,6 @@ To see the readme and the actual code, take a look at the repository on `Github`
    sims4communitylib.dialogs
    sims4communitylib.dtos
    sims4communitylib.injection
-   sims4communitylib.enums
    sims4communitylib.events
    sims4communitylib.exceptions
    sims4communitylib.logging
