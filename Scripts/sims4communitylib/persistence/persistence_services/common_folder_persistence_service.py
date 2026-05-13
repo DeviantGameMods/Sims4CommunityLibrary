@@ -6,7 +6,7 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) DEVIANTGAMEMODS
 """
 import os
-from typing import Dict, Any
+from typing import Dict, Any, Tuple
 
 from sims4communitylib.mod_support.mod_identity import CommonModIdentity
 from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
@@ -30,6 +30,10 @@ class CommonFolderPersistenceService(CommonPersistenceService):
     :type data_folder_path: str, optional
     :param create_combined_file: If True, after reading through all json files, a combined.json file will be created that will include all other json data. If false, a combined.json file will not be created. Default is false.
     :type create_combined_file: bool, optional
+    :param skip_file_names: A collection of file names to ignore. Default is no items.
+    :type skip_file_names: Tuple[str], optional
+    :param required_file_name_extension: An extension that is required to be at the end of a file name for the file to be loaded. Default is .json.
+    :type required_file_name_extension: str, optional
     """
 
     # noinspection PyMissingOrEmptyDocstring
@@ -39,11 +43,13 @@ class CommonFolderPersistenceService(CommonPersistenceService):
 
     def __init__(
         self,
-        main_file_name: str='main.json',
-        combined_file_name: str='combined.json',
-        allow_duplicates_in_collections: bool=False,
-        data_folder_path: str=None,
-        create_combined_file: bool=False
+        main_file_name: str = 'main.json',
+        combined_file_name: str = 'combined.json',
+        allow_duplicates_in_collections: bool = False,
+        data_folder_path: str = None,
+        create_combined_file: bool = False,
+        skip_file_names: Tuple[str] = (),
+        required_file_name_extension: str = '.json'
     ) -> None:
         super().__init__()
         self._main_file_name = main_file_name
@@ -53,9 +59,11 @@ class CommonFolderPersistenceService(CommonPersistenceService):
         self._data_folder_path = data_folder_path or CommonLogUtils.get_mod_data_location_path()
         from sims4communitylib.s4cl_configuration import S4CLConfiguration
         self._create_combined_file = create_combined_file or S4CLConfiguration().create_combined_json
+        self._skip_file_names = skip_file_names
+        self._required_file_name_extension = required_file_name_extension
 
     # noinspection PyMissingOrEmptyDocstring
-    def load(self, mod_identity: CommonModIdentity, identifier: str=None) -> Dict[str, Any]:
+    def load(self, mod_identity: CommonModIdentity, identifier: str = None) -> Dict[str, Any]:
         # mod_folder_persistence_service
         log = CommonLogRegistry().register_log(mod_identity, '{}_{}'.format(mod_identity.base_namespace, self.log_identifier))
         folder_path = self._folder_path(mod_identity, identifier=identifier)
@@ -87,8 +95,9 @@ class CommonFolderPersistenceService(CommonPersistenceService):
 
         loaded_data: Dict[str, Dict[str, Any]] = CommonJSONIOUtils.load_from_folder(
             folder_path,
-            skip_file_names=(self._main_file_name, self._combined_file_name),
-            on_file_read_failure=_on_file_read_failure
+            skip_file_names=(self._main_file_name, self._combined_file_name, *self._skip_file_names),
+            on_file_read_failure=_on_file_read_failure,
+            required_extension=self._required_file_name_extension
         )
         if loaded_data is None:
             return dict()

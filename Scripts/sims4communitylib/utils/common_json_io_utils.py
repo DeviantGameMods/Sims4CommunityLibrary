@@ -97,7 +97,8 @@ class CommonJSONIOUtils:
         encoding: str='utf-8',
         decoder_class: Type[JSONDecoder]=None,
         object_hook: Callable[[Dict[str, Any]], Any]=None,
-        on_file_read_failure: Callable[[str, Exception], bool]=lambda *_, **__: True
+        on_file_read_failure: Callable[[str, Exception], bool]=lambda *_, **__: True,
+        required_extension: str = None
     ) -> Union[Dict[str, Any], None]:
         """load_from_folder(\
             folder_path,\
@@ -106,7 +107,8 @@ class CommonJSONIOUtils:
             encoding='utf-8',\
             decoder_class=None,\
             object_hook=None,\
-            on_file_read_failure=lambda \*_, \*\*__: True\
+            on_file_read_failure=lambda \*_, \*\*__: True,\
+            required_extension=None\
         )
 
         Deserialize objects from a folder containing JSON files.
@@ -141,7 +143,10 @@ class CommonJSONIOUtils:
         data = dict()
         for entry in os.scandir(folder_path):
             entry: DirEntry = entry
-            if not entry.is_file() or entry.name is None or entry.name in skip_file_names:
+            entry_name = entry.name
+            if not entry.is_file() or entry_name is None or entry_name in skip_file_names:
+                continue
+            if required_extension is not None and not entry_name.endswith(required_extension):
                 continue
             try:
                 file_contents: str = CommonJSONIOUtils.load_from_file(entry.path, buffering=buffering, encoding=encoding, decoder_class=decoder_class, object_hook=object_hook)

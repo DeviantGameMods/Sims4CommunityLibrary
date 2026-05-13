@@ -6,7 +6,7 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) DEVIANTGAMEMODS
 """
 import os
-from typing import Dict, Any
+from typing import Dict, Any, Tuple
 
 from sims4communitylib.mod_support.mod_identity import CommonModIdentity
 from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
@@ -23,6 +23,10 @@ class CommonIndividualFolderPersistenceService(CommonPersistenceService):
     :type main_file_name: str, optional
     :param data_folder_path: Use to specify a custom folder path at the top level for which to save/load data to/from. Default is "Mods/mod_data".
     :type data_folder_path: str, optional
+    :param skip_file_names: A collection of file names to ignore. Default is no items.
+    :type skip_file_names: Tuple[str], optional
+    :param required_file_name_extension: An extension that is required to be at the end of a file name for the file to be loaded. Default is .json.
+    :type required_file_name_extension: str, optional
     """
 
     # noinspection PyMissingOrEmptyDocstring
@@ -33,12 +37,16 @@ class CommonIndividualFolderPersistenceService(CommonPersistenceService):
     def __init__(
         self,
         main_file_name: str = 'main.json',
-        data_folder_path: str = None
+        data_folder_path: str = None,
+        skip_file_names: Tuple[str] = (),
+        required_file_name_extension: str = '.json'
     ) -> None:
         super().__init__()
         self._main_file_name = main_file_name
         from sims4communitylib.utils.common_log_utils import CommonLogUtils
         self._data_folder_path = data_folder_path or CommonLogUtils.get_mod_data_location_path()
+        self._skip_file_names = skip_file_names
+        self._required_file_name_extension = required_file_name_extension
 
     # noinspection PyMissingOrEmptyDocstring
     def load(self, mod_identity: CommonModIdentity, identifier: str = None) -> Dict[str, Dict[str, Any]]:
@@ -67,8 +75,9 @@ class CommonIndividualFolderPersistenceService(CommonPersistenceService):
 
         loaded_data: Dict[str, Dict[str, Any]] = CommonJSONIOUtils.load_from_folder(
             folder_path,
-            skip_file_names=(self._main_file_name,),
-            on_file_read_failure=_on_file_read_failure
+            skip_file_names=(self._main_file_name, *self._skip_file_names),
+            on_file_read_failure=_on_file_read_failure,
+            required_extension=self._required_file_name_extension
         )
         log.format_with_message('Got loaded data.', loaded_data=loaded_data)
         if loaded_data is None:

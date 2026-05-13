@@ -51,7 +51,7 @@ class CommonInjectionUtils:
     def inject_into(target_object: Any, target_function_name: str) -> Callable:
         """inject_into(target_object, target_function_name)
 
-        .. warning:: This function is DEPRECATED.\
+        .. warning:: This function is DEPRECATED.
             Use :func:`~inject_safely_into` instead.
 
         """

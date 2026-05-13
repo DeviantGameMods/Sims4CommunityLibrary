@@ -16,6 +16,7 @@ class CommonBodySlot(CommonIntFlags):
     NONE: 'CommonBodySlot' = 0
     ACNE: 'CommonBodySlot' = 72
     ATTACHMENT_BACK: 'CommonBodySlot' = 88
+    BASE_LAYER: 'CommonBodySlot' = 117
     BIRTHMARK_ARMS: 'CommonBodySlot' = 94
     BIRTHMARK_FACE: 'CommonBodySlot' = 91
     BIRTHMARK_LEGS: 'CommonBodySlot' = 98
@@ -193,6 +194,9 @@ class CommonBodySlot(CommonIntFlags):
             mapping[CommonBodySlot.ACNE] = BodyType.ACNE
         if hasattr(BodyType, 'ATTACHMENT_BACK'):
             mapping[CommonBodySlot.ATTACHMENT_BACK] = BodyType.ATTACHMENT_BACK
+        # noinspection SpellCheckingInspection
+        if hasattr(BodyType, 'BASE_LAYER'):
+            mapping[CommonBodySlot.BASE_LAYER] = BodyType.BASE_LAYER
         # noinspection SpellCheckingInspection
         if hasattr(BodyType, 'BIRTHMARKARMS'):
             mapping[CommonBodySlot.BIRTHMARK_ARMS] = BodyType.BIRTHMARKARMS
@@ -483,6 +487,9 @@ class CommonBodySlot(CommonIntFlags):
         # noinspection SpellCheckingInspection
         if hasattr(BodyType, 'BIRTHMARKARMS'):
             mapping[BodyType.BIRTHMARKARMS] = CommonBodySlot.BIRTHMARK_ARMS
+        # noinspection SpellCheckingInspection
+        if hasattr(BodyType, 'BASE_LAYER'):
+            mapping[BodyType.BASE_LAYER] = CommonBodySlot.BASE_LAYER
         # noinspection SpellCheckingInspection
         if hasattr(BodyType, 'BIRTHMARKFACE'):
             mapping[BodyType.BIRTHMARKFACE] = CommonBodySlot.BIRTHMARK_FACE
