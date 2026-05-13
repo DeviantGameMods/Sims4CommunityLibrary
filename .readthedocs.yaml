@@ -11,8 +11,8 @@ build:
     python: "3.7"
   jobs:
     install:
-      - pip install sphinx<2
-      - pip install sphinx-rtd-theme<0.5
+      - pip install sphinx==1.8.5
+      - pip install sphinx-rtd-theme==0.4.3
       - pip install sphinx-autodoc-typehints
 
 # Build documentation in the docs directory with Sphinx
