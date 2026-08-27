@@ -1,3 +1,20 @@
+v3.22:
+- Fixed issues causing the documentation to not render properly.
+- Updated CommonBodySlot with the new BASE_LAYER slot.
+- The CommonFolderPersistenceService and CommonIndividualFolderPersistenceService now adds the ability to specify file extension types that can be read as well as files to skip when reading from the folder.
+- CommonJSONIOUtils.load_from_folder now allows providing a file extension to only load files with that extension.
+- Added a fix for errors when registering custom milestones
+- Added custom filter terms with added test set instances for better sim filtering
+- Added a property for accessing the hide tooltip option on CommonExecutionResult
+- Added DYNASTY_PERK and NOBILITY_PERK bucks types to CommonBucksType
+- Setting fame level via command now ignores a locked fame level.
+- Added a function for creating a Date and Time object set in the future to CommonTimeUtils
+- Setting motive levels via CommonSimMotiveUtils.set_motive_level now allows ignoring locked motives.
+- Setting the pregnancy stat on Sims to a value now ignores a locked pregnancy stat.
+- Fixed an issue when loading bucks types with invalid bucks types.
+- Setting statistic values now allows ignoring locked status of the statistic in CommonSimStatisticUtils
+
+
 v3.21:
 - Added CommonBitwiseUtils.to_flags function to convert a collection into flags
 - Added a command to reset the bathing outfit of Sims to the original parts
