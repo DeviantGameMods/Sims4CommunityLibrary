@@ -192,5 +192,5 @@ def _common_set_fame_level(output: CommonConsoleCommandOutput, fame_level: int, 
     }
 
     fame_level_value = fame_level_mapping.get(fame_level)
-    CommonSimStatisticUtils.set_statistic_value(sim_info, CommonStatisticId.RANKED_FAME, fame_level_value)
+    CommonSimStatisticUtils.set_statistic_value(sim_info, CommonStatisticId.RANKED_FAME, fame_level_value, ignore_locked=True)
     output('Done')

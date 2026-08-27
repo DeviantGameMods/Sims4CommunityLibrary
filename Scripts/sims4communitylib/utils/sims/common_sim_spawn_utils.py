@@ -2166,18 +2166,20 @@ class CommonSimSpawnUtils:
         bucks_list = list()
         for bucks_type in CommonBucksType.get_all():
             vanilla_bucks_type = CommonBucksType.convert_to_vanilla(bucks_type)
+            if vanilla_bucks_type is None:
+                continue
             bucks_data = dict()
             bucks_data['bucks_type'] = bucks_type.name
             bucks_data['amount'] = bucks_tracker._bucks.get(vanilla_bucks_type, 0)
             bucks_perk_data = list()
-            for (perk, perk_data) in bucks_tracker._unlocked_perks[vanilla_bucks_type].items():
+            for (perk, perk_data) in bucks_tracker._unlocked_perks.get(vanilla_bucks_type, dict()).items():
                 unlocked_perks_data = dict()
                 unlocked_perks_data['perk_id'] = perk.guid64
                 unlocked_perks_data['currently_unlocked'] = perk_data.currently_unlocked
                 if perk_data.unlocked_by is not None:
                     unlocked_perks_data['unlock_reason'] = perk_data.unlocked_by.guid64
-                if perk in bucks_tracker._inactive_perk_timers[vanilla_bucks_type]:
-                    unlocked_perks_data['time_left'] = bucks_tracker._inactive_perk_timers[vanilla_bucks_type][perk]
+                if perk in bucks_tracker._inactive_perk_timers.get(vanilla_bucks_type, dict()):
+                    unlocked_perks_data['time_left'] = bucks_tracker._inactive_perk_timers.get(vanilla_bucks_type, dict()).get(perk, 0)
                 bucks_perk_data.append(unlocked_perks_data)
             bucks_data['perk_data'] = bucks_perk_data
             bucks_list.append(bucks_data)
@@ -2399,7 +2401,7 @@ class CommonSimSpawnUtils:
                 continue
             if category.name not in outfits_by_category:
                 outfits_by_category[category.name] = list()
-            outfits_list = outfits_by_category[category.name]
+            outfits_list = outfits_by_category.get(category.name, list())
             outfit_data = dict()
             # noinspection PyUnresolvedReferences
             body_types_list: Outfits_pb2.BodyTypesList = outfit.body_types_list

@@ -187,11 +187,13 @@ class CommonSimStatisticUtils(_HasS4CLClassLog):
         try:
             if not CommonComponentUtils.has_component(sim_info, CommonComponentType.STATISTIC):
                 if not add:
+                    cls.get_log().format_with_message('Sim does not have the statistic component.', sim=sim_info)
                     return -1.0
                 else:
                     CommonComponentUtils.add_dynamic_component(sim_info, CommonComponentType.STATISTIC)
             statistic_component: StatisticComponent = CommonComponentUtils.get_component(sim_info, CommonComponentType.STATISTIC, add_dynamic=add_dynamic)
             if statistic_component is None:
+                cls.get_log().format_with_message('Statistic component was None.', sim=sim_info)
                 return -1.0
             return statistic_component.get_stat_value(statistic_instance)
         except Exception as ex:
@@ -199,8 +201,8 @@ class CommonSimStatisticUtils(_HasS4CLClassLog):
 
     # noinspection PyUnusedLocal
     @classmethod
-    def set_statistic_value(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], value: float, add_dynamic: bool = True, add: bool = True) -> CommonExecutionResult:
-        """set_statistic_value(sim_info, statistic, value, add_dynamic=True, add=True)
+    def set_statistic_value(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], value: float, add_dynamic: bool = True, add: bool = True, ignore_locked: bool = False) -> CommonExecutionResult:
+        """set_statistic_value(sim_info, statistic, value, add_dynamic=True, add=True, ignore_locked=False)
 
         Set the Value of a Statistic for the specified Sim.
 
@@ -212,29 +214,40 @@ class CommonSimStatisticUtils(_HasS4CLClassLog):
         :type value: float
         :param add_dynamic: OBSOLETE: Add the statistic component to the Sim. This argument is no longer used and will be ignored.
         :type add_dynamic: bool, optional
-        :param add: Whether or not to add the statistic to the Sim.
+        :param add: Whether to add the statistic to the Sim.
         :type add: bool, optional
+        :param ignore_locked: Whether to ignore if a statistic is locked. If True, if the Statistic is locked, we will still change the value. If False, we will always check if the statistic is locked before changing it.
+        :type ignore_locked: bool, optional
         :return: The result of setting the statistic value. True, if successful. False, if not.
         :rtype: CommonExecutionResult
         """
         if sim_info is None:
             cls.get_log().format_with_message('sim_info was None!', statistic=statistic, sim=sim_info)
             return CommonExecutionResult(False, reason='sim_info was None.', hide_tooltip=True)
-        result = cls.is_statistic_locked(sim_info, statistic, add=add)
-        if result:
-            cls.get_log().format_with_message('Statistic is locked and thus cannot be set.', statistic=statistic, sim=sim_info)
-            return result
+        if not ignore_locked:
+            result = cls.is_statistic_locked(sim_info, statistic, add=add)
+            if result:
+                cls.get_log().format_with_message('Statistic is locked and thus cannot be set.', statistic=statistic, sim=sim_info)
+                return result
         statistic_instance = CommonStatisticUtils.load_statistic_by_id(statistic)
         if statistic_instance is None:
             cls.get_log().format_with_message('No statistic found when setting value.', statistic=statistic, sim=sim_info)
             return CommonExecutionResult(False, reason='The specified statistic did not exist.', hide_tooltip=True)
-        sim_info.set_stat_value(statistic_instance, value)
+        if not CommonComponentUtils.has_component(sim_info, CommonComponentType.STATISTIC):
+            cls.get_log().format_with_message('No stat component found on Sim, adding it.', sim=sim_info)
+            CommonComponentUtils.add_dynamic_component(sim_info, CommonComponentType.STATISTIC)
+        statistic_component: StatisticComponent = CommonComponentUtils.get_component(sim_info, CommonComponentType.STATISTIC, add_dynamic=add_dynamic)
+        if statistic_component is None:
+            cls.get_log().format_with_message('Statistic component was None.', sim=sim_info)
+            return CommonExecutionResult(False, reason=f'Statistic component failed to be added to {sim_info}.')
+        cls.get_log().format_with_message('Setting statistic value.', sim=sim_info, value=value)
+        statistic_component.set_stat_value(statistic_instance, value)
         return CommonExecutionResult.TRUE
 
     # noinspection PyUnusedLocal
     @classmethod
-    def set_statistic_value_to_max(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], add_dynamic: bool = True, add: bool = True) -> CommonExecutionResult:
-        """set_statistic_value_to_max(sim_info, statistic, add_dynamic=True, add=True)
+    def set_statistic_value_to_max(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], add_dynamic: bool = True, add: bool = True, ignore_locked: bool = False) -> CommonExecutionResult:
+        """set_statistic_value_to_max(sim_info, statistic, add_dynamic=True, add=True, ignore_locked=False)
 
         Set the Value of a Statistic for the specified Sim to its max value.
 
@@ -246,14 +259,16 @@ class CommonSimStatisticUtils(_HasS4CLClassLog):
         :type add_dynamic: bool, optional
         :param add: Whether to add the statistic to the Sim.
         :type add: bool, optional
+        :param ignore_locked: Whether to ignore if a statistic is locked. If True, if the Statistic is locked, we will still change the value. If False, we will always check if the statistic is locked before changing it.
+        :type ignore_locked: bool, optional
         :return: The result of setting the statistic value. True, if successful. False, if not.
         :rtype: CommonExecutionResult
         """
-        return cls.set_statistic_value(sim_info, statistic, CommonStatisticUtils.get_statistic_max_value(statistic), add_dynamic=add_dynamic, add=add)
+        return cls.set_statistic_value(sim_info, statistic, CommonStatisticUtils.get_statistic_max_value(statistic), add_dynamic=add_dynamic, add=add, ignore_locked=ignore_locked)
 
     # noinspection PyUnusedLocal
     @classmethod
-    def set_statistic_level(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], value: float, add: bool = True) -> CommonExecutionResult:
+    def set_statistic_level(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], value: float, add: bool = True, ignore_locked: bool = False) -> CommonExecutionResult:
         """set_statistic_level(sim_info, statistic, value, add_dynamic=True, add=True)
 
         Set the Level of a Statistic for the specified Sim.
@@ -264,17 +279,19 @@ class CommonSimStatisticUtils(_HasS4CLClassLog):
         :type statistic: Union[int, CommonStatisticId, BaseStatistic]
         :param value: The level to set the statistic to.
         :type value: float
-        :param add: Whether or not to add the statistic to the Sim.
+        :param add: Whether to add the statistic to the Sim.
         :type add: bool, optional
+        :param ignore_locked: Whether to ignore if a statistic is locked. If True, if the Statistic is locked, we will still change the value. If False, we will always check if the statistic is locked before changing it.
+        :type ignore_locked: bool, optional
         :return: The result of setting the statistic level. True, if successful. False, if not successful.
         :rtype: CommonExecutionResult
         """
-        return cls.set_statistic_user_value(sim_info, statistic, value, add=add)
+        return cls.set_statistic_user_value(sim_info, statistic, value, add=add, ignore_locked=ignore_locked)
 
     # noinspection PyUnusedLocal
     @classmethod
-    def set_statistic_user_value(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], value: float, add_dynamic: bool = True, add: bool = True) -> CommonExecutionResult:
-        """set_statistic_user_value(sim_info, statistic, value, add_dynamic=True, add=True)
+    def set_statistic_user_value(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], value: float, add_dynamic: bool = True, add: bool = True, ignore_locked: bool = False) -> CommonExecutionResult:
+        """set_statistic_user_value(sim_info, statistic, value, add_dynamic=True, add=True, ignore_locked=False)
 
         Set the User Value of a Statistic for the specified Sim.
 
@@ -286,18 +303,21 @@ class CommonSimStatisticUtils(_HasS4CLClassLog):
         :type value: float
         :param add_dynamic: OBSOLETE: Add the statistic component to the Sim. This argument is no longer used and will be ignored.
         :type add_dynamic: bool, optional
-        :param add: Whether or not to add the statistic to the Sim.
+        :param add: Whether to add the statistic to the Sim.
         :type add: bool, optional
+        :param ignore_locked: Whether to ignore if a statistic is locked. If True, if the Statistic is locked, we will still change the value. If False, we will always check if the statistic is locked before changing it.
+        :type ignore_locked: bool, optional
         :return: True, if successful. False, if not successful.
         :rtype: bool
         """
         if sim_info is None:
             cls.get_log().format_with_message('sim_info was None!', statistic=statistic, sim=sim_info)
             return CommonExecutionResult(False, reason='sim_info was None.', hide_tooltip=True)
-        result = cls.is_statistic_locked(sim_info, statistic, add=add)
-        if result:
-            cls.get_log().format_with_message('Statistic is locked and thus cannot be set.', statistic=statistic, sim=sim_info)
-            return result
+        if not ignore_locked:
+            result = cls.is_statistic_locked(sim_info, statistic, add=add)
+            if result:
+                cls.get_log().format_with_message('Statistic is locked and thus cannot be set.', statistic=statistic, sim=sim_info)
+                return result
         statistic_instance = cls.get_statistic(sim_info, statistic, add=add)
         if statistic_instance is None:
             cls.get_log().format_with_message('No statistic found on Sim when setting statistic user value.', statistic=statistic, sim=sim_info)
@@ -307,8 +327,8 @@ class CommonSimStatisticUtils(_HasS4CLClassLog):
 
     # noinspection PyUnusedLocal
     @classmethod
-    def add_statistic_value(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], value: float, add_dynamic: bool = True, add: bool = True) -> CommonExecutionResult:
-        """add_statistic_value(sim_info, statistic, value, add_dynamic=True, add=True)
+    def add_statistic_value(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic], value: float, add_dynamic: bool = True, add: bool = True, ignore_locked: bool = False) -> CommonExecutionResult:
+        """add_statistic_value(sim_info, statistic, value, add_dynamic=True, add=True, ignore_locked=False)
 
         Change the Value of a Statistic for the specified Sim.
 
@@ -320,14 +340,16 @@ class CommonSimStatisticUtils(_HasS4CLClassLog):
         :type value: float
         :param add_dynamic: OBSOLETE: Add the statistic component to the Sim. This argument is no longer used and will be ignored.
         :type add_dynamic: bool, optional
-        :param add: Whether or not to add the statistic to the Sim.
+        :param add: Whether to add the statistic to the Sim.
         :type add: bool, optional
+        :param ignore_locked: Whether to ignore if a statistic is locked. If True, if the Statistic is locked, we will still change the value. If False, we will always check if the statistic is locked before changing it.
+        :type ignore_locked: bool, optional
         :return: The result of setting the statistic value. True, if successful. False, if not.
         :rtype: CommonExecutionResult
         """
         if sim_info is None:
             raise AssertionError('Argument sim_info was None')
-        return cls.set_statistic_value(sim_info, statistic, cls.get_statistic_value(sim_info, statistic) + value, add=add)
+        return cls.set_statistic_value(sim_info, statistic, cls.get_statistic_value(sim_info, statistic) + value, add=add, ignore_locked=ignore_locked)
 
     @classmethod
     def remove_statistic(cls, sim_info: SimInfo, statistic: Union[int, CommonStatisticId, BaseStatistic]) -> bool:
@@ -516,7 +538,7 @@ def _common_set_statistic_value(output: CommonConsoleCommandOutput, statistic: T
     if sim_info is None:
         return
     output(f'Attempting to set statistic {statistic} on Sim {sim_info} to value {value}.')
-    if CommonSimStatisticUtils.set_statistic_value(sim_info, CommonStatisticUtils.get_statistic_id(statistic), value):
+    if CommonSimStatisticUtils.set_statistic_value(sim_info, CommonStatisticUtils.get_statistic_id(statistic), value, ignore_locked=True):
         output(f'SUCCESS: Successfully set statistic {statistic} of Sim {sim_info} to value {value}.')
     else:
         output(f'FAILED: Failed to set statistic {statistic} of Sim {sim_info} to value {value}')

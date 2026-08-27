@@ -33,6 +33,8 @@ class CommonBucksType(CommonInt):
     BUSINESS_PERK: 'CommonBucksType' = ...
     CUSTOMER_SATISFACTION: 'CommonBucksType' = ...
     FAIRY_PERK: 'CommonBucksType' = ...
+    DYNASTY_PERK: 'CommonBucksType' = ...
+    NOBILITY_PERK: 'CommonBucksType' = ...
 
     @classmethod
     def get_all(cls, exclude_values: Iterator['CommonBucksType'] = None) -> Tuple['CommonBucksType']:
@@ -132,6 +134,10 @@ class CommonBucksType(CommonInt):
             mapping[CommonBucksType.CUSTOMER_SATISFACTION] = BucksType.CustomerSatisfactionBucks
         if hasattr(BucksType, 'FairyPerkBucks'):
             mapping[CommonBucksType.FAIRY_PERK] = BucksType.FairyPerkBucks
+        if hasattr(BucksType, 'DynastyPerkBucks'):
+            mapping[CommonBucksType.DYNASTY_PERK] = BucksType.DynastyPerkBucks
+        if hasattr(BucksType, 'NobilityPerksBucks'):
+            mapping[CommonBucksType.NOBILITY_PERK] = BucksType.NobilityPerksBucks
         return mapping.get(value, None)
 
     @staticmethod
@@ -188,6 +194,10 @@ class CommonBucksType(CommonInt):
             mapping[BucksType.CustomerSatisfactionBucks] = CommonBucksType.CUSTOMER_SATISFACTION
         if hasattr(BucksType, 'FairyPerkBucks'):
             mapping[BucksType.FairyPerkBucks] = CommonBucksType.FAIRY_PERK
+        if hasattr(BucksType, 'DynastyPerkBucks'):
+            mapping[BucksType.DynastyPerkBucks] = CommonBucksType.DYNASTY_PERK
+        if hasattr(BucksType, 'NobilityPerksBucks'):
+            mapping[BucksType.NobilityPerksBucks] = CommonBucksType.NOBILITY_PERK
         return mapping.get(value, value)
 
     @staticmethod

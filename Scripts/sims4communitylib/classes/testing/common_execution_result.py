@@ -83,6 +83,11 @@ class CommonExecutionResult(TestResult):
         self._success = success_override
 
     @property
+    def hide_tooltip(self) -> bool:
+        """Whether the tooltip is hidden or not."""
+        return self._hide_tooltip
+
+    @property
     def tooltip_text(self) -> Union[int, str, LocalizedString, CommonStringId, CommonLocalizedStringSeparator, CommonLocalizationUtils.LocalizedTooltip]:
         """The text of the tooltip."""
         return self._tooltip_text

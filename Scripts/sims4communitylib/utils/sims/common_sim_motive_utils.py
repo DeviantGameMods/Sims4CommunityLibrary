@@ -68,8 +68,8 @@ class CommonSimMotiveUtils(_HasS4CLClassLog):
         return CommonSimStatisticUtils.has_statistic(sim_info, mapped_motive_id)
 
     @classmethod
-    def set_motive_level(cls, sim_info: SimInfo, motive_id: Union[CommonMotiveId, CommonInt, int], level: float) -> CommonExecutionResult:
-        """set_motive_level(sim_info, motive_id, level)
+    def set_motive_level(cls, sim_info: SimInfo, motive_id: Union[CommonMotiveId, CommonInt, int], level: float, ignore_locked: bool = False) -> CommonExecutionResult:
+        """set_motive_level(sim_info, motive_id, level, ignore_locked=False)
 
         Set the current level of a Motive on a Sim.
 
@@ -79,6 +79,8 @@ class CommonSimMotiveUtils(_HasS4CLClassLog):
         :type motive_id: Union[CommonMotiveId, CommonInt, int]
         :param level: The amount to set the motive level to.
         :type level: float
+        :param ignore_locked: Whether to ignore if a motive is locked. If True, if the motive is locked, we will still change the value. If False, we will always check if the motive is locked before changing it.
+        :type ignore_locked: bool, optional
         :return: The result of setting the motive level. True, if the specified Motive was changed successfully. False, if not.
         :rtype: CommonExecutionResult
         """
@@ -91,10 +93,10 @@ class CommonSimMotiveUtils(_HasS4CLClassLog):
             return CommonTestResult(False, reason=f'{sim_info} did not have a mapped motive {motive_id}', tooltip_text=CommonStringId.S4CL_SIM_DID_NOT_HAVE_A_MAPPED_MOTIVE, tooltip_tokens=(sim_info, str(motive_id)))
         if not cls.has_motive(sim_info, motive_id):
             return CommonExecutionResult(False, reason=f'{sim_info} does not have motive {motive_id}.', tooltip_text=CommonStringId.S4CL_SIM_DID_NOT_HAVE_MOTIVE, tooltip_tokens=(sim_info, str(motive_id)))
-        if cls.is_motive_locked(sim_info, motive_id):
+        if not ignore_locked and cls.is_motive_locked(sim_info, motive_id):
             return CommonExecutionResult(True, reason='The motive is currently locked.', hide_tooltip=True)
         cls.get_log().format_with_message('Mapped motive id, setting the level for it on Sim.', motive_id=motive_id, mapped_motive_id=mapped_motive_id, level=level, sim=sim_info)
-        return CommonSimStatisticUtils.set_statistic_value(sim_info, mapped_motive_id, level, add=True)
+        return CommonSimStatisticUtils.set_statistic_value(sim_info, mapped_motive_id, level, add=True, ignore_locked=ignore_locked)
 
     @classmethod
     def get_motive_level(cls, sim_info: SimInfo, motive_id: Union[CommonMotiveId, CommonInt, int]) -> float:

@@ -454,7 +454,33 @@ class CommonTimeUtils:
     def create_date_and_time(minutes: int = 0, hours: int = 0, days: int = 0) -> DateAndTime:
         """create_date_and_time(minutes=0, hours=0, days=0)
 
-        Create a date and time that takes place a number of Sim minutes, hours, or days in the future.
+        Create a date and time that takes place at a certain time of Sim minutes, hours, or days.
+
+        ..note:: For scheduling, it is recommended to use a future date instead.
+
+        :param minutes: The Sim minutes the date and time will be set at. Default is 0 Sim minutes.
+        :type minutes: int, optional
+        :param hours: The Sim hours the date and time will be set at. Default is 0 Sim hours.
+        :type hours: int, optional
+        :param days: The Sim days the date and time will be set at. Default is 0 Sim days.
+        :type days: int, optional
+        :return: A date and time that will take place at a certain time of Sim minutes, hours, and days.
+        :rtype: DateAndTime
+        """
+        from date_and_time import create_date_and_time
+        if minutes < 0:
+            minutes = 0
+        if hours < 0:
+            hours = 0
+        if days < 0:
+            days = 0
+        return create_date_and_time(days=days, hours=hours, minutes=minutes)
+
+    @staticmethod
+    def create_future_date_and_time(minutes: int = 0, hours: int = 0, days: int = 0) -> DateAndTime:
+        """create_future_date_and_time(minutes=0, hours=0, days=0)
+
+        Create a date and time that takes place a number of minutes, hours, or days in the future from the current date time.
 
         :param minutes: A number of Sim minutes in the future the date and time will be set at. Default is 0 Sim minutes.
         :type minutes: int, optional
@@ -462,11 +488,21 @@ class CommonTimeUtils:
         :type hours: int, optional
         :param days: A number of Sim days in the future the date and time will be set at. Default is 0 Sim days.
         :type days: int, optional
-        :return: A date and time that will occur a number of Sim minutes, hours, or days in the future.
+        :return: A date and time that will occur a number of Sim minutes, hours, or days in the future from the current date time.
         :rtype: DateAndTime
         """
-        from date_and_time import create_date_and_time
-        return create_date_and_time(days=days, hours=hours, minutes=minutes)
+        if minutes < 0:
+            minutes = 0
+        if hours < 0:
+            hours = 0
+        if days < 0:
+            days = 0
+        current_date_and_time = CommonTimeUtils.get_current_date_and_time()
+        return CommonTimeUtils.create_date_and_time(
+            days=current_date_and_time.day() + days,
+            hours=current_date_and_time.hour() + hours,
+            minutes=current_date_and_time.minute() + minutes
+        )
 
     @staticmethod
     def convert_milliseconds_to_seconds(milliseconds: float) -> float:

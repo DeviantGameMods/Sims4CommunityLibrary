@@ -211,7 +211,7 @@ class CommonSimPregnancyUtils(HasClassLog):
         pregnancy_tracker.clear_pregnancy_visuals()
         pregnancy_stat = cls.determine_pregnancy_statistic(sim_info)
         if pregnancy_stat is not None:
-            CommonSimStatisticUtils.set_statistic_value(sim_info, pregnancy_stat, 1.0)
+            CommonSimStatisticUtils.set_statistic_value(sim_info, pregnancy_stat, 1.0, ignore_locked=True)
         sim = CommonSimUtils.get_sim_instance(sim_info)
         if sim is not None:
             CommonObjectStateUtils.set_object_state(sim, CommonObjectStateValueId.PREGNANT_NOT_SHOWING)
@@ -231,7 +231,7 @@ class CommonSimPregnancyUtils(HasClassLog):
             return False
         pregnancy_stat = cls.determine_pregnancy_statistic(sim_info)
         if pregnancy_stat is not None:
-            CommonSimStatisticUtils.set_statistic_value(sim_info, pregnancy_stat, 100.0)
+            CommonSimStatisticUtils.set_statistic_value(sim_info, pregnancy_stat, 100.0, ignore_locked=True)
         sim = CommonSimUtils.get_sim_instance(sim_info)
         if sim is not None:
             CommonObjectStateUtils.set_object_state(sim, CommonObjectStateValueId.PREGNANT_IN_LABOR)

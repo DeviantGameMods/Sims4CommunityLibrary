@@ -14,3 +14,4 @@ class CommonMatchAllSimsObjectFilter(CommonMatchObjectFilterBase):
     # noinspection PyMissingOrEmptyDocstring
     def matches(self, obj) -> bool:
         return CommonTypeUtils.is_sim_or_sim_info(obj)
+
