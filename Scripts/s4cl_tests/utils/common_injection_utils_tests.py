@@ -50,7 +50,7 @@ class CommonInjectionUtilsTests:
     @staticmethod
     @CommonTestService.test()
     def _should_override_static_method() -> None:
-        @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), FakeClassToBeOverridden, FakeClassToBeOverridden.the_static_method.__name__)
+        @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), FakeClassToBeOverridden, 'the_static_method')
         def _overridden_static_method(*_: Any, **__: Any) -> bool:
             return True
 
@@ -59,7 +59,7 @@ class CommonInjectionUtilsTests:
     @staticmethod
     @CommonTestService.test()
     def _should_override_class_method() -> None:
-        @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), FakeClassToBeOverridden, FakeClassToBeOverridden.the_class_method.__name__)
+        @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), FakeClassToBeOverridden, 'the_class_method')
         def _overridden_class_method(*_: Any, **__: Any) -> bool:
             return True
 
@@ -68,7 +68,7 @@ class CommonInjectionUtilsTests:
     @staticmethod
     @CommonTestService.test()
     def _should_override_instance_method() -> None:
-        @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), FakeClassToBeOverridden, FakeClassToBeOverridden.the_instance_method.__name__)
+        @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), FakeClassToBeOverridden, 'the_instance_method')
         def _overridden_instance_method(*_: Any, **__: Any) -> bool:
             return True
 

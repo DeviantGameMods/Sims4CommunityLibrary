@@ -15,7 +15,7 @@ from sims4communitylib.modinfo import ModInfo
 from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AppearanceModifier.BaseAppearanceModification, AppearanceModifier.BaseAppearanceModification.__init__.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AppearanceModifier.BaseAppearanceModification, '__init__')
 def _common_keep_original_sim_info_around(original, self, *_, **__) -> None:
     original_result = original(self, *_, **__)
 

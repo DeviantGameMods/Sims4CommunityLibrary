@@ -12,7 +12,7 @@ from sims4communitylib.modinfo import ModInfo
 from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AspirationTracker, AspirationTracker.initialize_aspiration.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AspirationTracker, 'initialize_aspiration', handle_exceptions=False)
 def _common_fix_aspiration_traits_staying_after_aspiration_change(original, self, *_, **__) -> Any:
     if hasattr(self, '_old_track') and self._old_track is not None:
         if hasattr(self._old_track, 'provided_traits'):

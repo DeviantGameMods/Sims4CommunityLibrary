@@ -13,7 +13,7 @@ from sims4communitylib.utils.common_log_registry import CommonLogRegistry
 log = CommonLogRegistry().register_log(ModInfo.get_identity(), 'sim_knowledge_log')
 
 if hasattr(SimKnowledge, 'remove_known_trait'):
-    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimKnowledge, SimKnowledge.remove_known_trait.__name__, handle_exceptions=False)
+    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimKnowledge, 'remove_known_trait', handle_exceptions=False)
     def _common_fix_vanilla_remove_known_trait_not_checking_known_traits(original, self: SimKnowledge, trait, *_, **__):
         try:
             if self._known_traits is not None and trait not in self._known_traits:

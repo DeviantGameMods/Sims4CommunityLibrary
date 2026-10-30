@@ -15,7 +15,7 @@ from sims4communitylib.utils.resources.common_interaction_utils import CommonInt
 
 
 # Some interactions cause an error in this function, this is here to catch those errors and provide more information about them.
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Broadcaster, Broadcaster.apply_broadcaster_effect.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Broadcaster, 'apply_broadcaster_effect', handle_exceptions=False)
 def _common_broadcaster_apply(original, self: Broadcaster, *_, **__) -> None:
     try:
         return original(self, *_, **__)

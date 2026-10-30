@@ -12,7 +12,7 @@ from sims4communitylib.modinfo import ModInfo
 from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Posture, Posture.get_registered_asm.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Posture, 'get_registered_asm', handle_exceptions=False)
 def _common_fix_missing_asm_freeze_error(original, self: Posture, *_, **__):
     # noinspection PyBroadException
     try:

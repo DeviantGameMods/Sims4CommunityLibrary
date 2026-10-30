@@ -16,7 +16,7 @@ from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 # This fix resolves the error that EA fails to check for business_data when creating a small business class. So it throws a "sim_id does not exist on NoneType" error inside SmallBusinessManager.__init__.
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), BusinessTracker, BusinessTracker.make_owner.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), BusinessTracker, 'make_owner', handle_exceptions=False)
 def _common_fix_small_business_make_owner(original, self: BusinessTracker, owner_household_id: int, business_zone_id: int, *_, from_load: bool = False, business_data=None, **__) -> Any:
     if hasattr(self, 'business_type') and self.business_type == BusinessType.SMALL_BUSINESS and business_data is None:
         business_data = Business_pb2.SetBusinessData()

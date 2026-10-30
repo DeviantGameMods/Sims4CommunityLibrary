@@ -16,7 +16,7 @@ from sims4communitylib.utils.common_log_registry import CommonLogRegistry
 log = CommonLogRegistry().register_log(ModInfo.get_identity(), 'bucks_fix')
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), BucksTrackerBase, BucksTrackerBase.try_modify_bucks.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), BucksTrackerBase, 'try_modify_bucks')
 def _common_fix_bucks_when_amount_is_float(original, self, bucks_type, amount: Union[int, float], *_, **__):
     # The game can modify game bucks using a float for the amount, this causes a number of issues, especially when trying to save the game.
     # This can be caused due to a Sim being a 5 star celebrity that doubles all Bucks earnings.

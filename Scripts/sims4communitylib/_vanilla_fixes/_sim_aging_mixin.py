@@ -13,7 +13,7 @@ from sims4communitylib.utils.common_log_registry import CommonLogRegistry
 log = CommonLogRegistry().register_log(ModInfo.get_identity(), 'aging_mixin_log')
 
 if hasattr(AgingMixin, 'get_age_transition_data'):
-    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AgingMixin, AgingMixin.get_age_transition_data.__name__)
+    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AgingMixin, 'get_age_transition_data')
     def _common_fix_vanilla_aging_mixin_fox_key_error(original, self: AgingMixin, age, *_, **__):
         try:
             return original(self, age, *_, **__)

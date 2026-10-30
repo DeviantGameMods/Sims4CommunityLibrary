@@ -18,7 +18,7 @@ from statistics.commodity_tracker import CommodityTracker
 log = CommonLogRegistry().register_log(ModInfo.get_identity(), 's4cl_commodity_tracker_error_catcher')
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), CommodityTracker, CommodityTracker.save.__name__, handle_exceptions=True)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), CommodityTracker, 'save', handle_exceptions=True)
 def _common_fix_missing_name_hash(original, self: CommodityTracker, *_, **__) -> Any:
     try:
         return original(self, *_, **__)

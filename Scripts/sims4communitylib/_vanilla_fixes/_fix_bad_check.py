@@ -19,7 +19,7 @@ def _common_fix_bad_check(original, self: TuningAttrCleanupHelper, *_, **__):
     return original(self, *_, **__)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), ApartmentZoneDirectorPlayer, ApartmentZoneDirectorPlayer._register_zone_aspriations_for_sim.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), ApartmentZoneDirectorPlayer, '_register_zone_aspriations_for_sim')
 def _common_fix_bad_check_2(original, self: ApartmentZoneDirectorPlayer, sim_info: SimInfo, *_, **__):
     if sim_info.aspiration_tracker is None:
         return

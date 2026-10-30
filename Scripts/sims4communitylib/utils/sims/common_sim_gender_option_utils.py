@@ -369,20 +369,28 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
         if sim_info is None:
             raise AssertionError('Argument sim_info was None')
         from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
-        CommonTraitUtils.remove_trait(sim_info, CommonTraitId.BREASTS_FORCE_OFF)
-        CommonTraitUtils.remove_trait(sim_info, CommonTraitId.BREASTS_FORCE_ON)
         if has_breasts:
             if CommonGenderUtils.is_male(sim_info):
-                add_trait_result = CommonTraitUtils.add_trait(sim_info, CommonTraitId.BREASTS_FORCE_ON)
-                if not add_trait_result:
-                    return add_trait_result
-                CommonSimEventDispatcherService()._on_sim_change_gender_options_breasts(sim_info)
+                if not CommonTraitUtils.has_trait(sim_info, CommonTraitId.BREASTS_FORCE_ON):
+                    add_trait_result = CommonTraitUtils.add_trait(sim_info, CommonTraitId.BREASTS_FORCE_ON)
+                    if not add_trait_result:
+                        return add_trait_result
+                    CommonSimEventDispatcherService()._on_sim_change_gender_options_breasts(sim_info)
+            else:
+                if CommonTraitUtils.has_trait(sim_info, CommonTraitId.BREASTS_FORCE_OFF):
+                    CommonTraitUtils.remove_trait(sim_info, CommonTraitId.BREASTS_FORCE_OFF)
+                    CommonSimEventDispatcherService()._on_sim_change_gender_options_breasts(sim_info)
         else:
             if CommonGenderUtils.is_female(sim_info):
-                add_trait_result = CommonTraitUtils.add_trait(sim_info, CommonTraitId.BREASTS_FORCE_OFF)
-                if not add_trait_result:
-                    return add_trait_result
-                CommonSimEventDispatcherService()._on_sim_change_gender_options_breasts(sim_info)
+                if not CommonTraitUtils.has_trait(sim_info, CommonTraitId.BREASTS_FORCE_OFF):
+                    add_trait_result = CommonTraitUtils.add_trait(sim_info, CommonTraitId.BREASTS_FORCE_OFF)
+                    if not add_trait_result:
+                        return add_trait_result
+                    CommonSimEventDispatcherService()._on_sim_change_gender_options_breasts(sim_info)
+            else:
+                if CommonTraitUtils.has_trait(sim_info, CommonTraitId.BREASTS_FORCE_ON):
+                    CommonTraitUtils.remove_trait(sim_info, CommonTraitId.BREASTS_FORCE_ON)
+                    CommonSimEventDispatcherService()._on_sim_change_gender_options_breasts(sim_info)
         return CommonExecutionResult.TRUE
 
     @staticmethod

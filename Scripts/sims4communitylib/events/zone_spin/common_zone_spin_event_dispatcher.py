@@ -74,40 +74,40 @@ class CommonZoneSpinEventDispatcher(CommonService):
         CommonEventRegistry.get().dispatch(S4CLZoneManagerStartEvent(zone_manager))
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.load_zone.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'load_zone', handle_exceptions=False)
 def _common_on_early_zone_load(original, self: Zone, *args, **kwargs):
     result = original(self, *args, **kwargs)
     CommonZoneSpinEventDispatcher.get()._on_early_zone_load(self)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.do_zone_spin_up.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'do_zone_spin_up', handle_exceptions=False)
 def _common_on_late_zone_load(original, self: Zone, *args, **kwargs):
     result = original(self, *args, **kwargs)
     CommonZoneSpinEventDispatcher.get()._on_late_zone_load(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.on_teardown.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'on_teardown', handle_exceptions=False)
 def _common_on_zone_teardown(original, self: Zone, client):
     CommonZoneSpinEventDispatcher.get()._on_zone_teardown(self, client)
     return original(self, client)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.save_zone.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'save_zone', handle_exceptions=False)
 def _common_on_zone_save(original, self: Zone, *args, **kwargs):
     CommonZoneSpinEventDispatcher.get()._on_zone_save(self, *args, **kwargs)
     return original(self, *args, **kwargs)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.on_loading_screen_animation_finished.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'on_loading_screen_animation_finished', handle_exceptions=False)
 def _common_on_loading_screen_animation_finished(original, self: Zone, *args, **kwargs):
     original_result = original(self, *args, **kwargs)
     CommonZoneSpinEventDispatcher.get()._on_loading_screen_animation_finished(self)
     return original_result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), ZoneManager, ZoneManager.start.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), ZoneManager, 'start', handle_exceptions=False)
 def _common_on_zone_manager_start(original, self: ZoneManager, *args, **kwargs):
     original_result = original(self, *args, **kwargs)
     CommonZoneSpinEventDispatcher.get()._on_zone_manager_start(self)

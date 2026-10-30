@@ -66,56 +66,56 @@ class CommonGameObjectEventDispatcherService(CommonService):
         CommonEventRegistry.get().dispatch(S4CLGameObjectPreRemovedFromGameObjectInventoryEvent(game_object, removed_object))
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.__init__.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, '__init__', handle_exceptions=False)
 def _common_on_game_object_init(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonGameObjectEventDispatcherService.get()._on_game_object_init(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.load_object.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, 'load_object', handle_exceptions=False)
 def _common_on_game_object_load(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonGameObjectEventDispatcherService.get()._on_game_object_load(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.destroy.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, 'destroy', handle_exceptions=False)
 def _common_on_game_object_load(original, self, *args, **kwargs) -> Any:
     CommonGameObjectEventDispatcherService.get()._on_game_object_destroy(self, *args, **kwargs)
     result = original(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.on_add.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, 'on_add')
 def _common_on_game_object_added(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonGameObjectEventDispatcherService.get()._on_game_object_spawned(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.on_remove.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, 'on_remove')
 def _common_on_game_object_removed(original, self, *args, **kwargs) -> Any:
     CommonGameObjectEventDispatcherService.get()._on_game_object_despawned(self, *args, **kwargs)
     result = original(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.on_added_to_inventory.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, 'on_added_to_inventory')
 def _common_on_game_object_added_to_inventory(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonGameObjectEventDispatcherService.get()._on_game_object_added_to_inventory(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.on_removed_from_inventory.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, 'on_removed_from_inventory')
 def _common_on_game_object_removed_from_inventory(original, self, *args, **kwargs) -> Any:
     CommonGameObjectEventDispatcherService.get()._on_game_object_pre_removed_from_inventory(self, *args, **kwargs)
     result = original(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.on_object_added_to_inventory.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, 'on_object_added_to_inventory', handle_exceptions=False)
 def _common_on_game_object_added_to_game_object_inventory(original, self: GameObject, obj: ScriptObject, *args, **kwargs):
     result = original(self, obj, *args, **kwargs)
     if isinstance(obj, GameObject):
@@ -123,7 +123,7 @@ def _common_on_game_object_added_to_game_object_inventory(original, self: GameOb
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, GameObject.on_object_removed_from_inventory.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), GameObject, 'on_object_removed_from_inventory', handle_exceptions=False)
 def _common_on_game_object_removed_from_game_object_inventory(original, self: GameObject, obj: ScriptObject, *args, **kwargs):
     if isinstance(obj, GameObject):
         CommonGameObjectEventDispatcherService.get()._on_game_object_pre_removed_from_game_object_inventory(self, obj)

@@ -246,7 +246,7 @@ class CommonInteractionEventDispatcherService(CommonService, HasLog):
         return None
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), InteractionQueue, InteractionQueue.run_interaction_gen.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), InteractionQueue, 'run_interaction_gen')
 def _common_on_interaction_run(original, self, timeline: Timeline, interaction: Interaction, *_, **__) -> bool:
     try:
         result = CommonInteractionEventDispatcherService()._on_interaction_pre_run(self, timeline, interaction, *_, **__)
@@ -284,7 +284,7 @@ def _common_on_interaction_run(original, self, timeline: Timeline, interaction: 
     return False
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Interaction, Interaction._trigger_interaction_start_event.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Interaction, '_trigger_interaction_start_event')
 def _common_on_interaction_started(original, self, *_, **__) -> bool:
     try:
         try:
@@ -319,7 +319,7 @@ def _common_on_interaction_started(original, self, *_, **__) -> bool:
     return False
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), InteractionQueue, InteractionQueue.append.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), InteractionQueue, 'append')
 def _common_on_interaction_queued(original, self, interaction: Interaction, *_, **__) -> CommonTestResult:
     try:
         result = CommonInteractionEventDispatcherService()._on_interaction_queued(self, interaction, *_, **__)
@@ -361,7 +361,7 @@ def _common_on_interaction_queued(original, self, interaction: Interaction, *_, 
     ), hide_tooltip=True)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Interaction, Interaction.store_result_for_outcome.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Interaction, 'store_result_for_outcome')
 def _common_on_interaction_outcome(original, self, *_, **__) -> Any:
     try:
         CommonInteractionEventDispatcherService()._on_interaction_outcome(self, *_, **__)
@@ -395,7 +395,7 @@ def _common_on_interaction_outcome(original, self, *_, **__) -> Any:
     return False
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Interaction, Interaction.cancel.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Interaction, 'cancel')
 def _common_on_interaction_cancelled(original, self, *_, **__) -> Any:
     try:
         CommonInteractionEventDispatcherService()._on_interaction_cancelled(self, *_, **__)
@@ -429,7 +429,7 @@ def _common_on_interaction_cancelled(original, self, *_, **__) -> Any:
     return False
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), MixerInteraction, MixerInteraction.cancel.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), MixerInteraction, 'cancel')
 def _common_on_mixer_interaction_cancelled(original, self, *_, **__) -> Any:
     try:
         CommonInteractionEventDispatcherService()._on_mixer_interaction_cancelled(self, *_, **__)
@@ -463,7 +463,7 @@ def _common_on_mixer_interaction_cancelled(original, self, *_, **__) -> Any:
     return False
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SuperInteraction, SuperInteraction.cancel.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SuperInteraction, 'cancel')
 def _common_on_super_interaction_cancelled(original, self, *_, **__) -> Any:
     try:
         CommonInteractionEventDispatcherService()._on_super_interaction_cancelled(self, *_, **__)

@@ -10,7 +10,7 @@ from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 from zone import Zone
 
 if hasattr(Zone, 'register_callback'):
-    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.register_callback.__name__, handle_exceptions=False)
+    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'register_callback', handle_exceptions=False)
     def _common_fix_register_callback_missing_key(original, self: Zone, callback_type, *_, **__):
         if callback_type not in self._zone_state_callbacks:
             return
@@ -18,7 +18,7 @@ if hasattr(Zone, 'register_callback'):
 
 
 if hasattr(Zone, 'unregister_callback'):
-    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.unregister_callback.__name__, handle_exceptions=False)
+    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'unregister_callback', handle_exceptions=False)
     def _common_fix_unregister_callback_missing_key(original, self: Zone, callback_type, *_, **__):
         if callback_type not in self._zone_state_callbacks:
             return

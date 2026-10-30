@@ -13,7 +13,7 @@ from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 
 
 # noinspection PyUnusedLocal,SpellCheckingInspection
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfoTest, SimInfoTest._test_sim_info.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfoTest, '_test_sim_info', handle_exceptions=False)
 def _common_fix_issues_with_missing_death_object_assigned(original, self, *_, **__) -> TestResult:
     if not hasattr(self, 'death_object_assigned'):
         self.death_object_assigned = False

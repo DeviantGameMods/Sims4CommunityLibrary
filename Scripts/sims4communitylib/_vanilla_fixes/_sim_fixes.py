@@ -18,7 +18,7 @@ from traits.trait_tracker import TraitTracker
 log = CommonLogRegistry().register_log(ModInfo.get_identity(), 'sim_fixes_log')
 
 if hasattr(Sim, 'can_see'):
-    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, Sim.can_see.__name__)
+    @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, 'can_see')
     def _common_fix_can_see_error(original, self: Sim, *_, **__):
         try:
             if not hasattr(self, 'los_constraint') or self.los_constraint is None:
@@ -28,7 +28,7 @@ if hasattr(Sim, 'can_see'):
             raise ex
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TraitTracker, TraitTracker._add_default_gender_option_traits.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TraitTracker, '_add_default_gender_option_traits')
 def _common_fix_add_default_gender_option_traits_being_busted(original, self: TraitTracker, *_, **__):
     sim_info = self.get_sim_info_from_provider()
     if sim_info is None:
@@ -60,21 +60,21 @@ def _common_fix_add_default_gender_option_traits_being_busted(original, self: Tr
             self._add_trait(gender_option_trait)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, SimInfo.send_satisfaction_points_update.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, 'send_satisfaction_points_update')
 def _common_fix_missing_satisfaction_tracker_send_satisfaction_points_update(original, self: SimInfo, *_, **__):
     if not self._satisfaction_tracker:
         return
     return original(self, *_, **__)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, SimInfo.apply_satisfaction_points_delta.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, 'apply_satisfaction_points_delta')
 def _common_fix_missing_satisfaction_tracker_apply_satisfaction_points_delta(original, self: SimInfo, *_, **__):
     if not self._satisfaction_tracker:
         return
     return original(self, *_, **__)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, SimInfo.get_satisfaction_points.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, 'get_satisfaction_points')
 def _common_fix_missing_satisfaction_tracker_get_satisfaction_points(original, self: SimInfo, *_, **__):
     if not self._satisfaction_tracker:
         return 0

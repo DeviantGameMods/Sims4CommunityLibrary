@@ -443,19 +443,24 @@ def _s4clib_testing_add_servo_ingredients(output: CommonConsoleCommandOutput, si
         's4clib.give_ingredients',
     )
 )
-def _s4clib_testing_add_object_to_inventory(output: CommonConsoleCommandOutput, recipe: Recipe, sim_info: SimInfo = None):
-    if recipe is None or not isinstance(recipe, Recipe):
+def _s4clib_testing_give_ingredients_for_recipe(output: CommonConsoleCommandOutput, recipe: int, sim_info: SimInfo = None):
+    if recipe is None or (not isinstance(recipe, Recipe) and not isinstance(recipe, int)):
         output(f'No recipe found for {recipe}.')
         return
+    if isinstance(recipe, int):
+        recipe = CommonRecipeUtils.load_recipe_by_guid(recipe)
     output(f'Adding ingredients required to make a {recipe} to inventory of {sim_info}')
     ingredients_list = recipe.use_ingredients.ingredient_list
 
     for ingredient_factory in ingredients_list:
         ingredient_requirement = ingredient_factory()
-        if not hasattr(ingredient_requirement, '_definition'):
+        if not hasattr(ingredient_requirement, 'get_definition'):
+            output('No definition found.')
             continue
+        output(f'Adding ingredient {ingredient_requirement}')
         number_required = ingredient_requirement.count_required
         ingredient_definition = ingredient_requirement.get_definition()
         ingredient_definition_id = ingredient_definition.id
+        output(f'Adding ingredient with id {ingredient_definition.id}')
         CommonSimInventoryUtils.add_to_inventory(sim_info, ingredient_definition_id, number_required)
     output('Done adding object to the inventory of the Sim.')

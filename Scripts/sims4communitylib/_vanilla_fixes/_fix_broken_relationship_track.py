@@ -13,7 +13,7 @@ from sims4communitylib.utils.common_log_registry import CommonLogRegistry
 log = CommonLogRegistry().register_log(ModInfo.get_identity(), 's4cl_missing_visible_test_set')
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), RelationshipTrack, RelationshipTrack._update_visiblity.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), RelationshipTrack, '_update_visiblity', handle_exceptions=False)
 def _common_fix_update_visibility_with_missing_visible_test_set_relationship_track(original, self: RelationshipTrack, *_, **__):
     # Known broken relationship tracks
     relationship_track_id = getattr(self, 'guid64')
@@ -29,7 +29,7 @@ def _common_fix_update_visibility_with_missing_visible_test_set_relationship_tra
     return original(self, *_, **__)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), ObjectRelationshipTrack, ObjectRelationshipTrack._update_visiblity.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), ObjectRelationshipTrack, '_update_visiblity', handle_exceptions=False)
 def _common_fix_update_visibility_with_missing_visible_test_set_object_relationship_track(original, self: ObjectRelationshipTrack, *_, **__):
     relationship_track_id = getattr(self, 'guid64')
     # Known broken relationship tracks

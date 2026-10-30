@@ -43,7 +43,7 @@ class CommonBuildBuyEventDispatcherService(CommonService, HasClassLog):
         return CommonEventRegistry.get().dispatch(S4CLBuildBuyExitEvent(zone))
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.on_build_buy_enter.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'on_build_buy_enter')
 def _common_build_buy_enter(original, self, *args, **kwargs) -> Any:
     try:
         result = original(self, *args, **kwargs)
@@ -54,7 +54,7 @@ def _common_build_buy_enter(original, self, *args, **kwargs) -> Any:
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, Zone.on_build_buy_exit.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Zone, 'on_build_buy_exit')
 def _common_build_buy_exit(original, self, *args, **kwargs) -> Any:
     try:
         result = original(self, *args, **kwargs)

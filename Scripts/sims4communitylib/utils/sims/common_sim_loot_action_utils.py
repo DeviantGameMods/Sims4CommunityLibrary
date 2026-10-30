@@ -177,3 +177,29 @@ def _common_apply_loot_action_to_sim(output: CommonConsoleCommandOutput, loot_ac
             output(f'Failed, no loot action found with id {loot_action_id}')
             return
         output('Failed')
+
+
+@CommonConsoleCommand(
+    ModInfo.get_identity(),
+    's4clib.unlock_all_potion_recipes',
+    'Unlock all the potion recipes for a Sim.',
+    command_arguments=(
+        CommonConsoleCommandArgument('sim_info', 'Sim Id or Name', 'The name or instance id of the Sim to add the ingredients to.', is_optional=True, default_value='Active Sim'),
+    ),
+    command_aliases=(
+        's4clib.give_potion_recipes',
+    )
+)
+def _s4clib_testing_unlock_all_potion_recipes(output: CommonConsoleCommandOutput, sim_info: SimInfo = None):
+    output(f'Unlocking all Cauldron potion recipes for Sim {sim_info}')
+    unlock_loot_action_id = 216256  # loot_Cauldron_Potion_UnlockAllPotions
+    result = CommonSimLootActionUtils.apply_loot_actions_by_id_to_duo_sims(unlock_loot_action_id, sim_info, sim_info)
+    if result:
+        output('Success')
+    else:
+        loot_actions = CommonLootActionUtils.load_loot_actions_by_id(unlock_loot_action_id)
+        if loot_actions is None:
+            output(f'Failed, no loot action found with id {unlock_loot_action_id}')
+            return
+        output('Failed')
+    output('Done.')

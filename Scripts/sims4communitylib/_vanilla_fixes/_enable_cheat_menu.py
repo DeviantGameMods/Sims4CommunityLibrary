@@ -30,7 +30,7 @@ def _common_ensure_shift_held_is_true_when_it_should_be(original, self: Interact
     return original(self, *_, **__)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, Sim.potential_relation_panel_interactions.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, 'potential_relation_panel_interactions')
 def _common_ensure_proper_interactions_appear_in_relationship_panel(original, self: Sim, *args, **kwargs):
     # noinspection PyTypeChecker
     context: InteractionContext = None
@@ -69,7 +69,7 @@ def _common_ensure_proper_interactions_appear_in_relationship_panel(original, se
         yield from original(self, *args, **kwargs)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, Sim.potential_phone_interactions.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, 'potential_phone_interactions')
 def _common_ensure_proper_interactions_appear_in_phone_panel(original, self: Sim, *args, **kwargs):
     # noinspection PyTypeChecker
     context = None

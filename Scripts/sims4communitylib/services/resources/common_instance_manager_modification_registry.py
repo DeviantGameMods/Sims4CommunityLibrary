@@ -68,7 +68,7 @@ class CommonInstanceManagerModificationRegistry(CommonService, _HasS4CLLog):
         return _wrapper
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), InstanceManager, InstanceManager.load_data_into_class_instances.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), InstanceManager, 'load_data_into_class_instances', handle_exceptions=False)
 def _common_modify_instance_manager_on_load_data(original, self: InstanceManager, *_, **__) -> Any:
     result = original(self, *_, **__)
     CommonInstanceManagerModificationRegistry()._try_modify(self)

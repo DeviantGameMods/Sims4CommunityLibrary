@@ -10,14 +10,14 @@ from sims4communitylib.modinfo import ModInfo
 from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AwayActionTracker, AwayActionTracker.remove_on_away_action_ended_callback.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AwayActionTracker, 'remove_on_away_action_ended_callback')
 def _common_fix_remove_on_away_action_ended_callback(original, self: AwayActionTracker, callback):
     if callback not in self._on_away_action_ended:
         return
     return original(self, callback)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AwayActionTracker, AwayActionTracker.remove_on_away_action_started_callback.__name__)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AwayActionTracker, 'remove_on_away_action_started_callback')
 def _common_fix_remove_on_away_action_started_callback(original, self: AwayActionTracker, callback):
     if callback not in self._on_away_action_started:
         return

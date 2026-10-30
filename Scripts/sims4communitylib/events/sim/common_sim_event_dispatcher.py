@@ -237,14 +237,14 @@ class CommonSimEventDispatcherService(CommonService):
         CommonEventRegistry().dispatch(S4CLSimRelationshipBitRemovedEvent(sim_info_a, sim_info_b, relationship_bit))
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, SimInfo.__init__.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, '__init__', handle_exceptions=False)
 def _common_on_sim_init(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonSimEventDispatcherService.get()._on_sim_init(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, SimInfo.load_sim_info.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, 'load_sim_info', handle_exceptions=False)
 def _common_on_sim_load(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonSimEventDispatcherService.get()._on_sim_load(self, *args, **kwargs)
@@ -252,7 +252,7 @@ def _common_on_sim_load(original, self, *args, **kwargs) -> Any:
 
 
 # noinspection PyUnusedLocal
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimSpawner, SimSpawner.spawn_sim.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimSpawner, 'spawn_sim', handle_exceptions=False)
 def _common_on_sim_spawn(original, cls, *args, **kwargs) -> Any:
     result = original(*args, **kwargs)
     if result:
@@ -261,13 +261,13 @@ def _common_on_sim_spawn(original, cls, *args, **kwargs) -> Any:
 
 
 # noinspection PyUnusedLocal
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, Sim.destroy.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, 'destroy', handle_exceptions=False)
 def _common_on_sim_despawn(original, self, *args, **kwargs) -> Any:
     CommonSimEventDispatcherService.get()._pre_sim_despawned(CommonSimUtils.get_sim_info(self), *args, **kwargs)
     return original(self, *args, **kwargs)
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), DeathTracker, DeathTracker.set_death_type.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), DeathTracker, 'set_death_type', handle_exceptions=False)
 def _common_on_sim_set_death_type(original, self, death_type: Union[DeathType, None], is_off_lot_death: bool = False, *_, **__) -> Any:
     previous_death_type = self._death_type
     original_result = original(self, death_type, is_off_lot_death=is_off_lot_death, *_, **__)
@@ -283,7 +283,7 @@ def _common_on_sim_set_death_type(original, self, death_type: Union[DeathType, N
     return original_result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), DeathTracker, DeathTracker.clear_death_type.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), DeathTracker, 'clear_death_type', handle_exceptions=False)
 def _common_on_sim_clear_death_type(original, self, *_, **__) -> Any:
     previous_death_type = self._death_type
     original_result = original(self, *_, **__)
@@ -295,7 +295,7 @@ def _common_on_sim_clear_death_type(original, self, *_, **__) -> Any:
 
 
 # noinspection PyUnusedLocal
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Skill, Skill.on_skill_level_up.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Skill, 'on_skill_level_up', handle_exceptions=False)
 def _common_on_sim_skill_level_up(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     if result:
@@ -303,7 +303,7 @@ def _common_on_sim_skill_level_up(original, self, *args, **kwargs) -> Any:
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AgingMixin, AgingMixin.change_age.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), AgingMixin, 'change_age', handle_exceptions=False)
 def _common_on_sim_change_age(original, self, *args, **kwargs) -> Any:
     CommonSimEventDispatcherService.get()._on_sim_changing_age(self, *args, **kwargs)
     result = original(self, *args, **kwargs)
@@ -311,14 +311,14 @@ def _common_on_sim_change_age(original, self, *args, **kwargs) -> Any:
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), OccultTracker, OccultTracker.add_occult_type.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), OccultTracker, 'add_occult_type', handle_exceptions=False)
 def _common_on_sim_add_occult_type(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonSimEventDispatcherService.get()._on_sim_add_occult_type(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), OccultTracker, OccultTracker.switch_to_occult_type.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), OccultTracker, 'switch_to_occult_type', handle_exceptions=False)
 def _common_on_sim_change_occult_type(original, self, *args, **kwargs) -> Any:
     CommonSimEventDispatcherService.get()._on_sim_changing_occult_type(self, *args, **kwargs)
     result = original(self, *args, **kwargs)
@@ -326,14 +326,14 @@ def _common_on_sim_change_occult_type(original, self, *args, **kwargs) -> Any:
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), OccultTracker, OccultTracker.remove_occult_type.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), OccultTracker, 'remove_occult_type', handle_exceptions=False)
 def _common_on_sim_remove_occult_type(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonSimEventDispatcherService.get()._on_sim_remove_occult_type(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, SimInfo.set_current_outfit.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), SimInfo, 'set_current_outfit', handle_exceptions=False)
 def _common_on_sim_set_current_outfit(original, self, *args, **kwargs) -> Any:
     old_outfit_category_and_index = CommonOutfitUtils.get_current_outfit(self)
     CommonSimEventDispatcherService.get()._on_sim_set_current_outfit(self, *args, **kwargs)
@@ -342,14 +342,14 @@ def _common_on_sim_set_current_outfit(original, self, *args, **kwargs) -> Any:
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TraitTracker, TraitTracker._add_trait.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TraitTracker, '_add_trait', handle_exceptions=False)
 def _common_on_sim_trait_added(original, self: TraitTracker, *args, **kwargs):
     result = original(self, *args, **kwargs)
     CommonSimEventDispatcherService.get()._on_sim_trait_added(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TraitTracker, TraitTracker._remove_trait.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TraitTracker, '_remove_trait', handle_exceptions=False)
 def _common_on_sim_trait_removed(original, self: TraitTracker, *args, **kwargs):
     result = original(self, *args, **kwargs)
     CommonSimEventDispatcherService.get()._on_sim_trait_removed(self, *args, **kwargs)
@@ -372,7 +372,7 @@ def _common_register_buff_added_or_removed_on_sim_spawned(event_data: S4CLSimSpa
     return True
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, Sim.on_object_added_to_inventory.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, 'on_object_added_to_inventory', handle_exceptions=False)
 def _common_on_object_added_to_sim_inventory(original, self: Sim, obj: ScriptObject, *args, **kwargs):
     result = original(self, obj, *args, **kwargs)
     if isinstance(obj, GameObject):
@@ -380,7 +380,7 @@ def _common_on_object_added_to_sim_inventory(original, self: Sim, obj: ScriptObj
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, Sim.on_object_removed_from_inventory.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Sim, 'on_object_removed_from_inventory', handle_exceptions=False)
 def _common_on_object_removed_from_sim_inventory(original, self: Sim, obj: ScriptObject, *args, **kwargs):
     if isinstance(obj, GameObject):
         CommonSimEventDispatcherService.get()._on_object_removed_from_sim_inventory(self, obj)
@@ -388,7 +388,7 @@ def _common_on_object_removed_from_sim_inventory(original, self: Sim, obj: Scrip
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Relationship, Relationship.add_relationship_bit.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Relationship, 'add_relationship_bit', handle_exceptions=False)
 def _common_on_add_relationship_bit(original, self: Relationship, actor_sim_id: int, target_sim_id: int, bit_to_add: RelationshipBit, *_, **__):
     try:
         result = original(self, actor_sim_id, target_sim_id, bit_to_add, *_, **__)
@@ -399,7 +399,7 @@ def _common_on_add_relationship_bit(original, self: Relationship, actor_sim_id: 
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), RelationshipData, RelationshipData.remove_bit.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), RelationshipData, 'remove_bit', handle_exceptions=False)
 def _common_on_remove_relationship_bit(original, self: RelationshipData, bit: RelationshipBit, *_, **__):
     result = original(self, bit, *_, **__)
     (actor_sim_id, target_sim_id) = self._sim_ids()
@@ -407,14 +407,14 @@ def _common_on_remove_relationship_bit(original, self: RelationshipData, bit: Re
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), PregnancyTracker, PregnancyTracker.enable_pregnancy.__init__.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), PregnancyTracker, '__init__', handle_exceptions=False)
 def _common_on_sim_pregnancy_started(original, self: PregnancyTracker, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonSimEventDispatcherService.get()._on_sim_pregnancy_started(self._sim_info)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), PregnancyTracker, PregnancyTracker.clear_pregnancy.__init__.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), PregnancyTracker, '__init__', handle_exceptions=False)
 def _common_on_sim_pregnancy_ended(original, self: PregnancyTracker, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonSimEventDispatcherService.get()._on_sim_pregnancy_ended(self._sim_info)

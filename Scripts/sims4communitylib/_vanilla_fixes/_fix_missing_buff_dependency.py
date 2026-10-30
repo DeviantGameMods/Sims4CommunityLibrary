@@ -13,7 +13,7 @@ from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 
 
 # This error can occur because the buff is not available, such as a mod dependency
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), BuffComponent, BuffComponent._can_add_buff_type.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), BuffComponent, '_can_add_buff_type', handle_exceptions=False)
 def _common_fix_missing_buff_type(original, self, buff_type, *_, **__) -> Any:
     if buff_type is None:
         return False, None

@@ -14,7 +14,7 @@ from world.premade_sim_fixup_helper import PremadeSimFixupHelper
 
 
 # This error can occur because the buff is not available, such as a mod dependency
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), PremadeSimFixupHelper, PremadeSimFixupHelper._apply_household_fixup.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), PremadeSimFixupHelper, '_apply_household_fixup', handle_exceptions=False)
 def _common_fix_missing_pre_made_sim_templates(original, self, *_, **__) -> Any:
     new_premade_sim_infos = dict()
     for (template, sim_info) in tuple(self._premade_sim_infos.items()):
@@ -26,7 +26,7 @@ def _common_fix_missing_pre_made_sim_templates(original, self, *_, **__) -> Any:
 
 
 # This error can occur because the buff is not available, such as a mod dependency
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TunableSimTemplate, TunableSimTemplate._get_sim_info_creation_data.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TunableSimTemplate, '_get_sim_info_creation_data', handle_exceptions=False)
 def _common_fix_missing_check_for_age_range(original, cls, *_, **__) -> Any:
     if cls._sim_creation_info.age_variant is not None and not isinstance(cls._sim_creation_info.age_variant, RandomAge) and not isinstance(cls._sim_creation_info.age_variant, LiteralAge):
         if cls._sim_creation_info.resource_key is not None:

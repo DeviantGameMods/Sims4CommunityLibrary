@@ -294,7 +294,7 @@ class CommonInteractionRegistry(CommonService, _HasS4CLLog):
         return _wrapper
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), ScriptObject, ScriptObject.on_add.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), ScriptObject, 'on_add', handle_exceptions=False)
 def _common_script_object_on_add(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonInteractionRegistry().on_script_object_add(self, *args, **kwargs)
@@ -305,14 +305,14 @@ def _common_script_object_on_add(original, self, *args, **kwargs) -> Any:
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TerrainService, TerrainService.start.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TerrainService, 'start', handle_exceptions=False)
 def _common_terrain_service_start(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonInteractionRegistry().on_terrain_load(self, *args, **kwargs)
     return result
 
 
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TerrainService, TerrainService.on_zone_load.__name__, handle_exceptions=False)
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), TerrainService, 'on_zone_load', handle_exceptions=False)
 def _common_terrain_service_on_zone_load(original, self, *args, **kwargs) -> Any:
     result = original(self, *args, **kwargs)
     CommonInteractionRegistry().on_ocean_load(self, *args, **kwargs)
